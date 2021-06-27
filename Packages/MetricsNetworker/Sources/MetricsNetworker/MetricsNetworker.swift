@@ -6,6 +6,20 @@
 //
 
 import Foundation
+import XiphiasNet
+import ShrimpExtensions
+import Combine
 
-struct MetricsNetworker {
+public struct MetricsNetworker {
+    private var kowalskiAnalysis: Bool
+    private let networker: XiphiasNetable
+
+    public init(kowalskiAnalysis: Bool = false) {
+        self.networker = XiphiasNet(kowalskiAnalysis: kowalskiAnalysis)
+        self.kowalskiAnalysis = kowalskiAnalysis
+    }
+
+    public func getRoot() -> AnyPublisher<RootResponse?, Error> {
+        networker.requestPublisher(from: .root)
+    }
 }

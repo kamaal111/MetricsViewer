@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
+		2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
+		2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6692688FE8C00DC34AF /* NetworkController.swift */; };
+		2C32E66B2688FE8C00DC34AF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6692688FE8C00DC34AF /* NetworkController.swift */; };
+		2C32E6702689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */; };
+		2C32E6712689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */; };
 		2C614F682688A2A30070EEC6 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F672688A2A30070EEC6 /* Tests_iOS.swift */; };
 		2C614F722688A2A30070EEC6 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F712688A2A30070EEC6 /* Tests_macOS.swift */; };
 		2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */; };
@@ -27,8 +33,6 @@
 		2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */; };
 		2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */; };
 		2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */; };
-		2CB4D3B92688C7E100DF0E9F /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB4D3B82688C7E100DF0E9F /* XiphiasNet */; };
-		2CB4D3BB2688CFE500DF0E9F /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB4D3BA2688CFE500DF0E9F /* XiphiasNet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C32E6662688FE5400DC34AF /* NetworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCache.swift; sourceTree = "<group>"; };
+		2C32E6692688FE8C00DC34AF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewerApp.swift; sourceTree = "<group>"; };
 		2C614F512688A2A10070EEC6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2C614F522688A2A10070EEC6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -77,7 +84,6 @@
 			files = (
 				2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */,
 				2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */,
-				2CB4D3BB2688CFE500DF0E9F /* XiphiasNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +93,6 @@
 			files = (
 				2C99BBD92688ACD300B30AFC /* MetricsNetworker in Frameworks */,
 				2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */,
-				2CB4D3B92688C7E100DF0E9F /* XiphiasNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +113,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C32E6652688FE3F00DC34AF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2C32E6662688FE5400DC34AF /* NetworkCache.swift */,
+				2C32E6692688FE8C00DC34AF /* NetworkController.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2C32E66C2689031B00DC34AF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C32E66D2689032100DC34AF /* ViewModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2C32E66D2689032100DC34AF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2C32E66E2689032B00DC34AF /* Screens */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2C32E66E2689032B00DC34AF /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		2C614F482688A2A10070EEC6 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +167,8 @@
 				2C614F522688A2A10070EEC6 /* Persistence.swift */,
 				2C614F532688A2A30070EEC6 /* Assets.xcassets */,
 				2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */,
+				2C32E66C2689031B00DC34AF /* Models */,
+				2C32E6652688FE3F00DC34AF /* Utilities */,
 				2C614F992688A9630070EEC6 /* Views */,
 			);
 			path = Shared;
@@ -200,8 +240,8 @@
 		2C614F992688A9630070EEC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2C614F9E2688AA110070EEC6 /* SupportingViews */,
 				2C614F9A2688A9780070EEC6 /* Screens */,
+				2C614F9E2688AA110070EEC6 /* SupportingViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,7 +305,6 @@
 			packageProductDependencies = (
 				2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */,
 				2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */,
-				2CB4D3BA2688CFE500DF0E9F /* XiphiasNet */,
 			);
 			productName = "MetricsViewer (iOS)";
 			productReference = 2C614F582688A2A30070EEC6 /* MetricsViewer.app */;
@@ -288,7 +327,6 @@
 			packageProductDependencies = (
 				2C99BBD82688ACD300B30AFC /* MetricsNetworker */,
 				2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */,
-				2CB4D3B82688C7E100DF0E9F /* XiphiasNet */,
 			);
 			productName = "MetricsViewer (macOS)";
 			productReference = 2C614F5E2688A2A30070EEC6 /* MetricsViewer.app */;
@@ -367,7 +405,6 @@
 			mainGroup = 2C614F482688A2A10070EEC6;
 			packageReferences = (
 				2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */,
-				2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */,
 			);
 			productRefGroup = 2C614F592688A2A30070EEC6 /* Products */;
 			projectDirPath = "";
@@ -458,6 +495,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */,
+				2C32E6702689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
+				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
 				2C614FA02688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
@@ -471,6 +511,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C32E66B2688FE8C00DC34AF /* NetworkController.swift in Sources */,
+				2C32E6712689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
+				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
 				2C614FA12688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
@@ -918,14 +961,6 @@
 				minimumVersion = 2.1.0;
 			};
 		};
-		2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kamaal111/XiphiasNet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -946,16 +981,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */;
 			productName = ShrimpExtensions;
-		};
-		2CB4D3B82688C7E100DF0E9F /* XiphiasNet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */;
-			productName = XiphiasNet;
-		};
-		2CB4D3BA2688CFE500DF0E9F /* XiphiasNet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */;
-			productName = XiphiasNet;
 		};
 /* End XCSwiftPackageProductDependency section */
 
