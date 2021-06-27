@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2C614F682688A2A30070EEC6 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F672688A2A30070EEC6 /* Tests_iOS.swift */; };
 		2C614F722688A2A30070EEC6 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F712688A2A30070EEC6 /* Tests_macOS.swift */; };
-		2C614F732688A2A30070EEC6 /* MetricsViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F4E2688A2A10070EEC6 /* MetricsViewer.xcdatamodeld */; };
-		2C614F742688A2A30070EEC6 /* MetricsViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F4E2688A2A10070EEC6 /* MetricsViewer.xcdatamodeld */; };
 		2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */; };
 		2C614F762688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */; };
 		2C614F772688A2A30070EEC6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F512688A2A10070EEC6 /* ContentView.swift */; };
@@ -19,6 +17,8 @@
 		2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F522688A2A10070EEC6 /* Persistence.swift */; };
 		2C614F7B2688A2A30070EEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C614F532688A2A30070EEC6 /* Assets.xcassets */; };
 		2C614F7C2688A2A30070EEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C614F532688A2A30070EEC6 /* Assets.xcassets */; };
+		2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */; };
+		2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C614F4F2688A2A10070EEC6 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewerApp.swift; sourceTree = "<group>"; };
 		2C614F512688A2A10070EEC6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2C614F522688A2A10070EEC6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -50,6 +49,11 @@
 		2C614F672688A2A30070EEC6 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		2C614F6D2688A2A30070EEC6 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C614F712688A2A30070EEC6 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		2C614F8C2688A2EC0070EEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C614F902688A6EE0070EEC6 /* generate_docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate_docs.sh; sourceTree = "<group>"; };
+		2C614F912688A7250070EEC6 /* pre_compile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = pre_compile.sh; sourceTree = "<group>"; };
+		2C614F952688A81D0070EEC6 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
+		2C614F982688A8490070EEC6 /* clear_mac_data.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = clear_mac_data.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,21 +91,22 @@
 		2C614F482688A2A10070EEC6 = {
 			isa = PBXGroup;
 			children = (
-				2C614F4D2688A2A10070EEC6 /* Shared */,
-				2C614F662688A2A30070EEC6 /* Tests iOS */,
-				2C614F702688A2A30070EEC6 /* Tests macOS */,
 				2C614F592688A2A30070EEC6 /* Products */,
+				2C614F8F2688A6D60070EEC6 /* Scripts */,
+				2C614F4D2688A2A10070EEC6 /* Shared */,
+				2C614F8B2688A2D10070EEC6 /* Targets */,
+				2C614F8E2688A5C70070EEC6 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
 		2C614F4D2688A2A10070EEC6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */,
 				2C614F512688A2A10070EEC6 /* ContentView.swift */,
+				2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */,
 				2C614F522688A2A10070EEC6 /* Persistence.swift */,
 				2C614F532688A2A30070EEC6 /* Assets.xcassets */,
-				2C614F4E2688A2A10070EEC6 /* MetricsViewer.xcdatamodeld */,
+				2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -117,20 +122,55 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C614F662688A2A30070EEC6 /* Tests iOS */ = {
+		2C614F662688A2A30070EEC6 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				2C614F672688A2A30070EEC6 /* Tests_iOS.swift */,
 			);
-			path = "Tests iOS";
+			path = iOS;
 			sourceTree = "<group>";
 		};
-		2C614F702688A2A30070EEC6 /* Tests macOS */ = {
+		2C614F702688A2A30070EEC6 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
 				2C614F712688A2A30070EEC6 /* Tests_macOS.swift */,
 			);
-			path = "Tests macOS";
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		2C614F8B2688A2D10070EEC6 /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				2C614F8D2688A38E0070EEC6 /* iOS */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		2C614F8D2688A38E0070EEC6 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C614F8C2688A2EC0070EEC6 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		2C614F8E2688A5C70070EEC6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2C614F662688A2A30070EEC6 /* iOS */,
+				2C614F702688A2A30070EEC6 /* macOS */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		2C614F8F2688A6D60070EEC6 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2C614F982688A8490070EEC6 /* clear_mac_data.sh */,
+				2C614F902688A6EE0070EEC6 /* generate_docs.sh */,
+				2C614F912688A7250070EEC6 /* pre_compile.sh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +180,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C614F7F2688A2A30070EEC6 /* Build configuration list for PBXNativeTarget "MetricsViewer (iOS)" */;
 			buildPhases = (
+				2C614F922688A7400070EEC6 /* Pre Compile */,
 				2C614F542688A2A30070EEC6 /* Sources */,
 				2C614F552688A2A30070EEC6 /* Frameworks */,
 				2C614F562688A2A30070EEC6 /* Resources */,
@@ -157,6 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C614F822688A2A30070EEC6 /* Build configuration list for PBXNativeTarget "MetricsViewer (macOS)" */;
 			buildPhases = (
+				2C614F932688A7630070EEC6 /* Pre Compile */,
 				2C614F5A2688A2A30070EEC6 /* Sources */,
 				2C614F5B2688A2A30070EEC6 /* Frameworks */,
 				2C614F5C2688A2A30070EEC6 /* Resources */,
@@ -286,15 +328,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2C614F922688A7400070EEC6 /* Pre Compile */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Pre Compile";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nsh Scripts/pre_compile.sh\n";
+		};
+		2C614F932688A7630070EEC6 /* Pre Compile */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Pre Compile";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nsh Scripts/pre_compile.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2C614F542688A2A30070EEC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C614F732688A2A30070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
 				2C614F772688A2A30070EEC6 /* ContentView.swift in Sources */,
+				2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,10 +383,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C614F742688A2A30070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F762688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
 				2C614F782688A2A30070EEC6 /* ContentView.swift in Sources */,
+				2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +543,10 @@
 				DEVELOPMENT_TEAM = DXUKH9VF73;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Targets/iOS/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = MetricsViewer;
+				INFOPLIST_KEY_CFBundleName = MetricsViewer;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -492,6 +577,10 @@
 				DEVELOPMENT_TEAM = DXUKH9VF73;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Targets/iOS/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = MetricsViewer;
+				INFOPLIST_KEY_CFBundleName = MetricsViewer;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -527,6 +616,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleExecutable = MetricsViewer;
+				INFOPLIST_KEY_CFBundleName = MetricsViewer;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -556,6 +648,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleExecutable = MetricsViewer;
+				INFOPLIST_KEY_CFBundleName = MetricsViewer;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -723,12 +818,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2C614F4E2688A2A10070EEC6 /* MetricsViewer.xcdatamodeld */ = {
+		2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2C614F4F2688A2A10070EEC6 /* Shared.xcdatamodel */,
+				2C614F952688A81D0070EEC6 /* Shared.xcdatamodel */,
 			);
-			currentVersion = 2C614F4F2688A2A10070EEC6 /* Shared.xcdatamodel */;
+			currentVersion = 2C614F952688A81D0070EEC6 /* Shared.xcdatamodel */;
 			path = MetricsViewer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
