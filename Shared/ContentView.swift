@@ -9,8 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World!")
-            .frame(minWidth: 305, minHeight: 305)
+        NavigationView {
+            AppSidebar()
+            HomeScreen()
+        }
+        #if os(macOS)
+        .frame(minWidth: 305, minHeight: 305)
+        #endif
     }
 }
 

@@ -19,6 +19,16 @@
 		2C614F7C2688A2A30070EEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C614F532688A2A30070EEC6 /* Assets.xcassets */; };
 		2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */; };
 		2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */; };
+		2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F9B2688A9980070EEC6 /* HomeScreen.swift */; };
+		2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F9B2688A9980070EEC6 /* HomeScreen.swift */; };
+		2C614FA02688AA3F0070EEC6 /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F9F2688AA3F0070EEC6 /* AppSidebar.swift */; };
+		2C614FA12688AA3F0070EEC6 /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C614F9F2688AA3F0070EEC6 /* AppSidebar.swift */; };
+		2C99BBD92688ACD300B30AFC /* MetricsNetworker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBD82688ACD300B30AFC /* MetricsNetworker */; };
+		2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */; };
+		2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */; };
+		2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */; };
+		2CB4D3B92688C7E100DF0E9F /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB4D3B82688C7E100DF0E9F /* XiphiasNet */; };
+		2CB4D3BB2688CFE500DF0E9F /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB4D3BA2688CFE500DF0E9F /* XiphiasNet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +64,10 @@
 		2C614F912688A7250070EEC6 /* pre_compile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = pre_compile.sh; sourceTree = "<group>"; };
 		2C614F952688A81D0070EEC6 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		2C614F982688A8490070EEC6 /* clear_mac_data.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = clear_mac_data.sh; sourceTree = "<group>"; };
+		2C614F9B2688A9980070EEC6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		2C614F9F2688AA3F0070EEC6 /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
+		2C99BBD62688AC9F00B30AFC /* MetricsNetworker */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsNetworker; sourceTree = "<group>"; };
+		2C99BBE12688BDD800B30AFC /* MetricsViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetricsViewer.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */,
+				2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */,
+				2CB4D3BB2688CFE500DF0E9F /* XiphiasNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C99BBD92688ACD300B30AFC /* MetricsNetworker in Frameworks */,
+				2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */,
+				2CB4D3B92688C7E100DF0E9F /* XiphiasNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,11 +111,13 @@
 		2C614F482688A2A10070EEC6 = {
 			isa = PBXGroup;
 			children = (
+				2C614FA22688AA930070EEC6 /* Packages */,
 				2C614F592688A2A30070EEC6 /* Products */,
 				2C614F8F2688A6D60070EEC6 /* Scripts */,
 				2C614F4D2688A2A10070EEC6 /* Shared */,
 				2C614F8B2688A2D10070EEC6 /* Targets */,
 				2C614F8E2688A5C70070EEC6 /* Tests */,
+				2C99BBD72688ACD300B30AFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +129,7 @@
 				2C614F522688A2A10070EEC6 /* Persistence.swift */,
 				2C614F532688A2A30070EEC6 /* Assets.xcassets */,
 				2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */,
+				2C614F992688A9630070EEC6 /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -141,6 +164,7 @@
 		2C614F8B2688A2D10070EEC6 /* Targets */ = {
 			isa = PBXGroup;
 			children = (
+				2CB4D3BC2688CFED00DF0E9F /* macOS */,
 				2C614F8D2688A38E0070EEC6 /* iOS */,
 			);
 			path = Targets;
@@ -173,6 +197,54 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		2C614F992688A9630070EEC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C614F9E2688AA110070EEC6 /* SupportingViews */,
+				2C614F9A2688A9780070EEC6 /* Screens */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2C614F9A2688A9780070EEC6 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2C614F9B2688A9980070EEC6 /* HomeScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		2C614F9E2688AA110070EEC6 /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				2C614F9F2688AA3F0070EEC6 /* AppSidebar.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		2C614FA22688AA930070EEC6 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				2C99BBD62688AC9F00B30AFC /* MetricsNetworker */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		2C99BBD72688ACD300B30AFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2CB4D3BC2688CFED00DF0E9F /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C99BBE12688BDD800B30AFC /* MetricsViewer.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,6 +262,11 @@
 			dependencies = (
 			);
 			name = "MetricsViewer (iOS)";
+			packageProductDependencies = (
+				2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */,
+				2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */,
+				2CB4D3BA2688CFE500DF0E9F /* XiphiasNet */,
+			);
 			productName = "MetricsViewer (iOS)";
 			productReference = 2C614F582688A2A30070EEC6 /* MetricsViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -208,6 +285,11 @@
 			dependencies = (
 			);
 			name = "MetricsViewer (macOS)";
+			packageProductDependencies = (
+				2C99BBD82688ACD300B30AFC /* MetricsNetworker */,
+				2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */,
+				2CB4D3B82688C7E100DF0E9F /* XiphiasNet */,
+			);
 			productName = "MetricsViewer (macOS)";
 			productReference = 2C614F5E2688A2A30070EEC6 /* MetricsViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -283,6 +365,10 @@
 				Base,
 			);
 			mainGroup = 2C614F482688A2A10070EEC6;
+			packageReferences = (
+				2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */,
+				2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */,
+			);
 			productRefGroup = 2C614F592688A2A30070EEC6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -373,6 +459,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
+				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				2C614FA02688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
 				2C614F772688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
@@ -384,6 +472,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
+				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				2C614FA12688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F762688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
 				2C614F782688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
@@ -607,6 +697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Targets/macOS/MetricsViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -639,6 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Targets/macOS/MetricsViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -816,6 +908,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/ShrimpExtensions.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+		2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/XiphiasNet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C99BBD82688ACD300B30AFC /* MetricsNetworker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetricsNetworker;
+		};
+		2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetricsNetworker;
+		};
+		2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */;
+			productName = ShrimpExtensions;
+		};
+		2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */;
+			productName = ShrimpExtensions;
+		};
+		2CB4D3B82688C7E100DF0E9F /* XiphiasNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */;
+			productName = XiphiasNet;
+		};
+		2CB4D3BA2688CFE500DF0E9F /* XiphiasNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB4D3B72688C7E100DF0E9F /* XCRemoteSwiftPackageReference "XiphiasNet" */;
+			productName = XiphiasNet;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */ = {
