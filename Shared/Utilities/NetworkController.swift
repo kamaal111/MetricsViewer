@@ -11,20 +11,23 @@ import XiphiasNet
 
 class NetworkController {
 
-    let networker = MetricsNetworker(kowalskiAnalysis: false)
-
+    private let networker = MetricsNetworker(kowalskiAnalysis: false)
     private let cache = NetworkCache()
 
     private init() { }
 
     static let shared = NetworkController()
 
+    let appHeaders: [String: String] = [
+        "version": "1.0.1"
+    ]
+
     func getRoot(completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
         if let response: RootResponse = cache.getCache(from: .root, with: "root") {
             completion(.success(response))
             return
         }
-        networker.getRoot { [weak self] (result: Result<RootResponse?, XiphiasNet.Errors>) in
+        networker.getRoot(with: appHeaders) { [weak self] (result: Result<RootResponse?, XiphiasNet.Errors>) in
             let response: RootResponse?
             switch result {
             case .failure(let failure):

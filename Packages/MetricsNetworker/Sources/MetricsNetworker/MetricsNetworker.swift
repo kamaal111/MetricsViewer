@@ -18,7 +18,9 @@ public struct MetricsNetworker {
         self.kowalskiAnalysis = kowalskiAnalysis
     }
 
-    public func getRoot(completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
-        networker.request(from: .root, completion: completion)
+    public func getRoot(
+        with header: [String: String] = [:],
+        completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
+        networker.request(from: .root, with: header, completion: completion)
     }
 }
