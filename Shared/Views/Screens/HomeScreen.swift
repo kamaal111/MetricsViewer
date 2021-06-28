@@ -14,12 +14,15 @@ struct HomeScreen: View {
 
     var body: some View {
         VStack {
-            Button(action: {
-                viewModel.getRoot()
-            }) {
-                Text("Hello, world!")
+            Button(action: viewModel.addApp) {
+                Text("Add App")
             }
         }
+        .toolbar(content: {
+            Button(action: viewModel.addApp) {
+                Label("Add App", systemImage: "plus")
+            }
+        })
     }
 }
 

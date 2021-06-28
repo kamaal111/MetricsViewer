@@ -35,5 +35,9 @@ extension HomeScreen {
             })
         }
 
+        func addApp() {
+            print("add")
+        }
+
     }
 }
