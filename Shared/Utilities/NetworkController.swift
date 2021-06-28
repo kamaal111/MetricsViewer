@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import Combine
 import MetricsNetworker
+import XiphiasNet
 
 class NetworkController {
 
-    var subscriptions = Set<AnyCancellable>()
     let networker = MetricsNetworker(kowalskiAnalysis: false)
 
     private let cache = NetworkCache()
@@ -20,25 +19,24 @@ class NetworkController {
 
     static let shared = NetworkController()
 
-    func getRoot(completion: @escaping (Result<RootResponse?, Error>) -> Void) {
+    func getRoot(completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
         if let response: RootResponse = cache.getCache(from: .root, with: "root") {
             completion(.success(response))
             return
         }
-        networker.getRoot()
-            .receive(on: DispatchQueue.global(), options: nil)
-            .sink(receiveCompletion: { (subscriberCompletion: Subscribers.Completion<Error>) in
-                switch subscriberCompletion {
-                case .failure(let failure): completion(.failure(failure))
-                case .finished: print("finished fetching")
-                }
-            }, receiveValue: { [weak self] (response: RootResponse?) in
-                completion(.success(response))
-                if let response = response {
-                    self?.cache.setCache(this: response, in: .root, with: "root")
-                }
-            })
-            .store(in: &subscriptions)
+        networker.getRoot { [weak self] (result: Result<RootResponse?, XiphiasNet.Errors>) in
+            let response: RootResponse?
+            switch result {
+            case .failure(let failure):
+                completion(.failure(failure))
+                return
+            case .success(let success): response = success
+            }
+            completion(.success(response))
+            if let response = response {
+                self?.cache.setCache(this: response, in: .root, with: "root")
+            }
+        }
     }
 
 }

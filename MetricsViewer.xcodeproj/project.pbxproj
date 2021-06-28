@@ -33,6 +33,8 @@
 		2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */; };
 		2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */; };
 		2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */; };
+		603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8062689A2F7003A5C42 /* XiphiasNet */; };
+		603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8082689A2FC003A5C42 /* XiphiasNet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,7 @@
 			files = (
 				2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */,
 				2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */,
+				603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 			files = (
 				2C99BBD92688ACD300B30AFC /* MetricsNetworker in Frameworks */,
 				2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */,
+				603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +309,7 @@
 			packageProductDependencies = (
 				2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */,
 				2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */,
+				603CA8062689A2F7003A5C42 /* XiphiasNet */,
 			);
 			productName = "MetricsViewer (iOS)";
 			productReference = 2C614F582688A2A30070EEC6 /* MetricsViewer.app */;
@@ -327,6 +332,7 @@
 			packageProductDependencies = (
 				2C99BBD82688ACD300B30AFC /* MetricsNetworker */,
 				2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */,
+				603CA8082689A2FC003A5C42 /* XiphiasNet */,
 			);
 			productName = "MetricsViewer (macOS)";
 			productReference = 2C614F5E2688A2A30070EEC6 /* MetricsViewer.app */;
@@ -405,6 +411,7 @@
 			mainGroup = 2C614F482688A2A10070EEC6;
 			packageReferences = (
 				2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */,
+				603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */,
 			);
 			productRefGroup = 2C614F592688A2A30070EEC6 /* Products */;
 			projectDirPath = "";
@@ -961,6 +968,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/XiphiasNet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -981,6 +996,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */;
 			productName = ShrimpExtensions;
+		};
+		603CA8062689A2F7003A5C42 /* XiphiasNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */;
+			productName = XiphiasNet;
+		};
+		603CA8082689A2FC003A5C42 /* XiphiasNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */;
+			productName = XiphiasNet;
 		};
 /* End XCSwiftPackageProductDependency section */
 

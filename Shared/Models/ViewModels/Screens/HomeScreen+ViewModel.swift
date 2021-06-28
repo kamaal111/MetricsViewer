@@ -8,6 +8,7 @@
 import Foundation
 import MetricsNetworker
 import Combine
+import XiphiasNet
 
 extension HomeScreen {
     final class ViewModel: ObservableObject {
@@ -22,7 +23,7 @@ extension HomeScreen {
         private let networkController = NetworkController.shared
 
         func getRoot() {
-            networkController.getRoot(completion: { (result: Result<RootResponse?, Error>) in
+            networkController.getRoot(completion: { (result: Result<RootResponse?, XiphiasNet.Errors>) in
                 switch result {
                 case .failure(let failure): print(failure)
                 case .success(let success):

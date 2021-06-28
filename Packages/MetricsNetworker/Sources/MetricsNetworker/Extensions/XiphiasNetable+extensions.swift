@@ -6,10 +6,9 @@
 //
 
 import XiphiasNet
-import Combine
 
 extension XiphiasNetable {
-    func requestPublisher<T: Codable>(from endpoint: Endpoint) -> AnyPublisher<T?, Error> {
-        requestPublisher(from: endpoint.url)
+    func request<T: Codable>(from endpoint: Endpoint, completion: @escaping (Result<T?, XiphiasNet.Errors>) -> Void) {
+        request(from: endpoint.url, completion: completion)
     }
 }

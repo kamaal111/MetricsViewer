@@ -8,7 +8,6 @@
 import Foundation
 import XiphiasNet
 import ShrimpExtensions
-import Combine
 
 public struct MetricsNetworker {
     private var kowalskiAnalysis: Bool
@@ -19,7 +18,7 @@ public struct MetricsNetworker {
         self.kowalskiAnalysis = kowalskiAnalysis
     }
 
-    public func getRoot() -> AnyPublisher<RootResponse?, Error> {
-        networker.requestPublisher(from: .root)
+    public func getRoot(completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
+        networker.request(from: .root, completion: completion)
     }
 }
