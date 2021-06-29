@@ -9,7 +9,21 @@ import SwiftUI
 
 struct AddAppScreen: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text("Hello, World!")
+        }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        #if os(macOS)
+        .navigationTitle(Text("Add App"))
+        .toolbar(content: {
+            Button(action: {
+                print("done")
+            }) {
+                Text("Done")
+            }
+        })
+        #endif
     }
 }
 
