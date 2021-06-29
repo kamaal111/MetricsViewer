@@ -14,12 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             AppSidebar()
-            ZStack {
-                NavigationLink(destination: AddAppScreen(), isActive: $namiNavigator.showAddAppScreen) {
-                    EmptyView()
-                }
-                HomeScreen()
-            }
+            HomeScreen()
         }
         #if os(macOS)
         .frame(minWidth: 305, minHeight: 305)

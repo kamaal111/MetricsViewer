@@ -17,21 +17,23 @@ struct HomeScreen: View {
 
     var body: some View {
         VStack {
-            Button(action: {
-                namiNavigator.showAddAppScreen = true
-            }) {
+            Button(action: addAppAction) {
                 // - TODO: Localize this
                 Text("Add App")
             }
         }
+        #if os(macOS)
         .toolbar(content: {
-            Button(action: {
-                namiNavigator.showAddAppScreen = true
-            }) {
+            Button(action: addAppAction) {
                 // - TODO: Localize this
                 Label("Add App", systemImage: "plus")
             }
         })
+        #endif
+    }
+
+    func addAppAction() {
+        namiNavigator.navigate(to: .addApp)
     }
 }
 

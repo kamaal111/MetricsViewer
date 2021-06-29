@@ -10,6 +10,17 @@ import Combine
 
 final class NamiNavigator: ObservableObject {
 
-    @Published var showAddAppScreen = false
+    @Published var selectedScreen: SelectableScreens?
+
+    enum SelectableScreens {
+        case home
+        case addApp
+    }
+
+    func navigate(to screen: SelectableScreens) {
+        DispatchQueue.main.async { [weak self] in
+            self?.selectedScreen = screen
+        }
+    }
 
 }
