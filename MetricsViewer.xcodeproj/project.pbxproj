@@ -35,6 +35,10 @@
 		2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */; };
 		603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8062689A2F7003A5C42 /* XiphiasNet */; };
 		603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8082689A2FC003A5C42 /* XiphiasNet */; };
+		60A26423268AF7EA001FAF8B /* AddAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26422268AF7EA001FAF8B /* AddAppScreen.swift */; };
+		60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26422268AF7EA001FAF8B /* AddAppScreen.swift */; };
+		60A26427268AF82D001FAF8B /* NamiNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26426268AF82D001FAF8B /* NamiNavigator.swift */; };
+		60A26428268AF82D001FAF8B /* NamiNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26426268AF82D001FAF8B /* NamiNavigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +81,8 @@
 		2C614F9F2688AA3F0070EEC6 /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
 		2C99BBD62688AC9F00B30AFC /* MetricsNetworker */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsNetworker; sourceTree = "<group>"; };
 		2C99BBE12688BDD800B30AFC /* MetricsViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetricsViewer.entitlements; sourceTree = "<group>"; };
+		60A26422268AF7EA001FAF8B /* AddAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppScreen.swift; sourceTree = "<group>"; };
+		60A26426268AF82D001FAF8B /* NamiNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamiNavigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 		2C32E66D2689032100DC34AF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				60A26425268AF811001FAF8B /* Environment */,
 				2C32E66E2689032B00DC34AF /* Screens */,
 			);
 			path = ViewModels;
@@ -254,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				2C614F9B2688A9980070EEC6 /* HomeScreen.swift */,
+				60A26422268AF7EA001FAF8B /* AddAppScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -287,6 +295,14 @@
 				2C99BBE12688BDD800B30AFC /* MetricsViewer.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		60A26425268AF811001FAF8B /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				60A26426268AF82D001FAF8B /* NamiNavigator.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,8 +523,10 @@
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				60A26423268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
 				2C614FA02688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
+				60A26427268AF82D001FAF8B /* NamiNavigator.swift in Sources */,
 				2C614F772688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 			);
@@ -523,8 +541,10 @@
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
 				2C614FA12688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F762688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
+				60A26428268AF82D001FAF8B /* NamiNavigator.swift in Sources */,
 				2C614F782688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 			);
