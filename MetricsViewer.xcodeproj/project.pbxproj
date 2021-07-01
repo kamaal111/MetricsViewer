@@ -35,6 +35,8 @@
 		2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */; };
 		603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8062689A2F7003A5C42 /* XiphiasNet */; };
 		603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8082689A2FC003A5C42 /* XiphiasNet */; };
+		607794FC268DA415004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FB268DA415004A0D8A /* SalmonUI */; };
+		607794FE268DA423004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FD268DA423004A0D8A /* SalmonUI */; };
 		60A26423268AF7EA001FAF8B /* AddAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26422268AF7EA001FAF8B /* AddAppScreen.swift */; };
 		60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26422268AF7EA001FAF8B /* AddAppScreen.swift */; };
 		60A26427268AF82D001FAF8B /* NamiNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26426268AF82D001FAF8B /* NamiNavigator.swift */; };
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				607794FC268DA415004A0D8A /* SalmonUI in Frameworks */,
 				2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */,
 				2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */,
@@ -100,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				607794FE268DA423004A0D8A /* SalmonUI in Frameworks */,
 				2C99BBD92688ACD300B30AFC /* MetricsNetworker in Frameworks */,
 				2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */,
@@ -326,6 +330,7 @@
 				2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */,
 				2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */,
 				603CA8062689A2F7003A5C42 /* XiphiasNet */,
+				607794FB268DA415004A0D8A /* SalmonUI */,
 			);
 			productName = "MetricsViewer (iOS)";
 			productReference = 2C614F582688A2A30070EEC6 /* MetricsViewer.app */;
@@ -349,6 +354,7 @@
 				2C99BBD82688ACD300B30AFC /* MetricsNetworker */,
 				2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */,
 				603CA8082689A2FC003A5C42 /* XiphiasNet */,
+				607794FD268DA423004A0D8A /* SalmonUI */,
 			);
 			productName = "MetricsViewer (macOS)";
 			productReference = 2C614F5E2688A2A30070EEC6 /* MetricsViewer.app */;
@@ -428,6 +434,7 @@
 			packageReferences = (
 				2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */,
 				603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */,
+				607794FA268DA415004A0D8A /* XCRemoteSwiftPackageReference "SalmonUI" */,
 			);
 			productRefGroup = 2C614F592688A2A30070EEC6 /* Products */;
 			projectDirPath = "";
@@ -996,6 +1003,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		607794FA268DA415004A0D8A /* XCRemoteSwiftPackageReference "SalmonUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/SalmonUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1026,6 +1041,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */;
 			productName = XiphiasNet;
+		};
+		607794FB268DA415004A0D8A /* SalmonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 607794FA268DA415004A0D8A /* XCRemoteSwiftPackageReference "SalmonUI" */;
+			productName = SalmonUI;
+		};
+		607794FD268DA423004A0D8A /* SalmonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 607794FA268DA415004A0D8A /* XCRemoteSwiftPackageReference "SalmonUI" */;
+			productName = SalmonUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 

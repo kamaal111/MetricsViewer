@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import SalmonUI
 
 struct AddAppScreen: View {
     var body: some View {
         VStack {
-            Text("Hello, World!")
+            KFloatingTextField(text: .constant("Hello"), title: "Hello")
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         #if os(macOS)
+        // - TODO: LOCALIZE THIS
         .navigationTitle(Text("Add App"))
         .toolbar(content: {
             Button(action: {
