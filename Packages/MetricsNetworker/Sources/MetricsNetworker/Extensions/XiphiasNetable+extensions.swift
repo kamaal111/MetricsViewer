@@ -6,10 +6,15 @@
 //
 
 import XiphiasNet
-import Combine
+import Foundation
 
 extension XiphiasNetable {
-    func requestPublisher<T: Codable>(from endpoint: Endpoint) -> AnyPublisher<T?, Error> {
-        requestPublisher(from: endpoint.url)
+    func request<T: Codable>(
+        from endpoint: Endpoint,
+        with header: [String: String] = [:],
+        completion: @escaping (Result<T?, XiphiasNet.Errors>) -> Void) {
+        var urlRequest = URLRequest(url: endpoint.url)
+        urlRequest.allHTTPHeaderFields = header
+        request(from: urlRequest, completion: completion)
     }
 }
