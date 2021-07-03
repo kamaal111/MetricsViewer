@@ -41,6 +41,10 @@
 		2CD03E0026908FBB00A66E75 /* AddAppScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD03DFE26908FBB00A66E75 /* AddAppScreen+ViewModel.swift */; };
 		2CD03E032690948E00A66E75 /* MetricsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CD03E022690948E00A66E75 /* MetricsUI */; };
 		2CD03E052690949500A66E75 /* MetricsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CD03E042690949500A66E75 /* MetricsUI */; };
+		2CD03E08269098D400A66E75 /* ConsoleSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2CD03E07269098D400A66E75 /* ConsoleSwift */; };
+		2CD03E0A269098E500A66E75 /* ConsoleSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2CD03E09269098E500A66E75 /* ConsoleSwift */; };
+		2CD03E0D26909B7300A66E75 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD03E0C26909B7300A66E75 /* AlertMessage.swift */; };
+		2CD03E0E26909B7300A66E75 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD03E0C26909B7300A66E75 /* AlertMessage.swift */; };
 		603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8062689A2F7003A5C42 /* XiphiasNet */; };
 		603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8082689A2FC003A5C42 /* XiphiasNet */; };
 		607794FC268DA415004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FB268DA415004A0D8A /* SalmonUI */; };
@@ -95,6 +99,7 @@
 		2C99BBE12688BDD800B30AFC /* MetricsViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetricsViewer.entitlements; sourceTree = "<group>"; };
 		2CD03DFE26908FBB00A66E75 /* AddAppScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddAppScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		2CD03E012690931100A66E75 /* MetricsUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsUI; sourceTree = "<group>"; };
+		2CD03E0C26909B7300A66E75 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		60A26422268AF7EA001FAF8B /* AddAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppScreen.swift; sourceTree = "<group>"; };
 		60A26426268AF82D001FAF8B /* NamiNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamiNavigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +111,7 @@
 			files = (
 				607794FC268DA415004A0D8A /* SalmonUI in Frameworks */,
 				2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */,
+				2CD03E08269098D400A66E75 /* ConsoleSwift in Frameworks */,
 				2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */,
 				2CD03E032690948E00A66E75 /* MetricsUI in Frameworks */,
@@ -118,6 +124,7 @@
 			files = (
 				607794FE268DA423004A0D8A /* SalmonUI in Frameworks */,
 				2C99BBD92688ACD300B30AFC /* MetricsNetworker in Frameworks */,
+				2CD03E0A269098E500A66E75 /* ConsoleSwift in Frameworks */,
 				2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */,
 				2CD03E052690949500A66E75 /* MetricsUI in Frameworks */,
@@ -161,6 +168,7 @@
 		2C32E66C2689031B00DC34AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2CD03E0B26909B6200A66E75 /* Structures */,
 				2C32E66D2689032100DC34AF /* ViewModels */,
 			);
 			path = Models;
@@ -327,6 +335,14 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		2CD03E0B26909B6200A66E75 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				2CD03E0C26909B7300A66E75 /* AlertMessage.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
 		60A26425268AF811001FAF8B /* Environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +374,7 @@
 				603CA8062689A2F7003A5C42 /* XiphiasNet */,
 				607794FB268DA415004A0D8A /* SalmonUI */,
 				2CD03E022690948E00A66E75 /* MetricsUI */,
+				2CD03E07269098D400A66E75 /* ConsoleSwift */,
 			);
 			productName = "MetricsViewer (iOS)";
 			productReference = 2C614F582688A2A30070EEC6 /* MetricsViewer.app */;
@@ -383,6 +400,7 @@
 				603CA8082689A2FC003A5C42 /* XiphiasNet */,
 				607794FD268DA423004A0D8A /* SalmonUI */,
 				2CD03E042690949500A66E75 /* MetricsUI */,
+				2CD03E09269098E500A66E75 /* ConsoleSwift */,
 			);
 			productName = "MetricsViewer (macOS)";
 			productReference = 2C614F5E2688A2A30070EEC6 /* MetricsViewer.app */;
@@ -463,6 +481,7 @@
 				2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */,
 				603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */,
 				607794FA268DA415004A0D8A /* XCRemoteSwiftPackageReference "SalmonUI" */,
+				2CD03E06269098D400A66E75 /* XCRemoteSwiftPackageReference "ConsoleSwift" */,
 			);
 			productRefGroup = 2C614F592688A2A30070EEC6 /* Products */;
 			projectDirPath = "";
@@ -554,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */,
+				2CD03E0D26909B7300A66E75 /* AlertMessage.swift in Sources */,
 				2C32E6702689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
@@ -575,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C32E66B2688FE8C00DC34AF /* NetworkController.swift in Sources */,
+				2CD03E0E26909B7300A66E75 /* AlertMessage.swift in Sources */,
 				2C32E6712689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
@@ -1029,6 +1050,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		2CD03E06269098D400A66E75 /* XCRemoteSwiftPackageReference "ConsoleSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/ConsoleSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kamaal111/XiphiasNet.git";
@@ -1073,6 +1102,16 @@
 		2CD03E042690949500A66E75 /* MetricsUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MetricsUI;
+		};
+		2CD03E07269098D400A66E75 /* ConsoleSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CD03E06269098D400A66E75 /* XCRemoteSwiftPackageReference "ConsoleSwift" */;
+			productName = ConsoleSwift;
+		};
+		2CD03E09269098E500A66E75 /* ConsoleSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CD03E06269098D400A66E75 /* XCRemoteSwiftPackageReference "ConsoleSwift" */;
+			productName = ConsoleSwift;
 		};
 		603CA8062689A2F7003A5C42 /* XiphiasNet */ = {
 			isa = XCSwiftPackageProductDependency;
