@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C298CF5269082CF00993C91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF4269082CE00993C91 /* Constants.swift */; };
+		2C298CF6269082CF00993C91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF4269082CE00993C91 /* Constants.swift */; };
+		2C298CF9269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */; };
+		2C298CFA269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */; };
 		2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
 		2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
 		2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6692688FE8C00DC34AF /* NetworkController.swift */; };
@@ -53,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C298CF4269082CE00993C91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+extensions.swift"; sourceTree = "<group>"; };
 		2C32E6662688FE5400DC34AF /* NetworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCache.swift; sourceTree = "<group>"; };
 		2C32E6692688FE8C00DC34AF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
@@ -113,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C298CF7269083E800993C91 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2C32E6652688FE3F00DC34AF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,10 +176,12 @@
 		2C614F4D2688A2A10070EEC6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2C298CF4269082CE00993C91 /* Constants.swift */,
 				2C614F512688A2A10070EEC6 /* ContentView.swift */,
 				2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */,
 				2C614F522688A2A10070EEC6 /* Persistence.swift */,
 				2C614F532688A2A30070EEC6 /* Assets.xcassets */,
+				2C298CF7269083E800993C91 /* Extensions */,
 				2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */,
 				2C32E66C2689031B00DC34AF /* Models */,
 				2C32E6652688FE3F00DC34AF /* Utilities */,
@@ -500,8 +516,10 @@
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				2C298CF5269082CF00993C91 /* Constants.swift in Sources */,
 				2C614FA02688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
+				2C298CF9269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */,
 				2C614F772688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 			);
@@ -516,8 +534,10 @@
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				2C298CF6269082CF00993C91 /* Constants.swift in Sources */,
 				2C614FA12688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F762688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
+				2C298CFA269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */,
 				2C614F782688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 			);

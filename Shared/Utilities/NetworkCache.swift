@@ -12,6 +12,7 @@ final class NetworkCache {
     private var cache: [CacheKeys: [String: Data]]
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
+    private let queue = DispatchQueue.networkCache
 
     init() {
         var cache: [CacheKeys: [String: Data]] = [:]
@@ -25,15 +26,23 @@ final class NetworkCache {
         case root
     }
 
-    func getCache<T: Codable>(from cacheKey: CacheKeys, with objectKey: String) -> T? {
-        guard let data = cache[cacheKey]?[objectKey] else { return nil }
-        let decodedData = try? decoder.decode(T.self, from: data)
-        return decodedData
+    func getCache<T: Codable>(from cacheKey: CacheKeys, with objectKey: String, completion: @escaping (T?) -> Void) {
+        queue.async { [weak self] in
+            guard let self = self, let data = self.cache[cacheKey]?[objectKey] else {
+                completion(nil)
+                return
+            }
+            let decodedData = try? self.decoder.decode(T.self, from: data)
+            completion(decodedData)
+        }
+
     }
 
     func setCache<T: Codable>(this object: T, in cacheKey: CacheKeys, with objectKey: String) {
-        guard let data = try? encoder.encode(object) else { return }
-        cache[cacheKey]?[objectKey] = data
+        queue.async { [weak self] in
+            guard let self = self, let data = try? self.encoder.encode(object) else { return }
+            self.cache[cacheKey]?[objectKey] = data
+        }
     }
 
 }
