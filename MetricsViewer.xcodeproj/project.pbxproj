@@ -37,6 +37,8 @@
 		2C99BBDB2688ACDB00B30AFC /* MetricsNetworker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDA2688ACDB00B30AFC /* MetricsNetworker */; };
 		2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDD2688AE2700B30AFC /* ShrimpExtensions */; };
 		2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99BBDF2688AE3100B30AFC /* ShrimpExtensions */; };
+		2C9C350D2690E0D4009726C8 /* MetricsLocale in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9C350C2690E0D4009726C8 /* MetricsLocale */; };
+		2C9C350F2690E0DC009726C8 /* MetricsLocale in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9C350E2690E0DC009726C8 /* MetricsLocale */; };
 		2CD03DFF26908FBB00A66E75 /* AddAppScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD03DFE26908FBB00A66E75 /* AddAppScreen+ViewModel.swift */; };
 		2CD03E0026908FBB00A66E75 /* AddAppScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD03DFE26908FBB00A66E75 /* AddAppScreen+ViewModel.swift */; };
 		2CD03E032690948E00A66E75 /* MetricsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CD03E022690948E00A66E75 /* MetricsUI */; };
@@ -73,11 +75,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C03D7F72690DDDE00F2445E /* MetricsLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsLocale; sourceTree = "<group>"; };
 		2C298CF4269082CE00993C91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+extensions.swift"; sourceTree = "<group>"; };
 		2C32E6662688FE5400DC34AF /* NetworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCache.swift; sourceTree = "<group>"; };
 		2C32E6692688FE8C00DC34AF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
+		2C36D18F2690E6E4005EE90D /* en.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = en.js; sourceTree = "<group>"; };
+		2C36D1902690E6E4005EE90D /* locale.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = locale.js; sourceTree = "<group>"; };
+		2C36D1922690E6E4005EE90D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2C36D1932690E6E4005EE90D /* Localize.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Localize.js; sourceTree = "<group>"; };
+		2C36D1942690E6E4005EE90D /* run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = "<group>"; };
+		2C36D1952690E6E4005EE90D /* templates.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = templates.js; sourceTree = "<group>"; };
 		2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewerApp.swift; sourceTree = "<group>"; };
 		2C614F512688A2A10070EEC6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2C614F522688A2A10070EEC6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -115,6 +124,7 @@
 				2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */,
 				2CD03E032690948E00A66E75 /* MetricsUI in Frameworks */,
+				2C9C350F2690E0DC009726C8 /* MetricsLocale in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +138,7 @@
 				2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */,
 				2CD03E052690949500A66E75 /* MetricsUI in Frameworks */,
+				2C9C350D2690E0D4009726C8 /* MetricsLocale in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +201,35 @@
 				2CD03DFE26908FBB00A66E75 /* AddAppScreen+ViewModel.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		2C36D18D2690E220005EE90D /* generate_locales */ = {
+			isa = PBXGroup;
+			children = (
+				2C36D1902690E6E4005EE90D /* locale.js */,
+				2C36D1952690E6E4005EE90D /* templates.js */,
+				2C36D1942690E6E4005EE90D /* run.sh */,
+				2C36D18E2690E6E4005EE90D /* locales */,
+				2C36D1912690E6E4005EE90D /* Localize.js */,
+			);
+			path = generate_locales;
+			sourceTree = "<group>";
+		};
+		2C36D18E2690E6E4005EE90D /* locales */ = {
+			isa = PBXGroup;
+			children = (
+				2C36D18F2690E6E4005EE90D /* en.js */,
+			);
+			path = locales;
+			sourceTree = "<group>";
+		};
+		2C36D1912690E6E4005EE90D /* Localize.js */ = {
+			isa = PBXGroup;
+			children = (
+				2C36D1922690E6E4005EE90D /* README.md */,
+				2C36D1932690E6E4005EE90D /* Localize.js */,
+			);
+			path = Localize.js;
 			sourceTree = "<group>";
 		};
 		2C614F482688A2A10070EEC6 = {
@@ -281,6 +321,7 @@
 				2C614F982688A8490070EEC6 /* clear_mac_data.sh */,
 				2C614F902688A6EE0070EEC6 /* generate_docs.sh */,
 				2C614F912688A7250070EEC6 /* pre_compile.sh */,
+				2C36D18D2690E220005EE90D /* generate_locales */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -314,6 +355,7 @@
 		2C614FA22688AA930070EEC6 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				2C03D7F72690DDDE00F2445E /* MetricsLocale */,
 				2CD03E012690931100A66E75 /* MetricsUI */,
 				2C99BBD62688AC9F00B30AFC /* MetricsNetworker */,
 			);
@@ -375,6 +417,7 @@
 				607794FB268DA415004A0D8A /* SalmonUI */,
 				2CD03E022690948E00A66E75 /* MetricsUI */,
 				2CD03E07269098D400A66E75 /* ConsoleSwift */,
+				2C9C350E2690E0DC009726C8 /* MetricsLocale */,
 			);
 			productName = "MetricsViewer (iOS)";
 			productReference = 2C614F582688A2A30070EEC6 /* MetricsViewer.app */;
@@ -401,6 +444,7 @@
 				607794FD268DA423004A0D8A /* SalmonUI */,
 				2CD03E042690949500A66E75 /* MetricsUI */,
 				2CD03E09269098E500A66E75 /* ConsoleSwift */,
+				2C9C350C2690E0D4009726C8 /* MetricsLocale */,
 			);
 			productName = "MetricsViewer (macOS)";
 			productReference = 2C614F5E2688A2A30070EEC6 /* MetricsViewer.app */;
@@ -1094,6 +1138,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C99BBDC2688AE2700B30AFC /* XCRemoteSwiftPackageReference "ShrimpExtensions" */;
 			productName = ShrimpExtensions;
+		};
+		2C9C350C2690E0D4009726C8 /* MetricsLocale */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetricsLocale;
+		};
+		2C9C350E2690E0DC009726C8 /* MetricsLocale */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetricsLocale;
 		};
 		2CD03E022690948E00A66E75 /* MetricsUI */ = {
 			isa = XCSwiftPackageProductDependency;

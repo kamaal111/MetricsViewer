@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Combine
+import MetricsLocale
 
 struct HomeScreen: View {
     @EnvironmentObject
@@ -18,15 +18,13 @@ struct HomeScreen: View {
     var body: some View {
         VStack {
             Button(action: addAppAction) {
-                // - TODO: Localize this
-                Text("Add App")
+                Text(localized: .ADD_APP)
             }
         }
         #if os(macOS)
         .toolbar(content: {
             Button(action: addAppAction) {
-                // - TODO: Localize this
-                Label("Add App", systemImage: "plus")
+                Label(MetricsLocale.Keys.ADD_APP.localized, systemImage: "plus")
             }
         })
         #endif
