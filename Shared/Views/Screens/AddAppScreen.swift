@@ -7,11 +7,23 @@
 
 import SwiftUI
 import SalmonUI
+import MetricsUI
 
 struct AddAppScreen: View {
+    @ObservedObject
+    private var viewModel = ViewModel()
+
     var body: some View {
         VStack {
-            KFloatingTextField(text: .constant("Hello"), title: "Hello")
+            // - TODO: LOCALIZE THIS
+            KFloatingTextField(text: $viewModel.appName, title: "App Name")
+            FloatingTextFieldWithSubtext(
+                text: $viewModel.appIdentifier,
+                // - TODO: LOCALIZE THIS
+                title: "App Identifier",
+                // - TODO: LOCALIZE THIS
+                subtext: "example: com.domain.appName")
+            KFloatingTextField(text: $viewModel.accessToken, title: "Access Token")
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)

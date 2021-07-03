@@ -37,7 +37,9 @@ class NetworkController {
         }
     }
 
-    private func handleUncachedRoot(cacheObjectKey: String, completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
+    private func handleUncachedRoot(
+        cacheObjectKey: String,
+        completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
         networker.getRoot(with: appHeaders) { (result: Result<RootResponse?, XiphiasNet.Errors>) in
             switch result {
             case .failure(let error):
