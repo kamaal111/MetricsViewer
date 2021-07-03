@@ -15,26 +15,21 @@ struct AddAppScreen: View {
 
     var body: some View {
         VStack {
-            // - TODO: LOCALIZE THIS
-            KFloatingTextField(text: $viewModel.appName, title: "App Name")
+            KFloatingTextField(text: $viewModel.appName, title: .APP_NAME_FORM_TITLE)
             FloatingTextFieldWithSubtext(
                 text: $viewModel.appIdentifier,
-                // - TODO: LOCALIZE THIS
-                title: "App Identifier",
-                // - TODO: LOCALIZE THIS
-                subtext: "example: com.domain.appName")
-            KFloatingTextField(text: $viewModel.accessToken, title: "Access Token")
+                title: .APP_IDENTIFIER_FORM_TITLE,
+                subtext: .APP_IDENTIFIER_FORM_SUBTEXT)
+            KFloatingTextField(text: $viewModel.accessToken, title: .ACCESS_TOKEN_FORM_TITLE)
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .alert(isPresented: $viewModel.showAlert, content: alert)
         #if os(macOS)
-        // - TODO: LOCALIZE THIS
-        .navigationTitle(Text("Add App"))
+        .navigationTitle(Text(localized: .ADD_APP))
         .toolbar(content: {
             Button(action: viewModel.onDoneEditing) {
-                // - TODO: LOCALIZE THIS
-                Text("Done")
+                Text(localized: .DONE)
             }
         })
         #endif
@@ -42,8 +37,7 @@ struct AddAppScreen: View {
 
     private func alert() -> Alert {
         guard let alertMessage = viewModel.alertMessage else {
-            // - TODO: LOCALIZE THIS
-            return Alert(title: Text("Something went wrong"))
+            return Alert(title: Text(localized: .GENERAL_ALERT_TITLE))
         }
         var messageText: Text?
         if let message = alertMessage.message {

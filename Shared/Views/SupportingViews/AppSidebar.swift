@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MetricsLocale
 
 struct AppSidebar: View {
     @EnvironmentObject
@@ -15,12 +16,10 @@ struct AppSidebar: View {
         List {
             Section(header: Text(""), content: {
                 NavigationLink(destination: HomeScreen(), tag: .home, selection: $namiNavigator.selectedScreen) {
-                    // - TODO: Localize this
-                    Label("Home", systemImage: "house.fill")
+                    Label(MetricsLocale.Keys.HOME.localized, systemImage: "house.fill")
                 }
                 NavigationLink(destination: AddAppScreen(), tag: .addApp, selection: $namiNavigator.selectedScreen) {
-                    // - TODO: Localize this
-                    Label("Add App", systemImage: "plus")
+                    Label(MetricsLocale.Keys.ADD_APP.localized, systemImage: "plus")
                 }
             })
         }

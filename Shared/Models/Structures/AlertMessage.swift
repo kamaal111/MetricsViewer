@@ -6,13 +6,18 @@
 //
 
 import Foundation
+import MetricsLocale
 
 struct AlertMessage {
     let title: String
     let message: String?
 
-    internal init(title: String, message: String? = nil) {
+    init(title: String, message: String? = nil) {
         self.title = title
         self.message = message
+    }
+
+    init(title: MetricsLocale.Keys, message: MetricsLocale.Keys? = nil) {
+        self.init(title: title.localized, message: message?.localized)
     }
 }

@@ -13,11 +13,15 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/kamaal111/SalmonUI.git", from: "4.1.0"),
+        .package(path: "../MetricsLocale"),
     ],
     targets: [
         .target(
             name: "MetricsUI",
-            dependencies: ["SalmonUI"]),
+            dependencies: [
+                "SalmonUI",
+                "MetricsLocale",
+            ]),
         .testTarget(
             name: "MetricsUITests",
             dependencies: ["MetricsUI"]),

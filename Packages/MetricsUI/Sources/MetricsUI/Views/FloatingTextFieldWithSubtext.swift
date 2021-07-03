@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SalmonUI
+import MetricsLocale
 
 public struct FloatingTextFieldWithSubtext: View {
     @Binding public var text: String
@@ -18,6 +19,18 @@ public struct FloatingTextFieldWithSubtext: View {
         self._text = text
         self.title = title
         self.subtext = subtext
+    }
+
+    public init(text: Binding<String>, title: MetricsLocale.Keys, subtext: MetricsLocale.Keys) {
+        self.init(text: text, title: title.localized, subtext: subtext.localized)
+    }
+
+    public init(text: Binding<String>, title: MetricsLocale.Keys, subtext: String) {
+        self.init(text: text, title: title.localized, subtext: subtext)
+    }
+
+    public init(text: Binding<String>, title: String, subtext: MetricsLocale.Keys) {
+        self.init(text: text, title: title, subtext: subtext.localized)
     }
 
     public var body: some View {

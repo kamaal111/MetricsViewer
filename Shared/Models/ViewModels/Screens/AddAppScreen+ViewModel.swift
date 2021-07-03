@@ -89,22 +89,15 @@ extension AddAppScreen.Validator {
         case appNameMissing
         case invalidAppIdentifier
         case invalidAccessToken
-        case general
 
         var alertMessage: AlertMessage {
             switch self {
             case .appNameMissing:
-                // - TODO: LOCALIZE THIS
-                return AlertMessage(title: "App name is missing")
+                return AlertMessage(title: .APP_NAME_MISSING_ALERT_TITLE)
             case .invalidAppIdentifier:
-                // - TODO: LOCALIZE THIS
-                return AlertMessage(title: "Invalid app identifier")
+                return AlertMessage(title: .INVALID_APP_IDENTIFIER_ALERT_TITLE)
             case .invalidAccessToken:
-                // - TODO: LOCALIZE THIS
-                return AlertMessage(title: "Invalid access token")
-            case .general:
-                // - TODO: LOCALIZE THIS
-                return AlertMessage(title: "Something went wrong")
+                return AlertMessage(title: .INVALID_ACCESS_TOKEN_ALERT_TITLE)
             }
         }
     }
