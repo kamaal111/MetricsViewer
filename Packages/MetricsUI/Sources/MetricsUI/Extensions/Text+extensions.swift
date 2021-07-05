@@ -13,7 +13,7 @@ extension Text {
     /// - Parameters:
     ///   - localized: An localized key to get a localized `Text` view
     ///   - variables: The variables that get injected in to the localized string
-    public init(localized: MetricsLocale.Keys, with variables: CVarArg...) {
+    public init(localized: MetricsLocale.Keys, with variables: [CVarArg] = []) {
         self.init(localized.localized(with: variables))
     }
 }

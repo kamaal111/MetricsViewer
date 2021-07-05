@@ -11,7 +11,7 @@ import SwiftUI
 public struct MetricsLocale {
     private init() { }
 
-    static func getLocalizableString(of key: Keys, with variables: [CVarArg] = []) -> String {
+    static func getLocalizableString(of key: Keys, with variables: [CVarArg]) -> String {
         let bundle = Bundle.module
         let keyRawValue = key.rawValue
         switch variables {
@@ -36,7 +36,7 @@ extension MetricsLocale.Keys {
     /// Returns a localized string with the variables provided
     /// - Parameter variables: These variables are injected in to the localized string
     /// - Returns: A localized string
-    public func localized(with variables: CVarArg...) -> String {
+    public func localized(with variables: [CVarArg] = []) -> String {
         MetricsLocale.getLocalizableString(of: self, with: variables)
     }
 }
