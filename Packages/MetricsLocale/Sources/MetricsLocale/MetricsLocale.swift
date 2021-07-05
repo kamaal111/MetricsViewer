@@ -40,14 +40,3 @@ extension MetricsLocale.Keys {
         MetricsLocale.getLocalizableString(of: self, with: variables)
     }
 }
-
-@available(macOS 10.15, iOS 13.0, *)
-extension Text {
-    /// An alternative init to use Text with `MetricsLocale Keys`
-    /// - Parameters:
-    ///   - localized: An localized key to get a localized `Text` view
-    ///   - variables: The variables that get injected in to the localized string
-    public init(localized: MetricsLocale.Keys, with variables: CVarArg...) {
-        self.init(MetricsLocale.getLocalizableString(of: localized, with: variables))
-    }
-}
