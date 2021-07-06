@@ -51,6 +51,10 @@
 		603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8082689A2FC003A5C42 /* XiphiasNet */; };
 		607794FC268DA415004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FB268DA415004A0D8A /* SalmonUI */; };
 		607794FE268DA423004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FD268DA423004A0D8A /* SalmonUI */; };
+		609D67CA2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */; };
+		609D67CB2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */; };
+		609D67CE2694DD9700BB3B53 /* PersistanceManager in Frameworks */ = {isa = PBXBuildFile; productRef = 609D67CD2694DD9700BB3B53 /* PersistanceManager */; };
+		609D67D02694DDA100BB3B53 /* PersistanceManager in Frameworks */ = {isa = PBXBuildFile; productRef = 609D67CF2694DDA100BB3B53 /* PersistanceManager */; };
 		60A26423268AF7EA001FAF8B /* AddAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26422268AF7EA001FAF8B /* AddAppScreen.swift */; };
 		60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26422268AF7EA001FAF8B /* AddAppScreen.swift */; };
 		60A26427268AF82D001FAF8B /* NamiNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26426268AF82D001FAF8B /* NamiNavigator.swift */; };
@@ -113,6 +117,7 @@
 		2CD03DFE26908FBB00A66E75 /* AddAppScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddAppScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		2CD03E012690931100A66E75 /* MetricsUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsUI; sourceTree = "<group>"; };
 		2CD03E0C26909B7300A66E75 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+extensions.swift"; sourceTree = "<group>"; };
 		60A26422268AF7EA001FAF8B /* AddAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppScreen.swift; sourceTree = "<group>"; };
 		60A26426268AF82D001FAF8B /* NamiNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamiNavigator.swift; sourceTree = "<group>"; };
 		60BFEF762694387800CC2C54 /* CoreApp+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 				2C99BBE02688AE3100B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */,
 				2CD03E032690948E00A66E75 /* MetricsUI in Frameworks */,
+				609D67CE2694DD9700BB3B53 /* PersistanceManager in Frameworks */,
 				2C9C350F2690E0DC009726C8 /* MetricsLocale in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +150,7 @@
 				2C99BBDE2688AE2700B30AFC /* ShrimpExtensions in Frameworks */,
 				603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */,
 				2CD03E052690949500A66E75 /* MetricsUI in Frameworks */,
+				609D67D02694DDA100BB3B53 /* PersistanceManager in Frameworks */,
 				2C9C350D2690E0D4009726C8 /* MetricsLocale in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */,
+				609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 		2C32E6652688FE3F00DC34AF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2C614F522688A2A10070EEC6 /* Persistence.swift */,
 				2C32E6662688FE5400DC34AF /* NetworkCache.swift */,
 				2C32E6692688FE8C00DC34AF /* NetworkController.swift */,
 			);
@@ -258,7 +267,6 @@
 				2C298CF4269082CE00993C91 /* Constants.swift */,
 				2C614F512688A2A10070EEC6 /* ContentView.swift */,
 				2C614F502688A2A10070EEC6 /* MetricsViewerApp.swift */,
-				2C614F522688A2A10070EEC6 /* Persistence.swift */,
 				2C614F532688A2A30070EEC6 /* Assets.xcassets */,
 				2C298CF7269083E800993C91 /* Extensions */,
 				2C32E66C2689031B00DC34AF /* Models */,
@@ -442,6 +450,7 @@
 				2CD03E022690948E00A66E75 /* MetricsUI */,
 				2CD03E07269098D400A66E75 /* ConsoleSwift */,
 				2C9C350E2690E0DC009726C8 /* MetricsLocale */,
+				609D67CD2694DD9700BB3B53 /* PersistanceManager */,
 			);
 			productName = "MetricsViewer (iOS)";
 			productReference = 2C614F582688A2A30070EEC6 /* MetricsViewer.app */;
@@ -469,6 +478,7 @@
 				2CD03E042690949500A66E75 /* MetricsUI */,
 				2CD03E09269098E500A66E75 /* ConsoleSwift */,
 				2C9C350C2690E0D4009726C8 /* MetricsLocale */,
+				609D67CF2694DDA100BB3B53 /* PersistanceManager */,
 			);
 			productName = "MetricsViewer (macOS)";
 			productReference = 2C614F5E2688A2A30070EEC6 /* MetricsViewer.app */;
@@ -550,6 +560,7 @@
 				603CA8052689A2EC003A5C42 /* XCRemoteSwiftPackageReference "XiphiasNet" */,
 				607794FA268DA415004A0D8A /* XCRemoteSwiftPackageReference "SalmonUI" */,
 				2CD03E06269098D400A66E75 /* XCRemoteSwiftPackageReference "ConsoleSwift" */,
+				609D67CC2694DD9700BB3B53 /* XCRemoteSwiftPackageReference "PersistanceManager" */,
 			);
 			productRefGroup = 2C614F592688A2A30070EEC6 /* Products */;
 			projectDirPath = "";
@@ -648,6 +659,7 @@
 				60BFEF782694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				609D67CA2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
 				2C298CF5269082CF00993C91 /* Constants.swift in Sources */,
 				2C298CF9269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */,
 				60A26423268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
@@ -672,6 +684,7 @@
 				60BFEF792694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				609D67CB2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
 				2C298CF6269082CF00993C91 /* Constants.swift in Sources */,
 				2C298CFA269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */,
 				60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
@@ -1146,6 +1159,14 @@
 				minimumVersion = 4.1.0;
 			};
 		};
+		609D67CC2694DD9700BB3B53 /* XCRemoteSwiftPackageReference "PersistanceManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/PersistanceManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1212,6 +1233,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 607794FA268DA415004A0D8A /* XCRemoteSwiftPackageReference "SalmonUI" */;
 			productName = SalmonUI;
+		};
+		609D67CD2694DD9700BB3B53 /* PersistanceManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 609D67CC2694DD9700BB3B53 /* XCRemoteSwiftPackageReference "PersistanceManager" */;
+			productName = PersistanceManager;
+		};
+		609D67CF2694DDA100BB3B53 /* PersistanceManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 609D67CC2694DD9700BB3B53 /* XCRemoteSwiftPackageReference "PersistanceManager" */;
+			productName = PersistanceManager;
 		};
 /* End XCSwiftPackageProductDependency section */
 

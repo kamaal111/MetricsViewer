@@ -16,12 +16,12 @@ extension CoreApp {
         return NSFetchRequest<CoreApp>(entityName: "CoreApp")
     }
 
-    @NSManaged public var accessToken: String?
-    @NSManaged public var appIdentifier: String?
-    @NSManaged public var creationDate: Date?
-    @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
-    @NSManaged public var updateDate: Date?
+    @NSManaged public var accessToken: String
+    @NSManaged public var appIdentifier: String
+    @NSManaged public var creationDate: Date
+    @NSManaged public var id: UUID
+    @NSManaged public var name: String
+    @NSManaged public var updateDate: Date
 
 }
 
