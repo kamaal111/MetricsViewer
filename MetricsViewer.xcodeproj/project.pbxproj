@@ -55,6 +55,10 @@
 		60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26422268AF7EA001FAF8B /* AddAppScreen.swift */; };
 		60A26427268AF82D001FAF8B /* NamiNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26426268AF82D001FAF8B /* NamiNavigator.swift */; };
 		60A26428268AF82D001FAF8B /* NamiNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A26426268AF82D001FAF8B /* NamiNavigator.swift */; };
+		60BFEF782694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFEF762694387800CC2C54 /* CoreApp+CoreDataClass.swift */; };
+		60BFEF792694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFEF762694387800CC2C54 /* CoreApp+CoreDataClass.swift */; };
+		60BFEF7A2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFEF772694387800CC2C54 /* CoreApp+CoreDataProperties.swift */; };
+		60BFEF7B2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFEF772694387800CC2C54 /* CoreApp+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +115,8 @@
 		2CD03E0C26909B7300A66E75 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		60A26422268AF7EA001FAF8B /* AddAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppScreen.swift; sourceTree = "<group>"; };
 		60A26426268AF82D001FAF8B /* NamiNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamiNavigator.swift; sourceTree = "<group>"; };
+		60BFEF762694387800CC2C54 /* CoreApp+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+CoreDataClass.swift"; sourceTree = "<group>"; };
+		60BFEF772694387800CC2C54 /* CoreApp+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,7 @@
 		2C32E66C2689031B00DC34AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				60BFEF742694383B00CC2C54 /* CoreData */,
 				2CD03E0B26909B6200A66E75 /* Structures */,
 				2C32E66D2689032100DC34AF /* ViewModels */,
 			);
@@ -254,7 +261,6 @@
 				2C614F522688A2A10070EEC6 /* Persistence.swift */,
 				2C614F532688A2A30070EEC6 /* Assets.xcassets */,
 				2C298CF7269083E800993C91 /* Extensions */,
-				2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */,
 				2C32E66C2689031B00DC34AF /* Models */,
 				2C32E6652688FE3F00DC34AF /* Utilities */,
 				2C614F992688A9630070EEC6 /* Views */,
@@ -391,6 +397,24 @@
 				60A26426268AF82D001FAF8B /* NamiNavigator.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		60BFEF742694383B00CC2C54 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				60BFEF752694383B00CC2C54 /* CoreApp */,
+				2C614F942688A81D0070EEC6 /* MetricsViewer.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		60BFEF752694383B00CC2C54 /* CoreApp */ = {
+			isa = PBXGroup;
+			children = (
+				60BFEF762694387800CC2C54 /* CoreApp+CoreDataClass.swift */,
+				60BFEF772694387800CC2C54 /* CoreApp+CoreDataProperties.swift */,
+			);
+			path = CoreApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -620,6 +644,8 @@
 				2CD03E0D26909B7300A66E75 /* AlertMessage.swift in Sources */,
 				2C32E6702689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
+				60BFEF7A2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
+				60BFEF782694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
 				2C298CF5269082CF00993C91 /* Constants.swift in Sources */,
@@ -642,6 +668,8 @@
 				2CD03E0E26909B7300A66E75 /* AlertMessage.swift in Sources */,
 				2C32E6712689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
+				60BFEF7B2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
+				60BFEF792694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
 				2C298CF6269082CF00993C91 /* Constants.swift in Sources */,
