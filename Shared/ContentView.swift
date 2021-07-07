@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject
     private var namiNavigator = NamiNavigator()
     @StateObject
-    private var coreAppManager = CoreaAppManager()
+    private var coreAppManager = CoreAppManager()
 
     var body: some View {
         NavigationView {

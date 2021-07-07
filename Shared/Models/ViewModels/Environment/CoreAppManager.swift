@@ -9,7 +9,7 @@ import Foundation
 import PersistanceManager
 import ConsoleSwift
 
-final class CoreaAppManager: ObservableObject {
+final class CoreAppManager: ObservableObject {
 
     @Published private(set) var apps: [CoreApp] = []
 

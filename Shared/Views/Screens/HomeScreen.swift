@@ -12,17 +12,40 @@ struct HomeScreen: View {
     @EnvironmentObject
     private var namiNavigator: NamiNavigator
     @EnvironmentObject
-    private var coreAppManager: CoreaAppManager
+    private var coreAppManager: CoreAppManager
 
     @ObservedObject
     private var viewModel = ViewModel()
 
     var body: some View {
         VStack {
-            Button(action: addAppAction) {
-                Text(localized: .ADD_APP)
+            if coreAppManager.apps.isEmpty {
+                Button(action: addAppAction) {
+                    Text(localized: .ADD_APP)
+                }
+            } else {
+                // - TODO: Localize this
+                Text("Apps")
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                ForEach(coreAppManager.apps, id: \.self) { (app: CoreApp) in
+                    Button(action: {
+                        print(app)
+                    }) {
+                        Text(app.name)
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(.accentColor)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 4)
             }
         }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: viewAlignment)
         .onAppear(perform: {
             coreAppManager.fetchAllApps()
         })
@@ -35,7 +58,14 @@ struct HomeScreen: View {
         #endif
     }
 
-    func addAppAction() {
+    private var viewAlignment: Alignment {
+        if coreAppManager.apps.isEmpty {
+            return .center
+        }
+        return .topLeading
+    }
+
+    private func addAppAction() {
         namiNavigator.navigate(to: .addApp)
     }
 }
@@ -44,6 +74,6 @@ struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
             .environmentObject(NamiNavigator())
-            .environmentObject(CoreaAppManager(preview: true))
+            .environmentObject(CoreAppManager(preview: true))
     }
 }
