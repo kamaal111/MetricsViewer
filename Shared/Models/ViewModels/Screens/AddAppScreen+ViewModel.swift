@@ -41,10 +41,10 @@ extension AddAppScreen {
             }
         }
 
-        func onDoneEditing() {
+        func onDoneEditing() -> CoreApp? {
             guard let context = persistenceController.context else {
                 console.error(Date(), "no context found")
-                return
+                return nil
             }
             do {
                 try Validator.validateForm([
@@ -55,13 +55,21 @@ extension AddAppScreen {
             } catch {
                 if let error = error as? Validator.Errors {
                     alertMessage = error.alertMessage
-                    return
+                    return nil
                 }
                 console.error(Date(), error.localizedDescription, error)
-                return
+                return nil
             }
             let args = CoreApp.Args(name: appName, appIdentifier: appIdentifier, accessToken: accessToken)
-            CoreApp.setApp(with: args, context: context)
+            let appResult = CoreApp.setApp(with: args, context: context)
+            let app: CoreApp
+            switch appResult {
+            case .failure(let failure):
+                console.error(Date(), failure.localizedDescription, failure)
+                return nil
+            case .success(let success): app = success
+            }
+            return app
         }
 
     }
@@ -102,7 +110,7 @@ extension AddAppScreen.Validator {
                     throw Errors.appIdentifierNotUnique
                 }
             case .accessToken:
-                guard value.trimmingByWhitespacesAndNewLines.count == 32 else {
+                guard value.trimmingByWhitespacesAndNewLines.count >= 32 else {
                     throw Errors.invalidAccessToken
                 }
             }

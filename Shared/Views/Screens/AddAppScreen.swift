@@ -10,6 +10,9 @@ import SalmonUI
 import MetricsUI
 
 struct AddAppScreen: View {
+    @EnvironmentObject
+    private var namiNavigator: NamiNavigator
+
     @ObservedObject
     private var viewModel = ViewModel()
 
@@ -28,7 +31,11 @@ struct AddAppScreen: View {
         #if os(macOS)
         .navigationTitle(Text(localized: .ADD_APP))
         .toolbar(content: {
-            Button(action: viewModel.onDoneEditing) {
+            Button(action: {
+                if let savedApp = viewModel.onDoneEditing() {
+                    namiNavigator.navigate(to: nil)
+                }
+            }) {
                 Text(localized: .DONE)
             }
         })

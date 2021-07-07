@@ -17,7 +17,7 @@ final class NamiNavigator: ObservableObject {
         case addApp
     }
 
-    func navigate(to screen: SelectableScreens) {
+    func navigate(to screen: SelectableScreens?) {
         DispatchQueue.main.async { [weak self] in
             self?.selectedScreen = screen
         }
