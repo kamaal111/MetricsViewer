@@ -10,16 +10,19 @@ import SwiftUI
 struct ContentView: View {
     @StateObject
     private var namiNavigator = NamiNavigator()
+    @StateObject
+    private var coreAppManager = CoreaAppManager()
 
     var body: some View {
         NavigationView {
             AppSidebar()
             HomeScreen()
         }
+        .environmentObject(namiNavigator)
+        .environmentObject(coreAppManager)
         #if os(macOS)
         .frame(minWidth: 305, minHeight: 305)
         #endif
-        .environmentObject(namiNavigator)
     }
 }
 

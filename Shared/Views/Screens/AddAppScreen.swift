@@ -14,7 +14,11 @@ struct AddAppScreen: View {
     private var namiNavigator: NamiNavigator
 
     @ObservedObject
-    private var viewModel = ViewModel()
+    private var viewModel: ViewModel
+
+    init(preview: Bool = false) {
+        self.viewModel = ViewModel(preview: preview)
+    }
 
     var body: some View {
         VStack {
@@ -56,6 +60,6 @@ struct AddAppScreen: View {
 
 struct AddAppScreen_Previews: PreviewProvider {
     static var previews: some View {
-        AddAppScreen()
+        AddAppScreen(preview: true)
     }
 }

@@ -10,7 +10,9 @@ import MetricsLocale
 
 struct HomeScreen: View {
     @EnvironmentObject
-    var namiNavigator: NamiNavigator
+    private var namiNavigator: NamiNavigator
+    @EnvironmentObject
+    private var coreAppManager: CoreaAppManager
 
     @ObservedObject
     private var viewModel = ViewModel()
@@ -21,6 +23,9 @@ struct HomeScreen: View {
                 Text(localized: .ADD_APP)
             }
         }
+        .onAppear(perform: {
+            coreAppManager.fetchAllApps()
+        })
         #if os(macOS)
         .toolbar(content: {
             Button(action: addAppAction) {
@@ -39,5 +44,6 @@ struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
             .environmentObject(NamiNavigator())
+            .environmentObject(CoreaAppManager(preview: true))
     }
 }

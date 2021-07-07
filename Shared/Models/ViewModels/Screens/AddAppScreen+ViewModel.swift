@@ -31,7 +31,7 @@ extension AddAppScreen {
             }
         }
 
-        let persistenceController: PersistanceManager
+        private let persistenceController: PersistanceManager
 
         init(preview: Bool = false) {
             if !preview {
