@@ -26,6 +26,14 @@ extension CoreApp {
         return .success(app)
     }
 
+    static func getAllAppIdentifiers(context: NSManagedObjectContext) throws -> [String] {
+        let entityName = String(describing: self)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        guard let fecthedObjects = try context.fetch(fetchRequest) as? [CoreApp] else { return  [] }
+        let identifiers = fecthedObjects.map(\.appIdentifier)
+        return identifiers
+    }
+
     struct Args {
         let name: String
         let appIdentifier: String

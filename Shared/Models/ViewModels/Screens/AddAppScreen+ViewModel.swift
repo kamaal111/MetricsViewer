@@ -8,6 +8,9 @@
 import Foundation
 import Combine
 import ShrimpExtensions
+import PersistanceManager
+import ConsoleSwift
+import CoreData
 
 // - MARK: - View Model
 
@@ -28,20 +31,37 @@ extension AddAppScreen {
             }
         }
 
+        let persistenceController: PersistanceManager
+
+        init(preview: Bool = false) {
+            if !preview {
+                self.persistenceController = PersistenceController.shared
+            } else {
+                self.persistenceController = PersistenceController.preview
+            }
+        }
+
         func onDoneEditing() {
+            guard let context = persistenceController.context else {
+                console.error(Date(), "no context found")
+                return
+            }
             do {
                 try Validator.validateForm([
                     .appIdentifier: appIdentifier,
                     .appName: appName,
                     .accessToken: accessToken
-                ])
+                ], context: context)
             } catch {
                 if let error = error as? Validator.Errors {
                     alertMessage = error.alertMessage
+                    return
                 }
+                console.error(Date(), error.localizedDescription, error)
                 return
             }
-            print("done")
+            let args = CoreApp.Args(name: appName, appIdentifier: appIdentifier, accessToken: accessToken)
+            CoreApp.setApp(with: args, context: context)
         }
 
     }
@@ -53,9 +73,9 @@ extension AddAppScreen {
     fileprivate struct Validator {
         private init() { }
 
-        static func validateForm(_ form: [Fields: String]) throws {
-            for field in form {
-                try field.key.validate(value: field.value)
+        static func validateForm(_ form: [Fields: String], context: NSManagedObjectContext) throws {
+            for (key, value) in form {
+                try key.validate(value: value, context: context)
             }
         }
     }
@@ -67,7 +87,7 @@ extension AddAppScreen.Validator {
         case appIdentifier
         case accessToken
 
-        func validate(value: String) throws {
+        func validate(value: String, context: NSManagedObjectContext) throws {
             switch self {
             case .appName:
                 guard !value.trimmingByWhitespacesAndNewLines.isEmpty else {
@@ -76,6 +96,10 @@ extension AddAppScreen.Validator {
             case .appIdentifier:
                 guard value.trimmingByWhitespacesAndNewLines.split(separator: ".").count > 1 else {
                     throw Errors.invalidAppIdentifier
+                }
+                let identifiers = try CoreApp.getAllAppIdentifiers(context: context)
+                if identifiers.contains(value) {
+                    throw Errors.appIdentifierNotUnique
                 }
             case .accessToken:
                 guard value.trimmingByWhitespacesAndNewLines.count == 32 else {
@@ -89,6 +113,7 @@ extension AddAppScreen.Validator {
         case appNameMissing
         case invalidAppIdentifier
         case invalidAccessToken
+        case appIdentifierNotUnique
 
         var alertMessage: AlertMessage {
             switch self {
@@ -98,6 +123,9 @@ extension AddAppScreen.Validator {
                 return AlertMessage(title: .INVALID_APP_IDENTIFIER_ALERT_TITLE)
             case .invalidAccessToken:
                 return AlertMessage(title: .INVALID_ACCESS_TOKEN_ALERT_TITLE)
+            case .appIdentifierNotUnique:
+                // - TODO: Localize this
+                return AlertMessage(title: "Identifier already exists")
             }
         }
     }
