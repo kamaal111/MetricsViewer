@@ -9,9 +9,6 @@ import SwiftUI
 import MetricsLocale
 
 struct HomeScreen: View {
-    @Environment(\.colorScheme)
-    private var colorScheme
-
     @EnvironmentObject
     private var namiNavigator: NamiNavigator
     @EnvironmentObject
@@ -27,7 +24,7 @@ struct HomeScreen: View {
         .onAppear(perform: {
             coreAppManager.fetchAllApps()
         })
-        .background(backgroundColor)
+        .background(Color.Background)
         #if os(macOS)
         .toolbar(content: {
             Button(action: addAppAction) {
@@ -35,14 +32,6 @@ struct HomeScreen: View {
             }
         })
         #endif
-    }
-
-    private var backgroundColor: Color {
-        switch colorScheme {
-        case .dark: return .black
-        case .light: return .white
-        @unknown default: return .black
-        }
     }
 
     private var viewAlignment: Alignment {

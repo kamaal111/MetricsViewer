@@ -11,6 +11,8 @@
 		2C298CF6269082CF00993C91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF4269082CE00993C91 /* Constants.swift */; };
 		2C298CF9269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */; };
 		2C298CFA269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */; };
+		2C2B709B26977B77008171F2 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B709A26977B77008171F2 /* Color+extensions.swift */; };
+		2C2B709C26977B77008171F2 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B709A26977B77008171F2 /* Color+extensions.swift */; };
 		2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
 		2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
 		2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6692688FE8C00DC34AF /* NetworkController.swift */; };
@@ -96,6 +98,7 @@
 		2C03D7F72690DDDE00F2445E /* MetricsLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsLocale; sourceTree = "<group>"; };
 		2C298CF4269082CE00993C91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+extensions.swift"; sourceTree = "<group>"; };
+		2C2B709A26977B77008171F2 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		2C32E6662688FE5400DC34AF /* NetworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCache.swift; sourceTree = "<group>"; };
 		2C32E6692688FE8C00DC34AF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 				2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */,
 				609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */,
 				607B12212696D51400CDE5CA /* String+extensions.swift */,
+				2C2B709A26977B77008171F2 /* Color+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -674,6 +678,7 @@
 				2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */,
 				607B12222696D51400CDE5CA /* String+extensions.swift in Sources */,
 				2CD03E0D26909B7300A66E75 /* AlertMessage.swift in Sources */,
+				2C2B709B26977B77008171F2 /* Color+extensions.swift in Sources */,
 				2C32E6702689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7A2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
@@ -704,6 +709,7 @@
 				2C32E66B2688FE8C00DC34AF /* NetworkController.swift in Sources */,
 				607B12232696D51400CDE5CA /* String+extensions.swift in Sources */,
 				2CD03E0E26909B7300A66E75 /* AlertMessage.swift in Sources */,
+				2C2B709C26977B77008171F2 /* Color+extensions.swift in Sources */,
 				2C32E6712689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7B2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,

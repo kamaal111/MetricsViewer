@@ -67,9 +67,6 @@ public struct MetricsGridView<Content: MetricsGridCellRenderable>: View {
 }
 
 private struct MetricsGridItem<Content: MetricsGridCellRenderable>: View {
-    @Environment(\.colorScheme)
-    private var colorScheme
-
     let data: Content
     let horizontalPadding: CGFloat
     let isPressable: Bool
@@ -90,7 +87,7 @@ private struct MetricsGridItem<Content: MetricsGridCellRenderable>: View {
                         .foregroundColor(.accentColor)
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(backgroundColor)
+                        .background(Color.Background)
                 }
                 .buttonStyle(PlainButtonStyle())
             } else {
@@ -100,14 +97,6 @@ private struct MetricsGridItem<Content: MetricsGridCellRenderable>: View {
             }
         }
         .padding(.horizontal, horizontalPadding)
-    }
-
-    private var backgroundColor: Color {
-        switch colorScheme {
-        case .dark: return .black
-        case .light: return .white
-        @unknown default: return .black
-        }
     }
 }
 

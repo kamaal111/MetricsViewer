@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct CoreAppButtonView: View {
-    @Environment(\.colorScheme)
-    private var colorScheme
-
     let app: CoreApp
     let action: () -> Void
 
@@ -30,13 +27,7 @@ struct CoreAppButtonView: View {
     }
 
     private var backgroundColor: LinearGradient {
-        let secondColor: Color
-        if colorScheme == .dark {
-            secondColor = .black
-        } else {
-            secondColor = .white
-        }
-        let colors: [Color] = [.accentColor, secondColor]
+        let colors: [Color] = [.accentColor, .Background]
         return LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 }

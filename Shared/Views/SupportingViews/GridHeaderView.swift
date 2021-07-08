@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct GridHeaderView: View {
-    @Environment(\.colorScheme)
-    private var colorScheme
-
     let viewWidth: CGFloat
     let horizontalPadding: CGFloat
     let headerTitles: [String]
@@ -30,18 +27,9 @@ struct GridHeaderView: View {
                     .padding(.horizontal, 4)
                     .padding(.vertical, 8)
                     .frame(width: headerWidth, alignment: .leading)
-                    .background(backgroundColor)
+                    .background(Color.Background)
                     .padding(.horizontal, horizontalPadding)
             }
-        }
-    }
-
-    // - TODO: PUT THIS IN SOME GENERIC COLOR
-    private var backgroundColor: Color {
-        switch colorScheme {
-        case .dark: return .black
-        case .light: return .white
-        @unknown default: return .black
         }
     }
 
