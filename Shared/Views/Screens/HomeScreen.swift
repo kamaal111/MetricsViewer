@@ -9,6 +9,9 @@ import SwiftUI
 import MetricsLocale
 
 struct HomeScreen: View {
+    @Environment(\.colorScheme)
+    private var colorScheme
+
     @EnvironmentObject
     private var namiNavigator: NamiNavigator
     @EnvironmentObject
@@ -19,11 +22,12 @@ struct HomeScreen: View {
 
     var body: some View {
         GeometryReader { (proxy: GeometryProxy) in
-            HomeScreenView(apps: coreAppManager.apps, addAppAction: addAppAction)
+            HomeScreenView(apps: coreAppManager.apps, viewSize: proxy.size, addAppAction: addAppAction)
         }
         .onAppear(perform: {
             coreAppManager.fetchAllApps()
         })
+        .background(backgroundColor)
         #if os(macOS)
         .toolbar(content: {
             Button(action: addAppAction) {
@@ -31,6 +35,14 @@ struct HomeScreen: View {
             }
         })
         #endif
+    }
+
+    private var backgroundColor: Color {
+        switch colorScheme {
+        case .dark: return .black
+        case .light: return .white
+        @unknown default: return .black
+        }
     }
 
     private var viewAlignment: Alignment {
@@ -47,7 +59,14 @@ struct HomeScreen: View {
 
 struct HomeScreenView: View {
     let apps: [CoreApp]
+    let viewSize: CGSize
     let addAppAction: () -> Void
+
+    init(apps: [CoreApp], viewSize: CGSize, addAppAction: @escaping () -> Void) {
+        self.apps = apps
+        self.viewSize = viewSize
+        self.addAppAction = addAppAction
+    }
 
     var body: some View {
         VStack {
@@ -56,16 +75,13 @@ struct HomeScreenView: View {
                     Text(localized: .ADD_APP)
                 }
             } else {
-                // - TODO: Localize this
-                Text("Apps")
-                    .font(.headline)
-                    .foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                ForEach(apps, id: \.self) { (app: CoreApp) in
-                    CoreAppButtonView(app: app, action: { print(app) })
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 4)
+                MetricsGridView(
+                    // - TODO: Localize this
+                    headerTitles: ["Apps"],
+                    data: [apps.map(\.renderable)],
+                    viewWidth: viewSize.width,
+                    isPressable: true,
+                    onCellPress: { content in print(content) })
             }
         }
         .padding(24)

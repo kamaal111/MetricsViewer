@@ -8,6 +8,10 @@
 import CoreData
 
 extension CoreApp {
+    var renderable: Renderable {
+        Renderable(id: self.id, content: self.name)
+    }
+
     @discardableResult
     static func setApp(with args: Args, context: NSManagedObjectContext) -> Result<CoreApp, Error> {
         let app = CoreApp(context: context)
@@ -32,6 +36,11 @@ extension CoreApp {
         guard let fecthedObjects = try context.fetch(fetchRequest) as? [CoreApp] else { return  [] }
         let identifiers = fecthedObjects.map(\.appIdentifier)
         return identifiers
+    }
+
+    struct Renderable: MetricsGridCellRenderable {
+        let id: UUID
+        let content: String
     }
 
     struct Args {

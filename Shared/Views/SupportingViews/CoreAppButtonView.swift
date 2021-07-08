@@ -20,6 +20,7 @@ struct CoreAppButtonView: View {
                 .font(.title3)
                 .bold()
                 .foregroundColor(.primary)
+                .padding(.horizontal, 4)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
                 .background(backgroundColor)
