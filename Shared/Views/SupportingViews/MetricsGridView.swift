@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// - TODO: Put this in a seperate file
 public protocol MetricsGridCellRenderable: Hashable, Identifiable {
     var content: String { get }
     var id: UUID { get }
