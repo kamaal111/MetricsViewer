@@ -67,9 +67,10 @@ struct HomeScreenView: View {
                 MetricsGridView(
                     headerTitles: [MetricsLocale.Keys.APPS.localized],
                     data: [apps.map(\.renderable)],
-                    viewWidth: viewSize.width,
-                    isPressable: true,
-                    onCellPress: { content in print(content) })
+                    viewWidth: viewSize.width) { (content: CoreApp.Renderable) -> CoreAppButtonView in
+                    let app = apps.first(where: { $0.id == content.id })!
+                    return CoreAppButtonView(app: app, action: { print(app) })
+                }
             }
         }
         .padding(24)
