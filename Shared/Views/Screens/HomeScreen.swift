@@ -19,7 +19,11 @@ struct HomeScreen: View {
 
     var body: some View {
         GeometryReader { (proxy: GeometryProxy) in
-            HomeScreenView(apps: coreAppManager.apps, viewSize: proxy.size, addAppAction: addAppAction)
+            HomeScreenView(
+                apps: coreAppManager.apps,
+                viewSize: proxy.size,
+                addAppAction: addAppAction,
+                selectAppAction: onAppPress)
         }
         .onAppear(perform: {
             coreAppManager.fetchAllApps()
@@ -41,6 +45,11 @@ struct HomeScreen: View {
         return .topLeading
     }
 
+    private func onAppPress(_ app: CoreApp) {
+        coreAppManager.selectApp(app)
+        namiNavigator.navigate(to: .appDetails)
+    }
+
     private func addAppAction() {
         namiNavigator.navigate(to: .addApp)
     }
@@ -50,11 +59,17 @@ struct HomeScreenView: View {
     let apps: [CoreApp]
     let viewSize: CGSize
     let addAppAction: () -> Void
+    let selectAppAction: (_ app: CoreApp) -> Void
 
-    init(apps: [CoreApp], viewSize: CGSize, addAppAction: @escaping () -> Void) {
+    init(
+        apps: [CoreApp],
+        viewSize: CGSize,
+        addAppAction: @escaping () -> Void,
+        selectAppAction: @escaping (_ app: CoreApp) -> Void) {
         self.apps = apps
         self.viewSize = viewSize
         self.addAppAction = addAppAction
+        self.selectAppAction = selectAppAction
     }
 
     var body: some View {
@@ -69,7 +84,7 @@ struct HomeScreenView: View {
                     data: [apps.map(\.renderable)],
                     viewWidth: viewSize.width) { (content: CoreApp.Renderable) -> CoreAppButtonView in
                     let app = apps.first(where: { $0.id == content.id })!
-                    return CoreAppButtonView(app: app, action: { print(app) })
+                    return CoreAppButtonView(app: app, action: { selectAppAction(app) })
                 }
             }
         }

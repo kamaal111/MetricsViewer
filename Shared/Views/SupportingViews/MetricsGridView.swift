@@ -48,21 +48,21 @@ public struct MetricsGridView<Content: MetricsGridCellRenderable, GridItemView: 
     }
 }
 
-//#if DEBUG
-//private struct MetricsGridRenderItem: MetricsGridCellRenderable {
-//    let id: UUID
-//    let content: String
-//}
-//
-//@available(macOS 11.0, iOS 14.0, *)
-//struct MetricsGridView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MetricsGridView(
-//            headerTitles: [],
-//            data: [] as [[MetricsGridRenderItem]],
-//            viewWidth: 360,
-//            isPressable: false,
-//            onCellPress: { _ in })
-//    }
-//}
-//#endif
+#if DEBUG
+private struct MetricsGridRenderItem: MetricsGridCellRenderable {
+    let id: UUID
+    let content: String
+}
+
+@available(macOS 11.0, iOS 14.0, *)
+struct MetricsGridView_Previews: PreviewProvider {
+    static var previews: some View {
+        MetricsGridView(
+            headerTitles: ["Title"],
+            data: [[MetricsGridRenderItem(id: UUID(), content: "Content")]],
+            viewWidth: 300) { content in
+            Text(content.content)
+        }
+    }
+}
+#endif

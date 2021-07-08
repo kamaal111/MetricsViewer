@@ -16,7 +16,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             AppSidebar()
-            HomeScreen()
+            switch namiNavigator.selectedScreen {
+            case .addApp: AddAppScreen()
+            case .appDetails: AppDetailsScreen()
+            case .home, nil: HomeScreen()
+            }
         }
         .environmentObject(namiNavigator)
         .environmentObject(coreAppManager)

@@ -12,6 +12,7 @@ import ConsoleSwift
 final class CoreAppManager: ObservableObject {
 
     @Published private(set) var apps: [CoreApp] = []
+    @Published private(set) var selectedApp: CoreApp?
 
     private let persistenceController: PersistanceManager
 
@@ -21,6 +22,10 @@ final class CoreAppManager: ObservableObject {
         } else {
             self.persistenceController = PersistenceController.preview
         }
+    }
+
+    func selectApp(_ app: CoreApp) {
+        selectedApp = app
     }
 
     func addApp(_ app: CoreApp) {
