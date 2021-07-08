@@ -13,6 +13,8 @@
 		2C298CFA269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */; };
 		2C2B709B26977B77008171F2 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B709A26977B77008171F2 /* Color+extensions.swift */; };
 		2C2B709C26977B77008171F2 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B709A26977B77008171F2 /* Color+extensions.swift */; };
+		2C2B709F26977DE5008171F2 /* MetricsGridCellRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B709E26977DE5008171F2 /* MetricsGridCellRenderable.swift */; };
+		2C2B70A026977DE5008171F2 /* MetricsGridCellRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B709E26977DE5008171F2 /* MetricsGridCellRenderable.swift */; };
 		2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
 		2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6662688FE5400DC34AF /* NetworkCache.swift */; };
 		2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32E6692688FE8C00DC34AF /* NetworkController.swift */; };
@@ -99,6 +101,7 @@
 		2C298CF4269082CE00993C91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+extensions.swift"; sourceTree = "<group>"; };
 		2C2B709A26977B77008171F2 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
+		2C2B709E26977DE5008171F2 /* MetricsGridCellRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsGridCellRenderable.swift; sourceTree = "<group>"; };
 		2C32E6662688FE5400DC34AF /* NetworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCache.swift; sourceTree = "<group>"; };
 		2C32E6692688FE8C00DC34AF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		2C32E66F2689033E00DC34AF /* HomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
@@ -201,6 +204,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2C2B709D26977DCC008171F2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2C2B709E26977DE5008171F2 /* MetricsGridCellRenderable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		2C32E6652688FE3F00DC34AF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +301,7 @@
 				2C614F532688A2A30070EEC6 /* Assets.xcassets */,
 				2C298CF7269083E800993C91 /* Extensions */,
 				2C32E66C2689031B00DC34AF /* Models */,
+				2C2B709D26977DCC008171F2 /* Protocols */,
 				2C32E6652688FE3F00DC34AF /* Utilities */,
 				2C614F992688A9630070EEC6 /* Views */,
 			);
@@ -683,6 +695,7 @@
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7A2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
 				60BFEF782694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
+				2C2B709F26977DE5008171F2 /* MetricsGridCellRenderable.swift in Sources */,
 				60F8F1C12695884B0073E33E /* CoreAppManager.swift in Sources */,
 				607B121F2696CF7100CDE5CA /* CoreAppButtonView.swift in Sources */,
 				60A8D5EE269760AE00AE74D4 /* GridHeaderView.swift in Sources */,
@@ -714,6 +727,7 @@
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7B2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
 				60BFEF792694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
+				2C2B70A026977DE5008171F2 /* MetricsGridCellRenderable.swift in Sources */,
 				60F8F1C22695884B0073E33E /* CoreAppManager.swift in Sources */,
 				607B12202696CF7100CDE5CA /* CoreAppButtonView.swift in Sources */,
 				60A8D5EF269760AE00AE74D4 /* GridHeaderView.swift in Sources */,
