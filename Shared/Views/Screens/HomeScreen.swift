@@ -18,26 +18,9 @@ struct HomeScreen: View {
     private var viewModel = ViewModel()
 
     var body: some View {
-        VStack {
-            if coreAppManager.apps.isEmpty {
-                Button(action: addAppAction) {
-                    Text(localized: .ADD_APP)
-                }
-            } else {
-                // - TODO: Localize this
-                Text("Apps")
-                    .font(.headline)
-                    .foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                ForEach(coreAppManager.apps, id: \.self) { (app: CoreApp) in
-                    CoreAppButtonView(app: app, action: { print(app) })
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 4)
-            }
+        GeometryReader { (proxy: GeometryProxy) in
+            HomeScreenView(apps: coreAppManager.apps, addAppAction: addAppAction)
         }
-        .padding(24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: viewAlignment)
         .onAppear(perform: {
             coreAppManager.fetchAllApps()
         })
@@ -59,6 +42,41 @@ struct HomeScreen: View {
 
     private func addAppAction() {
         namiNavigator.navigate(to: .addApp)
+    }
+}
+
+struct HomeScreenView: View {
+    let apps: [CoreApp]
+    let addAppAction: () -> Void
+
+    var body: some View {
+        VStack {
+            if apps.isEmpty {
+                Button(action: addAppAction) {
+                    Text(localized: .ADD_APP)
+                }
+            } else {
+                // - TODO: Localize this
+                Text("Apps")
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                ForEach(apps, id: \.self) { (app: CoreApp) in
+                    CoreAppButtonView(app: app, action: { print(app) })
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 4)
+            }
+        }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: viewAlignment)
+    }
+
+    private var viewAlignment: Alignment {
+        if apps.isEmpty {
+            return .center
+        }
+        return .topLeading
     }
 }
 
