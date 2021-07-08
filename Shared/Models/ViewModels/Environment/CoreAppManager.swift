@@ -23,6 +23,10 @@ final class CoreAppManager: ObservableObject {
         }
     }
 
+    func addApp(_ app: CoreApp) {
+        apps.append(app)
+    }
+
     func fetchAllApps() {
         let appsResult = persistenceController.fetch(CoreApp.self)
         let apps: [CoreApp]

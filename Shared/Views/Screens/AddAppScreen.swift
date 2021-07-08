@@ -12,6 +12,8 @@ import MetricsUI
 struct AddAppScreen: View {
     @EnvironmentObject
     private var namiNavigator: NamiNavigator
+    @EnvironmentObject
+    private var coreAppManager: CoreAppManager
 
     @ObservedObject
     private var viewModel: ViewModel
@@ -35,11 +37,7 @@ struct AddAppScreen: View {
         #if os(macOS)
         .navigationTitle(Text(localized: .ADD_APP))
         .toolbar(content: {
-            Button(action: {
-                if let savedApp = viewModel.onDoneEditing() {
-                    namiNavigator.navigate(to: nil)
-                }
-            }) {
+            Button(action: onDonePress) {
                 Text(localized: .DONE)
             }
         })
@@ -55,6 +53,12 @@ struct AddAppScreen: View {
             messageText = Text(message)
         }
         return Alert(title: Text(alertMessage.title), message: messageText)
+    }
+
+    private func onDonePress() {
+        guard let savedApp = viewModel.onDoneEditing() else { return }
+        namiNavigator.navigate(to: nil)
+        coreAppManager.addApp(savedApp)
     }
 }
 
