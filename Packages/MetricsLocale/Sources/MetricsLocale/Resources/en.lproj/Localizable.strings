@@ -16,4 +16,6 @@
 "APP_NAME_MISSING_ALERT_TITLE" = "App name is missing";
 "INVALID_APP_IDENTIFIER_ALERT_TITLE" = "Invalid app identifier";
 "INVALID_ACCESS_TOKEN_ALERT_TITLE" = "Invalid access token";
+"APP_IDENTIFIER_NOT_UNIQUE_ALERT_TITLE" = "Identifier already exists";
+"APPS" = "Apps";
 

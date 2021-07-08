@@ -132,8 +132,7 @@ extension AddAppScreen.Validator {
             case .invalidAccessToken:
                 return AlertMessage(title: .INVALID_ACCESS_TOKEN_ALERT_TITLE)
             case .appIdentifierNotUnique:
-                // - TODO: Localize this
-                return AlertMessage(title: "Identifier already exists")
+                return AlertMessage(title: .APP_IDENTIFIER_NOT_UNIQUE_ALERT_TITLE)
             }
         }
     }

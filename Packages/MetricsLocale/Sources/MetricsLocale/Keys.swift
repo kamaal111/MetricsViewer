@@ -18,5 +18,7 @@ extension MetricsLocale {
         case APP_NAME_MISSING_ALERT_TITLE
         case INVALID_APP_IDENTIFIER_ALERT_TITLE
         case INVALID_ACCESS_TOKEN_ALERT_TITLE
+        case APP_IDENTIFIER_NOT_UNIQUE_ALERT_TITLE
+        case APPS
     }
 }

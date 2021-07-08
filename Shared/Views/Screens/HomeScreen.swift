@@ -65,8 +65,7 @@ struct HomeScreenView: View {
                 }
             } else {
                 MetricsGridView(
-                    // - TODO: Localize this
-                    headerTitles: ["Apps"],
+                    headerTitles: [MetricsLocale.Keys.APPS.localized],
                     data: [apps.map(\.renderable)],
                     viewWidth: viewSize.width,
                     isPressable: true,
