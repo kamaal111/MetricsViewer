@@ -30,15 +30,7 @@ struct HomeScreen: View {
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 ForEach(coreAppManager.apps, id: \.self) { (app: CoreApp) in
-                    Button(action: {
-                        print(app)
-                    }) {
-                        Text(app.name)
-                            .font(.title3)
-                            .bold()
-                            .foregroundColor(.accentColor)
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                    CoreAppButtonView(app: app)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 4)

@@ -42,6 +42,26 @@ struct PersistenceController {
 extension PersistenceController {
     static let preview: PersistanceManager = {
         let result = PersistenceController(inMemory: true).sharedInststance
+        guard let context = result.context else { return result }
+        let shuffled = true
+        var appNames = [
+            "Super App",
+            "The app that does everything",
+            "The app that does nothing"
+        ]
+        if shuffled {
+            appNames = appNames.shuffled()
+        }
+        var apps: [CoreApp] = []
+        for appName in appNames {
+            let appIdentifier = "com.company.\(appName.replace(" ", with: "."))"
+            var accessToken = "Super secret token"
+            if shuffled {
+                accessToken = accessToken.scramble()
+            }
+            let args = CoreApp.Args(name: appName, appIdentifier: appIdentifier, accessToken: accessToken)
+            let app = CoreApp.setApp(with: args, context: context)
+        }
         return result
     }()
 }

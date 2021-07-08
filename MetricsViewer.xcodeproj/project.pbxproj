@@ -51,6 +51,10 @@
 		603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8082689A2FC003A5C42 /* XiphiasNet */; };
 		607794FC268DA415004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FB268DA415004A0D8A /* SalmonUI */; };
 		607794FE268DA423004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FD268DA423004A0D8A /* SalmonUI */; };
+		607B121F2696CF7100CDE5CA /* CoreAppButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B121E2696CF7100CDE5CA /* CoreAppButtonView.swift */; };
+		607B12202696CF7100CDE5CA /* CoreAppButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B121E2696CF7100CDE5CA /* CoreAppButtonView.swift */; };
+		607B12222696D51400CDE5CA /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B12212696D51400CDE5CA /* String+extensions.swift */; };
+		607B12232696D51400CDE5CA /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B12212696D51400CDE5CA /* String+extensions.swift */; };
 		609D67CA2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */; };
 		609D67CB2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */; };
 		609D67CE2694DD9700BB3B53 /* PersistanceManager in Frameworks */ = {isa = PBXBuildFile; productRef = 609D67CD2694DD9700BB3B53 /* PersistanceManager */; };
@@ -119,6 +123,8 @@
 		2CD03DFE26908FBB00A66E75 /* AddAppScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddAppScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		2CD03E012690931100A66E75 /* MetricsUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsUI; sourceTree = "<group>"; };
 		2CD03E0C26909B7300A66E75 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		607B121E2696CF7100CDE5CA /* CoreAppButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppButtonView.swift; sourceTree = "<group>"; };
+		607B12212696D51400CDE5CA /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+extensions.swift"; sourceTree = "<group>"; };
 		60A26422268AF7EA001FAF8B /* AddAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppScreen.swift; sourceTree = "<group>"; };
 		60A26426268AF82D001FAF8B /* NamiNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamiNavigator.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			children = (
 				2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */,
 				609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */,
+				607B12212696D51400CDE5CA /* String+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -365,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				2C614F9F2688AA3F0070EEC6 /* AppSidebar.swift */,
+				607B121E2696CF7100CDE5CA /* CoreAppButtonView.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -656,12 +664,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C32E66A2688FE8C00DC34AF /* NetworkController.swift in Sources */,
+				607B12222696D51400CDE5CA /* String+extensions.swift in Sources */,
 				2CD03E0D26909B7300A66E75 /* AlertMessage.swift in Sources */,
 				2C32E6702689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7A2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
 				60BFEF782694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
 				60F8F1C12695884B0073E33E /* CoreAppManager.swift in Sources */,
+				607B121F2696CF7100CDE5CA /* CoreAppButtonView.swift in Sources */,
 				2C614F792688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
 				609D67CA2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
@@ -682,12 +692,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C32E66B2688FE8C00DC34AF /* NetworkController.swift in Sources */,
+				607B12232696D51400CDE5CA /* String+extensions.swift in Sources */,
 				2CD03E0E26909B7300A66E75 /* AlertMessage.swift in Sources */,
 				2C32E6712689033E00DC34AF /* HomeScreen+ViewModel.swift in Sources */,
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7B2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
 				60BFEF792694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
 				60F8F1C22695884B0073E33E /* CoreAppManager.swift in Sources */,
+				607B12202696CF7100CDE5CA /* CoreAppButtonView.swift in Sources */,
 				2C614F7A2688A2A30070EEC6 /* Persistence.swift in Sources */,
 				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
 				609D67CB2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
