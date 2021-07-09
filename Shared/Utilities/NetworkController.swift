@@ -22,6 +22,27 @@ class NetworkController {
         "version": "1.0.1"
     ]
 
+    func getData(
+        from appIdentifier: String,
+        using accessToken: String,
+        completion:  @escaping (Result<[DataItemResponse]?, XiphiasNet.Errors>) -> Void) {
+        var headers = appHeaders
+        headers["access_token"] = accessToken
+        networker.getData(
+            from: appIdentifier,
+            withQueryItems: [],
+            withHeader: headers) { (result: Result<[DataItemResponse]?, XiphiasNet.Errors>) in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+                return
+            case .success(let success):
+                completion(.success(success))
+                return
+            }
+        }
+    }
+
     func getRoot(completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
         let cacheObjectKey = "root"
         self.cache.getCache(from: .root, with: cacheObjectKey) { [weak self] (response: RootResponse?) in

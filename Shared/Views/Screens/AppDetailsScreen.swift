@@ -12,10 +12,14 @@ struct AppDetailsScreen: View {
     private var coreAppManager: CoreAppManager
 
     var body: some View {
-        Text("Hello, World!")
-            #if os(macOS)
-            .navigationTitle(Text(coreAppManager.selectedApp?.name ?? ""))
-            #endif
+        VStack {
+            Text("Hello, World!")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.Background)
+        #if os(macOS)
+        .navigationTitle(Text(coreAppManager.selectedApp?.name ?? ""))
+        #endif
     }
 }
 

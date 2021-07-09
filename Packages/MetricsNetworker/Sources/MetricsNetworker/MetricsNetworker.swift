@@ -25,12 +25,20 @@ public struct MetricsNetworker {
 
     /// Get root to test connection to metrics-service API
     /// - Parameters:
-    ///   - header: Request headers
+    ///   - headers: Request headers
     ///   - completion: Callback to get a result that returns ``RootResponse`` (AKA: test response) on success
     ///   and an `Error` from `XiphiasNet` on failure
     public func getRoot(
-        with header: [String: String] = [:],
+        with headers: [String: String] = [:],
         completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
-        networker.request(from: .root, with: header, completion: completion)
+        networker.request(from: .root, with: headers, completion: completion)
+    }
+
+    public func getData(
+        from appIdentifier: String,
+        withQueryItems queryItems: [URLQueryItem] = [],
+        withHeader headers: [String: String] = [:],
+        completion: @escaping (Result<[DataItemResponse]?, XiphiasNet.Errors>) -> Void) {
+        networker.request(from: .data(from: appIdentifier, with: queryItems), with: headers, completion: completion)
     }
 }
