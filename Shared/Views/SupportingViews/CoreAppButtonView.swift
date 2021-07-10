@@ -24,6 +24,7 @@ struct CoreAppButtonView: View {
                 .cornerRadius(8)
         }
         .buttonStyle(PlainButtonStyle())
+        .padding(.vertical, 8)
     }
 
     private var backgroundColor: LinearGradient {

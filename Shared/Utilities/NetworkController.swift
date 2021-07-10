@@ -11,10 +11,13 @@ import XiphiasNet
 
 class NetworkController {
 
-    private let networker = MetricsNetworker(kowalskiAnalysis: false)
-    private let cache = NetworkCache()
+    private let networker: MetricsNetworker
+    private let cache: NetworkCache
 
-    private init() { }
+    private init() {
+        self.networker = MetricsNetworker(kowalskiAnalysis: false)
+        self.cache = NetworkCache()
+    }
 
     static let shared = NetworkController()
 
