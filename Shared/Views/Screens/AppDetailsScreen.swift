@@ -59,6 +59,7 @@ struct AppDetailsScreen: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.Background)
         .onAppear(perform: onViewAppear)
+        .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
         #if os(macOS)
         .navigationTitle(Text(viewModel.app?.name ?? ""))
         .toolbar(content: {

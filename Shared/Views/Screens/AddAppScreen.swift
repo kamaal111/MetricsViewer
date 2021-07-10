@@ -33,7 +33,7 @@ struct AddAppScreen: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .alert(isPresented: $viewModel.showAlert, content: alert)
+        .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
         #if os(macOS)
         .navigationTitle(Text(localized: .ADD_APP))
         .toolbar(content: {
@@ -42,17 +42,6 @@ struct AddAppScreen: View {
             }
         })
         #endif
-    }
-
-    private func alert() -> Alert {
-        guard let alertMessage = viewModel.alertMessage else {
-            return Alert(title: Text(localized: .GENERAL_ALERT_TITLE))
-        }
-        var messageText: Text?
-        if let message = alertMessage.message {
-            messageText = Text(message)
-        }
-        return Alert(title: Text(alertMessage.title), message: messageText)
     }
 
     private func onDonePress() {
