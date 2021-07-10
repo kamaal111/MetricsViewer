@@ -31,3 +31,11 @@ struct Endpoint {
         return componentsURL
     }
 }
+
+extension Endpoint {
+    static let root = Endpoint(path: "")
+
+    static func data(from appIdentifier: String, with queryItems: [URLQueryItem] = []) -> Endpoint {
+        Endpoint(path: "metrics/data/\(appIdentifier)", queryItems: queryItems)
+    }
+}
