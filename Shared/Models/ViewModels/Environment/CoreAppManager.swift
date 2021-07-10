@@ -12,16 +12,7 @@ import ConsoleSwift
 final class CoreAppManager: ObservableObject {
 
     @Published private(set) var apps: [CoreApp] = []
-    @Published private(set) var selectedApp: CoreApp? {
-        didSet {
-            if let selectedApp = selectedApp {
-                let networker = NetworkController.shared
-                networker.getData(from: selectedApp.appIdentifier, using: selectedApp.accessToken) { result in
-                    print(result)
-                }
-            }
-        }
-    }
+    @Published private(set) var selectedApp: CoreApp?
 
     private let persistenceController: PersistanceManager
 

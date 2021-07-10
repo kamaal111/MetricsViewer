@@ -103,8 +103,11 @@ extension DataItemResponse.Payload {
         public let cumulativeLogicalWrites: String
     }
 
+    /// An object representing metrics about app launch time.
     public struct ApplicationLaunchMetrics: Codable {
+        /// A histogram of the different amounts of time taken to launch the app.
         public let histogrammedTimeToFirstDrawKey: Histogram?
+        /// A histogram of the different amounts of time taken to resume the app from the background.
         public let histogrammedResumeTime: Histogram
     }
 
