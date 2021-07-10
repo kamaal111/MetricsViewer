@@ -108,7 +108,7 @@ extension DataItemResponse.Payload {
         /// A histogram of the different amounts of time taken to launch the app.
         public let histogrammedTimeToFirstDrawKey: Histogram?
         /// A histogram of the different amounts of time taken to resume the app from the background.
-        public let histogrammedResumeTime: Histogram
+        public let histogrammedResumeTime: Histogram?
     }
 
     public struct ApplicationTimeMetrics: Codable {
@@ -143,18 +143,5 @@ extension DataItemResponse.Payload.DisplayMetrics {
     public struct AveragePixelLuminance: Codable {
         public let averageValue: String
         public let sampleCount: Int?
-    }
-}
-
-public struct Histogram: Codable {
-    public let histogramNumBuckets: Int?
-    public let histogramValue: [String: HistogramValue]?
-}
-
-extension Histogram {
-    public struct HistogramValue: Codable {
-        public let bucketCount: Int
-        public let bucketStart: String
-        public let bucketEnd: String
     }
 }

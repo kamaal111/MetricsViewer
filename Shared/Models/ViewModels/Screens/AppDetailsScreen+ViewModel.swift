@@ -17,7 +17,7 @@ extension AppDetailsScreen {
         @Published private(set) var app: CoreApp? {
             didSet { appDidSet() }
         }
-        @Published private(set) var metrics: [DataItemResponse]
+        @Published private(set) var metrics: [MetricsData]
         @Published private(set) var metricsLastUpdated: Date?
         @Published var loadingMetrics: Bool
         @Published var showAlert = false
@@ -38,11 +38,8 @@ extension AppDetailsScreen {
 
         private let networker = NetworkController.shared
 
-        var metricsOfLast7Days: [DataItemResponse] {
-            let now = Date()
-            return metrics.filter({ metric in
-                metric.payload.timeStampEnd.isBetween(date: now.adding(days: -7), andDate: now)
-            })
+        var last7RecordedMetrics: [MetricsData] {
+            metrics.suffix(7)
         }
 
         func setApp(_ app: CoreApp) {
@@ -64,7 +61,7 @@ extension AppDetailsScreen {
                         return
                     case .success(let success): response = success ?? []
                     }
-                    self.metrics = response
+                    self.metrics = response.map(\.toMetricsData)
                     self.metricsLastUpdated = Date()
                     self.loadingMetrics = false
                 }

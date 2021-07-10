@@ -11,6 +11,10 @@
 		2C1BCA84269A12C3001EDE66 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA82269A12C2001EDE66 /* Date+extensions.swift */; };
 		2C1BCA86269A176A001EDE66 /* handledAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA85269A176A001EDE66 /* handledAlert.swift */; };
 		2C1BCA87269A176A001EDE66 /* handledAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA85269A176A001EDE66 /* handledAlert.swift */; };
+		2C1BCA89269A2E06001EDE66 /* DataItemResponse+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA88269A2E06001EDE66 /* DataItemResponse+extensions.swift */; };
+		2C1BCA8A269A2E06001EDE66 /* DataItemResponse+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA88269A2E06001EDE66 /* DataItemResponse+extensions.swift */; };
+		2C1BCA8C269A2E30001EDE66 /* MetricsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA8B269A2E30001EDE66 /* MetricsData.swift */; };
+		2C1BCA8D269A2E30001EDE66 /* MetricsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA8B269A2E30001EDE66 /* MetricsData.swift */; };
 		2C298CF5269082CF00993C91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF4269082CE00993C91 /* Constants.swift */; };
 		2C298CF6269082CF00993C91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF4269082CE00993C91 /* Constants.swift */; };
 		2C298CF9269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */; };
@@ -110,6 +114,8 @@
 		2C03D7F72690DDDE00F2445E /* MetricsLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsLocale; sourceTree = "<group>"; };
 		2C1BCA82269A12C2001EDE66 /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		2C1BCA85269A176A001EDE66 /* handledAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = handledAlert.swift; sourceTree = "<group>"; };
+		2C1BCA88269A2E06001EDE66 /* DataItemResponse+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataItemResponse+extensions.swift"; sourceTree = "<group>"; };
+		2C1BCA8B269A2E30001EDE66 /* MetricsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsData.swift; sourceTree = "<group>"; };
 		2C298CF4269082CE00993C91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C298CF8269083FD00993C91 /* DispatchQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+extensions.swift"; sourceTree = "<group>"; };
 		2C2B709A26977B77008171F2 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
@@ -217,6 +223,7 @@
 				607B12212696D51400CDE5CA /* String+extensions.swift */,
 				2C2B709A26977B77008171F2 /* Color+extensions.swift */,
 				2C1BCA82269A12C2001EDE66 /* Date+extensions.swift */,
+				2C1BCA88269A2E06001EDE66 /* DataItemResponse+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD03E0C26909B7300A66E75 /* AlertMessage.swift */,
+				2C1BCA8B269A2E30001EDE66 /* MetricsData.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -730,6 +738,7 @@
 				609D67CA2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
 				2C298CF5269082CF00993C91 /* Constants.swift in Sources */,
 				2C298CF9269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */,
+				2C1BCA89269A2E06001EDE66 /* DataItemResponse+extensions.swift in Sources */,
 				60A26423268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
 				2C614FA02688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
@@ -737,6 +746,7 @@
 				2C614F772688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2CD03DFF26908FBB00A66E75 /* AddAppScreen+ViewModel.swift in Sources */,
 				2C7A47B22699E6B100E21011 /* AppDetailsScreen+ViewModel.swift in Sources */,
+				2C1BCA8C269A2E30001EDE66 /* MetricsData.swift in Sources */,
 				2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 				2C1BCA86269A176A001EDE66 /* handledAlert.swift in Sources */,
 			);
@@ -767,6 +777,7 @@
 				609D67CB2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
 				2C298CF6269082CF00993C91 /* Constants.swift in Sources */,
 				2C298CFA269083FD00993C91 /* DispatchQueue+extensions.swift in Sources */,
+				2C1BCA8A269A2E06001EDE66 /* DataItemResponse+extensions.swift in Sources */,
 				60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
 				2C614FA12688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
 				2C614F762688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
@@ -774,6 +785,7 @@
 				2C614F782688A2A30070EEC6 /* ContentView.swift in Sources */,
 				2CD03E0026908FBB00A66E75 /* AddAppScreen+ViewModel.swift in Sources */,
 				2C7A47B32699E6B100E21011 /* AppDetailsScreen+ViewModel.swift in Sources */,
+				2C1BCA8D269A2E30001EDE66 /* MetricsData.swift in Sources */,
 				2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
 				2C1BCA87269A176A001EDE66 /* handledAlert.swift in Sources */,
 			);
