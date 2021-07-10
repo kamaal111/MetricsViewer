@@ -20,7 +20,7 @@ struct AppDetailsScreen: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             VStack(alignment: .trailing) {
                 // - TODO: Localize this
                 Text("Last updated")
@@ -37,7 +37,22 @@ struct AppDetailsScreen: View {
             if viewModel.loadingMetrics {
                 KActivityIndicator(isAnimating: $viewModel.loadingMetrics, style: .spinning)
             } else {
-                Text("Hello, World!")
+                // - TODO: Localize this
+                Text("Launch Times")
+                    .font(.title2)
+                    .bold()
+                HStack {
+                    // - TODO: Localize this
+                    GraphWidget(title: "First launch", action: {
+                        print("first")
+                    })
+                        .padding(.trailing, 8)
+                    // - TODO: Localize this
+                    GraphWidget(title: "Launch from background", action: {
+                        print("second")
+                    })
+                        .padding(.leading, 8)
+                }
             }
         }
         .padding(24)
