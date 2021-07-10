@@ -31,19 +31,7 @@ class NetworkController {
         completion:  @escaping (Result<[DataItemResponse]?, XiphiasNet.Errors>) -> Void) {
         var headers = appHeaders
         headers["access_token"] = accessToken
-        networker.getData(
-            from: appIdentifier,
-            withQueryItems: [],
-            withHeader: headers) { (result: Result<[DataItemResponse]?, XiphiasNet.Errors>) in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            case .success(let success):
-                completion(.success(success))
-                return
-            }
-        }
+        networker.getData(from: appIdentifier, withQueryItems: [], withHeader: headers, completion: completion)
     }
 
     func getRoot(completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
@@ -64,15 +52,19 @@ class NetworkController {
     private func handleUncachedRoot(
         cacheObjectKey: String,
         completion: @escaping (Result<RootResponse?, XiphiasNet.Errors>) -> Void) {
-        networker.getRoot(with: appHeaders) { (result: Result<RootResponse?, XiphiasNet.Errors>) in
+        networker.getRoot(with: appHeaders) { [weak self] (result: Result<RootResponse?, XiphiasNet.Errors>) in
+            let response: RootResponse?
             switch result {
             case .failure(let error):
                 completion(.failure(error))
                 return
             case .success(let success):
-                completion(.success(success))
-                return
+                response = success
             }
+            if let response = response {
+                self?.cache.setCache(this: response, in: .root, with: cacheObjectKey)
+            }
+            completion(.success(response))
         }
     }
 
