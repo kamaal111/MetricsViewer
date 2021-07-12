@@ -44,6 +44,7 @@ opt_in_rules:
   - yoda_condition
 excluded:
   - Packages/*/Package.swift
+  - Packages/MetricsLocale/Sources/MetricsLocale/Keys.swift
   - Shared/Models/CoreData/*/*.swift
   - Tests
 identifier_name:

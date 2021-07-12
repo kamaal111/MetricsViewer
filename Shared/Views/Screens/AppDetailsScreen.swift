@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SalmonUI
+import MetricsLocale
 
 struct AppDetailsScreen: View {
     @EnvironmentObject
@@ -22,8 +23,7 @@ struct AppDetailsScreen: View {
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .trailing) {
-                // - TODO: Localize this
-                Text("Last updated")
+                Text(localized: .LAST_UPDATED)
                     .foregroundColor(.secondary)
                     .font(.caption)
                 if let metricsLastUpdated = viewModel.metricsLastUpdated {
@@ -37,18 +37,15 @@ struct AppDetailsScreen: View {
             if viewModel.loadingMetrics {
                 KActivityIndicator(isAnimating: $viewModel.loadingMetrics, style: .spinning)
             } else {
-                // - TODO: Localize this
-                Text("Launch Times")
+                Text(localized: .LAUNCH_TIMES_SECTION_TITLE)
                     .font(.title2)
                     .bold()
                 HStack {
-                    // - TODO: Localize this
-                    GraphWidget(title: "First launch", action: {
+                    GraphWidget(title: .LAUNCH_TIMES_FIRST_LAUNCH_HEADER, action: {
                         print("first")
                     })
                         .padding(.trailing, 8)
-                    // - TODO: Localize this
-                    GraphWidget(title: "Launch from background", action: {
+                    GraphWidget(title: .LAUNCH_TIMES_LAUNCH_FROM_BACKGROUND_HEADER, action: {
                         print("second")
                     })
                         .padding(.leading, 8)
@@ -64,8 +61,7 @@ struct AppDetailsScreen: View {
         .navigationTitle(Text(viewModel.app?.name ?? ""))
         .toolbar(content: {
             Button(action: viewModel.getMetrics) {
-                // - TODO: Localize this
-                Label("Refresh metrics", systemImage: "arrow.triangle.2.circlepath")
+                Label(MetricsLocale.Keys.REFRESH_METRICS.localized, systemImage: "arrow.triangle.2.circlepath")
             }
             .disabled(viewModel.loadingMetrics)
         })

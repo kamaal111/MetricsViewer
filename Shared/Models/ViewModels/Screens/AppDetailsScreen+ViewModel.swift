@@ -75,15 +75,13 @@ extension AppDetailsScreen {
             case let .responseError(message, code):
                 switch code {
                 case _ where code == 404:
-                    // - TODO: Localize this
                     self.alertMessage = AlertMessage(
-                        title: "App not found",
-                        message: "App has not been registered to use this service")
+                        title: .APP_NOT_FOUND_ALERT_TITLE,
+                        message: .APP_NOT_FOUND_ALERT_MESSAGE)
                 case _ where code == 401:
-                    // - TODO: Localize this
                     self.alertMessage = AlertMessage(
-                        title: "Invalid access token provided",
-                        message: "Edit this app with the correct access token")
+                        title: .INVALID_ACCESS_TOKEN_ALERT_TITLE,
+                        message: .INVALID_ACCESS_TOKEN_ALERT_MESSAGE)
                 default: console.error(Date(), failure.localizedDescription, message, failure)
                 }
             case .notAValidJSON:

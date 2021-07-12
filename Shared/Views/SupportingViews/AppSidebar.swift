@@ -35,8 +35,7 @@ struct AppSidebar: View {
         #if os(macOS)
         .toolbar(content: {
             Button(action: toggleSidebar) {
-                // - TODO: Localize this
-                Label("Toggle sidebar", systemImage: "sidebar.left")
+                Label(MetricsLocale.Keys.TOGGLE_SIDEBAR.localized, systemImage: "sidebar.left")
             }
         })
         #endif
