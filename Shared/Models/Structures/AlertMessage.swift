@@ -20,4 +20,6 @@ struct AlertMessage {
     init(title: MetricsLocale.Keys, message: MetricsLocale.Keys? = nil) {
         self.init(title: title.localized, message: message?.localized)
     }
+
+    
 }

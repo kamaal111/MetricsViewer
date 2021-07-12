@@ -89,6 +89,8 @@
 		60BFEF792694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFEF762694387800CC2C54 /* CoreApp+CoreDataClass.swift */; };
 		60BFEF7A2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFEF772694387800CC2C54 /* CoreApp+CoreDataProperties.swift */; };
 		60BFEF7B2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFEF772694387800CC2C54 /* CoreApp+CoreDataProperties.swift */; };
+		60D77CDF269CA1D60079188A /* SidebarScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D77CDE269CA1D60079188A /* SidebarScreenModel.swift */; };
+		60D77CE0269CA1D60079188A /* SidebarScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D77CDE269CA1D60079188A /* SidebarScreenModel.swift */; };
 		60F8F1C12695884B0073E33E /* CoreAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8F1C02695884B0073E33E /* CoreAppManager.swift */; };
 		60F8F1C22695884B0073E33E /* CoreAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8F1C02695884B0073E33E /* CoreAppManager.swift */; };
 /* End PBXBuildFile section */
@@ -164,6 +166,7 @@
 		60A8D5F02697613E00AE74D4 /* MetricsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsGridView.swift; sourceTree = "<group>"; };
 		60BFEF762694387800CC2C54 /* CoreApp+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+CoreDataClass.swift"; sourceTree = "<group>"; };
 		60BFEF772694387800CC2C54 /* CoreApp+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		60D77CDE269CA1D60079188A /* SidebarScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarScreenModel.swift; sourceTree = "<group>"; };
 		60F8F1C02695884B0073E33E /* CoreAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -460,6 +463,7 @@
 			children = (
 				2CD03E0C26909B7300A66E75 /* AlertMessage.swift */,
 				2C1BCA8B269A2E30001EDE66 /* MetricsData.swift */,
+				60D77CDE269CA1D60079188A /* SidebarScreenModel.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -726,6 +730,7 @@
 				2C32E6672688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7A2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
 				60BFEF782694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
+				60D77CDF269CA1D60079188A /* SidebarScreenModel.swift in Sources */,
 				2C2B709F26977DE5008171F2 /* MetricsGridCellRenderable.swift in Sources */,
 				60F8F1C12695884B0073E33E /* CoreAppManager.swift in Sources */,
 				2C2CD71C2699F6F40050D466 /* GraphWidget.swift in Sources */,
@@ -765,6 +770,7 @@
 				2C32E6682688FE5400DC34AF /* NetworkCache.swift in Sources */,
 				60BFEF7B2694387800CC2C54 /* CoreApp+CoreDataProperties.swift in Sources */,
 				60BFEF792694387800CC2C54 /* CoreApp+CoreDataClass.swift in Sources */,
+				60D77CE0269CA1D60079188A /* SidebarScreenModel.swift in Sources */,
 				2C2B70A026977DE5008171F2 /* MetricsGridCellRenderable.swift in Sources */,
 				60F8F1C22695884B0073E33E /* CoreAppManager.swift in Sources */,
 				2C2CD71D2699F6F40050D466 /* GraphWidget.swift in Sources */,

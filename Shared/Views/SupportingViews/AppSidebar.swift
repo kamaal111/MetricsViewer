@@ -12,22 +12,24 @@ struct AppSidebar: View {
     @EnvironmentObject
     var namiNavigator: NamiNavigator
 
+    private let screens: [SidebarScreenModel] = [
+        SidebarScreenModel(
+            id: UUID(uuidString: "d4a92f62-2b40-4d8b-8041-6146d8524bc9")!,
+            title: .HOME,
+            systemImage: "house.fill"),
+        SidebarScreenModel(
+            id: UUID(uuidString: "6cbce375-f34d-4333-ab70-9208d5fc5c75")!,
+            title: .ADD_APP,
+            systemImage: "plus",
+            navigationPoint: .addApp)
+    ]
+
     var body: some View {
         List {
             Section(header: Text(""), content: {
-                // - TODO: Create a model with all the needed stuff and put items in a array and loop over them
-                Button(action: {
-                    namiNavigator.navigate(to: nil)
-                }) {
-                    Label(MetricsLocale.Keys.HOME.localized, systemImage: "house.fill")
-                }
-                .buttonStyle(PlainButtonStyle())
-                Button(action: {
-                    namiNavigator.navigate(to: .addApp)
-                }) {
-                    Label(MetricsLocale.Keys.ADD_APP.localized, systemImage: "plus")
-                }
-                .buttonStyle(PlainButtonStyle())
+                ForEach(screens, id: \.id, content: { screen in
+                    screen.view(navigator: namiNavigator)
+                })
             })
         }
         #if os(macOS)
