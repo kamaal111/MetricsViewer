@@ -13,6 +13,7 @@ public struct Histogram: Codable {
 }
 
 extension Histogram {
+    /// Average value of all `histogramValue's`
     public var averageValue: Int? {
         guard let histogramValue = histogramValue else { return nil }
         let sum = histogramValue.reduce(0, { partialResult, item in

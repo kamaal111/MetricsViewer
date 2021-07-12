@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Decoded response from data endpoint
 public struct DataItemResponse: Codable, Identifiable {
     public let id: Int
     public let appVersion: String

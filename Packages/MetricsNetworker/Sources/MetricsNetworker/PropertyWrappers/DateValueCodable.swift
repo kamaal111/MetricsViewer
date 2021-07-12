@@ -7,16 +7,19 @@
 
 import Foundation
 
-#warning("Document this")
-
 /// An wrapper protocol arround `Codable` to decode dates, mainly used in ``DateValueCodable`` property wrapper.
 public protocol DateValueCodableStrategy {
+    /// The type that gets decoded or get encoded to.
     associatedtype RawValue: Codable
+    /// Decodes an `Codable` of the given `associatedtype` to an `Date`.
+    /// - Returns: an `Date`
     static func decode(_ value: RawValue) throws -> Date
+    /// Encodes an given `Date` and decodes it to the given `associatedtype`.
+    /// - Returns: the encoded value of the `associatedtype`
     static func encode(_ date: Date) -> RawValue
 }
 
-/// This property wrapper formats an string decoded from an `Codable` property to an `Swift` `Date` object
+/// This property wrapper formats an string decoded from an `Codable` property to an `Date` object
 @propertyWrapper
 public struct DateValueCodable<Formatter: DateValueCodableStrategy>: Codable {
     private let value: Formatter.RawValue
@@ -39,36 +42,27 @@ public struct DateValueCodable<Formatter: DateValueCodableStrategy>: Codable {
     }
 }
 
+/// Strategy to decode from `yyyy-MM-dd HH:mm:ss +SSSS` or `yyyy-MM-dd HH:mm:ss a +SSSS`
 public struct MetricsDateCodableStrategy: DateValueCodableStrategy {
-    public typealias RawValue = String
-
     private static let formats = [
         "yyyy-MM-dd HH:mm:ss +SSSS",
         "yyyy-MM-dd HH:mm:ss a +SSSS"
     ]
 
     public static func decode(_ value: String) throws -> Date {
-        try formatDateString(with: formats, value: value)
+        let formatter = DateFormatter()
+        for format in formats {
+            formatter.dateFormat = format
+            if let date = formatter.date(from: value) {
+                return date
+            }
+        }
+        throw DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "Invalid date format: \(value)"))
     }
 
     public static func encode(_ date: Date) -> String {
-        formatDateToString(with: formats[0], date: date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = formats[0]
+        return formatter.string(from: date)
     }
-}
-
-private func formatDateString(with formats: [String], value: String) throws -> Date {
-    let formatter = DateFormatter()
-    for format in formats {
-        formatter.dateFormat = format
-        if let date = formatter.date(from: value) {
-            return date
-        }
-    }
-    throw DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "Invalid date format: \(value)"))
-}
-
-private func formatDateToString(with format: String, date: Date) -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = format
-    return formatter.string(from: date)
 }
