@@ -7,6 +7,7 @@
 
 import Foundation
 import MetricsLocale
+import SwiftUI
 
 struct AlertMessage {
     let title: String
@@ -21,5 +22,11 @@ struct AlertMessage {
         self.init(title: title.localized, message: message?.localized)
     }
 
-    
+    var view: Alert {
+        var messageText: Text?
+        if let message = message {
+            messageText = Text(message)
+        }
+        return Alert(title: Text(title), message: messageText)
+    }
 }
