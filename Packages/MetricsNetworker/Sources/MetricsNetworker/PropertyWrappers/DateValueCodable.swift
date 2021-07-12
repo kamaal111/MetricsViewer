@@ -7,12 +7,16 @@
 
 import Foundation
 
+#warning("Document this")
+
+/// An wrapper protocol arround `Codable` to decode dates, mainly used in ``DateValueCodable`` property wrapper.
 public protocol DateValueCodableStrategy {
     associatedtype RawValue: Codable
     static func decode(_ value: RawValue) throws -> Date
     static func encode(_ date: Date) -> RawValue
 }
 
+/// This property wrapper formats an string decoded from an `Codable` property to an `Swift` `Date` object
 @propertyWrapper
 public struct DateValueCodable<Formatter: DateValueCodableStrategy>: Codable {
     private let value: Formatter.RawValue
