@@ -13,7 +13,7 @@ struct MetricsData {
     let launchTimes: LaunchTimes?
 
     struct LaunchTimes {
-        let averageFirstLaunch: Int?
-        let averageLaunchFromBackground: Int?
+        let averageFirstLaunch: Double?
+        let averageLaunchFromBackground: Double?
     }
 }

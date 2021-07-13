@@ -41,12 +41,18 @@ struct AppDetailsScreen: View {
                     .font(.title2)
                     .bold()
                 HStack {
-                    GraphWidget(title: .LAUNCH_TIMES_FIRST_LAUNCH_HEADER, action: {
-                        print("first", viewModel.last7RecordedMetrics)
+                    GraphWidget(
+                        title: .LAUNCH_TIMES_FIRST_LAUNCH_HEADER,
+                        data: viewModel.last7FirstLaunchMetrics,
+                        action: {
+                        print("first", viewModel.last7FirstLaunchMetrics)
                     })
                         .padding(.trailing, 8)
-                    GraphWidget(title: .LAUNCH_TIMES_LAUNCH_FROM_BACKGROUND_HEADER, action: {
-                        print("second", viewModel.last7RecordedMetrics)
+                    GraphWidget(
+                        title: .LAUNCH_TIMES_LAUNCH_FROM_BACKGROUND_HEADER,
+                        data: viewModel.last7LaunchFromBackgroundMetrics,
+                        action: {
+                        print("second", viewModel.last7LaunchFromBackgroundMetrics)
                     })
                         .padding(.leading, 8)
                 }

@@ -14,17 +14,17 @@ public struct Histogram: Codable {
 
 extension Histogram {
     /// Average value of all `histogramValue's`
-    public var averageValue: Int? {
+    public var averageValue: Double? {
         guard let histogramValue = histogramValue else { return nil }
-        let sum = histogramValue.reduce(0, { partialResult, item in
+        let sum = histogramValue.reduce(0.0, { partialResult, item in
             let value = item.value
-            guard let bucketStart = Int(value.bucketStart.digits),
-                  let bucketEnd = Int(value.bucketEnd.digits) else {
+            guard let bucketStart = Double(value.bucketStart.digits),
+                  let bucketEnd = Double(value.bucketEnd.digits) else {
                       return partialResult
                   }
             return partialResult + (bucketEnd - bucketStart)
         })
-        return sum / histogramValue.count
+        return sum / Double(histogramValue.count)
     }
 
     public struct HistogramValue: Codable {

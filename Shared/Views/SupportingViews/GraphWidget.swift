@@ -10,15 +10,17 @@ import MetricsLocale
 
 struct GraphWidget: View {
     let title: String
+    let data: [Double]
     let action: () -> Void
 
-    init(title: String, action: @escaping () -> Void) {
+    init(title: String, data: [Double], action: @escaping () -> Void) {
         self.title = title
+        self.data = data
         self.action = action
     }
 
-    init(title: MetricsLocale.Keys, action: @escaping () -> Void) {
-        self.init(title: title.localized, action: action)
+    init(title: MetricsLocale.Keys, data: [Double], action: @escaping () -> Void) {
+        self.init(title: title.localized, data: data, action: action)
     }
 
     private let viewHeight: CGFloat = 140
@@ -40,6 +42,6 @@ struct GraphWidget: View {
 
 struct GraphWidget_Previews: PreviewProvider {
     static var previews: some View {
-        GraphWidget(title: "Title", action: { })
+        GraphWidget(title: "Title", data: [1, 2, 3], action: { })
     }
 }

@@ -20,7 +20,7 @@ extension AppDetailsScreen {
         @Published private(set) var metrics: [MetricsData]
         @Published private(set) var metricsLastUpdated: Date?
         @Published var loadingMetrics: Bool
-        @Published var showAlert = false
+        @Published var showAlert: Bool
         @Published private(set) var alertMessage: AlertMessage? {
             didSet {
                 if !showAlert && alertMessage != nil {
@@ -34,19 +34,17 @@ extension AppDetailsScreen {
         init() {
             self.metrics = []
             self.loadingMetrics = false
+            self.showAlert = false
         }
 
         private let networker = NetworkController.shared
 
-        var last7RecordedMetrics: Array<MetricsData>.SubSequence {
-            let groupedMetrics = Dictionary(grouping: metrics, by: \.endDate)
-            let metrics = groupedMetrics
-                .sorted(by: { dict1, dict2 in
-                    dict1.key.compare(dict2.key) == .orderedAscending
-                })
-                .flatMap(\.value)
-                .suffix(7)
-            return metrics
+        var last7FirstLaunchMetrics: [Double] {
+            last7RecordedMetrics.compactMap(\.launchTimes?.averageFirstLaunch)
+        }
+
+        var last7LaunchFromBackgroundMetrics: [Double] {
+            last7RecordedMetrics.compactMap(\.launchTimes?.averageLaunchFromBackground)
         }
 
         func setApp(_ app: CoreApp) {
@@ -96,6 +94,15 @@ extension AppDetailsScreen {
             case .parsingError(error: let error):
                 console.log(Date(), failure.localizedDescription, failure, error)
             }
+        }
+
+        private var last7RecordedMetrics: Array<MetricsData>.SubSequence {
+            Dictionary(grouping: metrics, by: \.endDate)
+                .sorted(by: {
+                    $0.key.compare($1.key) == .orderedAscending
+                })
+                .flatMap(\.value)
+                .suffix(7)
         }
 
         private func appDidSet() {
