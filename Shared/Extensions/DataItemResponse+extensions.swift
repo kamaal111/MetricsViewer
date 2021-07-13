@@ -9,7 +9,11 @@ import MetricsNetworker
 
 extension DataItemResponse {
     var toMetricsData: MetricsData {
-        MetricsData(launchTimes: launchTimes)
+        let payload = self.payload
+        return MetricsData(
+            startDate: payload.timeStampBegin,
+            endDate: payload.timeStampEnd,
+            launchTimes: launchTimes)
     }
 
     private var launchTimes: MetricsData.LaunchTimes? {

@@ -18,8 +18,12 @@ struct AlertMessage {
         self.message = message
     }
 
-    init(title: MetricsLocale.Keys, message: MetricsLocale.Keys? = nil) {
-        self.init(title: title.localized, message: message?.localized)
+    init(title: MetricsLocale.Keys, message: MetricsLocale.Keys) {
+        self.init(title: title.localized, message: message.localized)
+    }
+
+    init(title: MetricsLocale.Keys) {
+        self.init(title: title.localized)
     }
 
     var view: Alert {

@@ -8,6 +8,8 @@
 import Foundation
 
 struct MetricsData {
+    let startDate: Date
+    let endDate: Date
     let launchTimes: LaunchTimes?
 
     struct LaunchTimes {

@@ -310,13 +310,13 @@
 		2C614F482688A2A10070EEC6 = {
 			isa = PBXGroup;
 			children = (
+				2C99BBD72688ACD300B30AFC /* Frameworks */,
 				2C614FA22688AA930070EEC6 /* Packages */,
 				2C614F592688A2A30070EEC6 /* Products */,
 				2C614F8F2688A6D60070EEC6 /* Scripts */,
 				2C614F4D2688A2A10070EEC6 /* Shared */,
 				2C614F8B2688A2D10070EEC6 /* Targets */,
 				2C614F8E2688A5C70070EEC6 /* Tests */,
-				2C99BBD72688ACD300B30AFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

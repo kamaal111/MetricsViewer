@@ -38,8 +38,15 @@ extension AppDetailsScreen {
 
         private let networker = NetworkController.shared
 
-        var last7RecordedMetrics: [MetricsData] {
-            metrics.suffix(7)
+        var last7RecordedMetrics: Array<MetricsData>.SubSequence {
+            let groupedMetrics = Dictionary(grouping: metrics, by: \.endDate)
+            let metrics = groupedMetrics
+                .sorted(by: { dict1, dict2 in
+                    dict1.key.compare(dict2.key) == .orderedAscending
+                })
+                .flatMap(\.value)
+                .suffix(7)
+            return metrics
         }
 
         func setApp(_ app: CoreApp) {
