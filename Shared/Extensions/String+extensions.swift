@@ -16,4 +16,8 @@ extension String {
     func scramble() -> String {
         self.shuffled().map(\.string).joined(separator: "")
     }
+
+    var digits: String {
+        components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
 }

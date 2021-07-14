@@ -36,6 +36,7 @@ extension DataItemResponse {
         public let cpuMetrics: CpuMetrics?
         public let networkTransferMetrics: NetworkTransferMetrics?
         public let diskIOMetrics: DiskIOMetrics?
+        /// An object representing metrics about app launch time.
         public let applicationLaunchMetrics: ApplicationLaunchMetrics?
         public let applicationTimeMetrics: ApplicationTimeMetrics?
         public let applicationResponsivenessMetrics: ApplicationResponsivenessMetrics?
@@ -69,7 +70,9 @@ extension DataItemResponse.Payload {
         public let deviceType: String
     }
 
+    /// An object representing metrics about the use of the GPU.
     public struct GpuMetrics: Codable {
+        /// The total amount of GPU time used by the app.
         public let cumulativeGPUTime: String
     }
 

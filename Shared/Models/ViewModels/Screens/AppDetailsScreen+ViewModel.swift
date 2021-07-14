@@ -99,6 +99,18 @@ extension AppDetailsScreen {
                 .suffix(7)
         }
 
+        private var last7Metrics: [MetricsModel] {
+            let lastMetrics = Dictionary(grouping: metrics, by: \.endDate)
+                .sorted(by: {
+                    $0.key.compare($1.key) == .orderedAscending
+                })
+                .flatMap({ (dict:  (key: Date, value: [MetricsData])) -> [MetricsData] in
+                    return dict.value
+                })
+                .suffix(7)
+            return []
+        }
+
         private func appDidSet() {
             getMetrics()
         }
@@ -111,5 +123,18 @@ extension AppDetailsScreen {
             }
         }
 
+    }
+}
+
+struct MetricsModel: Hashable, Identifiable {
+    let id: UUID
+    let category: String
+    let title: String
+    let dataSection: [DataSection]
+
+    struct DataSection: Hashable {
+        let id: UUID
+        let title: String
+        let data: [Double]
     }
 }

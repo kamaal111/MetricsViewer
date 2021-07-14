@@ -11,9 +11,14 @@ struct MetricsData {
     let startDate: Date
     let endDate: Date
     let launchTimes: LaunchTimes?
+    let gpuMetrics: GPUMetrics?
 
     struct LaunchTimes {
         let averageFirstLaunch: Double?
         let averageLaunchFromBackground: Double?
+    }
+
+    struct GPUMetrics {
+        let totalGPUTime: Double
     }
 }

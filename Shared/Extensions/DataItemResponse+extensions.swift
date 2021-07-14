@@ -13,7 +13,8 @@ extension DataItemResponse {
         return MetricsData(
             startDate: payload.timeStampBegin,
             endDate: payload.timeStampEnd,
-            launchTimes: launchTimes)
+            launchTimes: launchTimes,
+            gpuMetrics: gpuMetrics)
     }
 
     private var launchTimes: MetricsData.LaunchTimes? {
@@ -23,5 +24,11 @@ extension DataItemResponse {
         return MetricsData.LaunchTimes(
             averageFirstLaunch: averageFirstLaunch,
             averageLaunchFromBackground: averageLaunchFromBackground)
+    }
+
+    private var gpuMetrics: MetricsData.GPUMetrics? {
+        guard let gpuMetrics = self.payload.gpuMetrics else { return nil }
+        let totalGPUTime = Double(gpuMetrics.cumulativeGPUTime.digits) ?? 0
+        return MetricsData.GPUMetrics(totalGPUTime: totalGPUTime)
     }
 }
