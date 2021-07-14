@@ -10,6 +10,7 @@ import Combine
 import ConsoleSwift
 import MetricsNetworker
 import XiphiasNet
+import MetricsLocale
 
 extension AppDetailsScreen {
     final class ViewModel: ObservableObject {
@@ -108,6 +109,20 @@ extension AppDetailsScreen {
                     return dict.value
                 })
                 .suffix(7)
+            var launchTimeModel = MetricsModel(
+                id: UUID(),
+                dataSection: [
+                    MetricsLocale.Keys.LAUNCH_TIMES_FIRST_LAUNCH_HEADER.localized: MetricsModel.DataSection(id: UUID(), data: [])
+                ])
+            for metric in lastMetrics {
+                if let firstLaunch = metric.launchTimes?.averageFirstLaunch {
+                    launchTimeModel.dataSection[MetricsLocale.Keys.LAUNCH_TIMES_FIRST_LAUNCH_HEADER.localized]?.data.append(firstLaunch)
+                }
+            }
+            let model: [String: MetricsModel] = [
+                MetricsLocale.Keys.LAUNCH_TIMES_SECTION_TITLE.localized: launchTimeModel
+            ]
+            print(model)
             return []
         }
 
@@ -128,13 +143,10 @@ extension AppDetailsScreen {
 
 struct MetricsModel: Hashable, Identifiable {
     let id: UUID
-    let category: String
-    let title: String
-    let dataSection: [DataSection]
+    var dataSection: [String: DataSection]
 
     struct DataSection: Hashable {
         let id: UUID
-        let title: String
-        let data: [Double]
+        var data: [Double]
     }
 }
