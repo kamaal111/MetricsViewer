@@ -74,21 +74,14 @@ struct GraphWidgetGraphView: View {
             .map({ $0 / max })
         let enumeratedDataset = dataset.enumerated()
         let datasetIsAllTheSame = dataset.uniques().count < 2
-        return enumeratedDataset.map({
-            let value: Double
-            if datasetIsAllTheSame {
-                value = 0.5 * Double($0.offset)
-            } else {
-                value = $0.element
-            }
-            print(viewSize.height * value)
-            print(viewSize.height)
-            return IdealData(id: $0.offset, value: value)
-        })
+        guard !datasetIsAllTheSame else {
+            return enumeratedDataset.map({ IdealData(id: $0.offset, value: 0.5) })
+        }
+        return enumeratedDataset.map({ IdealData(id: $0.offset, value: $0.element) })
     }
 
     private var barWidth: CGFloat {
-        20
+        10
     }
 }
 

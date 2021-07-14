@@ -22,13 +22,7 @@ extension AppDetailsScreen {
         @Published var loadingMetrics: Bool
         @Published var showAlert: Bool
         @Published private(set) var alertMessage: AlertMessage? {
-            didSet {
-                if !showAlert && alertMessage != nil {
-                    showAlert = true
-                } else if showAlert && alertMessage == nil {
-                    showAlert = false
-                }
-            }
+            didSet { alertMessageDidSet() }
         }
 
         init() {
@@ -107,6 +101,14 @@ extension AppDetailsScreen {
 
         private func appDidSet() {
             getMetrics()
+        }
+
+        func alertMessageDidSet() {
+            if !showAlert && alertMessage != nil {
+                showAlert = true
+            } else if showAlert && alertMessage == nil {
+                showAlert = false
+            }
         }
 
     }
