@@ -92,38 +92,13 @@ extension AppDetailsScreen {
         }
 
         private var last7RecordedMetrics: Array<MetricsData>.SubSequence {
-            Dictionary(grouping: metrics, by: \.endDate)
+            let groupedMetrics = Dictionary(grouping: metrics, by: \.endDate)
+            return groupedMetrics
                 .sorted(by: {
                     $0.key.compare($1.key) == .orderedAscending
                 })
                 .flatMap(\.value)
                 .suffix(7)
-        }
-
-        private var last7Metrics: [MetricsModel] {
-            let lastMetrics = Dictionary(grouping: metrics, by: \.endDate)
-                .sorted(by: {
-                    $0.key.compare($1.key) == .orderedAscending
-                })
-                .flatMap({ (dict:  (key: Date, value: [MetricsData])) -> [MetricsData] in
-                    return dict.value
-                })
-                .suffix(7)
-            var launchTimeModel = MetricsModel(
-                id: UUID(),
-                dataSection: [
-                    MetricsLocale.Keys.LAUNCH_TIMES_FIRST_LAUNCH_HEADER.localized: MetricsModel.DataSection(id: UUID(), data: [])
-                ])
-            for metric in lastMetrics {
-                if let firstLaunch = metric.launchTimes?.averageFirstLaunch {
-                    launchTimeModel.dataSection[MetricsLocale.Keys.LAUNCH_TIMES_FIRST_LAUNCH_HEADER.localized]?.data.append(firstLaunch)
-                }
-            }
-            let model: [String: MetricsModel] = [
-                MetricsLocale.Keys.LAUNCH_TIMES_SECTION_TITLE.localized: launchTimeModel
-            ]
-            print(model)
-            return []
         }
 
         private func appDidSet() {
