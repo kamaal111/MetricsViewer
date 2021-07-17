@@ -20,8 +20,10 @@ extension AddAppScreen {
         @Published var appName = ""
         @Published var appIdentifier = ""
         @Published var accessToken = ""
-        @Published var hostID: UUID?
+        @Published private(set) var hostID: UUID?
+        @Published var selectedHostName = ""
         @Published var showAlert = false
+        @Published private(set) var hosts: [CoreHost] = []
         @Published private(set) var alertMessage: AlertMessage? {
             didSet {
                 if !showAlert && alertMessage != nil {
@@ -40,6 +42,30 @@ extension AddAppScreen {
             } else {
                 self.persistenceController = PersistenceController.preview
             }
+        }
+
+        var serviceHostPickerSubText: String? {
+            if hostsNames.isEmpty {
+                // - TODO: LOCALIZE THIS
+                return "No service hosts saved previously, press the plus to add an service host"
+            }
+            return nil
+        }
+
+        var hostsNames: [String] {
+            hosts.map(\.name)
+        }
+
+        func fetchAllHosts() {
+            let hostsResult = persistenceController.fetch(CoreHost.self)
+            let hosts: [CoreHost]
+            switch hostsResult {
+            case .failure(let failure):
+                console.error(Date(), failure.localizedDescription, failure)
+                return
+            case .success(let success): hosts = success ?? []
+            }
+            self.hosts = hosts
         }
 
         func onDoneEditing() -> CoreApp? {
