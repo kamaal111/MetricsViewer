@@ -30,50 +30,22 @@ struct AddAppScreen: View {
                 title: .APP_IDENTIFIER_FORM_TITLE,
                 subtext: .APP_IDENTIFIER_FORM_SUBTEXT)
             KFloatingTextField(text: $viewModel.accessToken, title: .ACCESS_TOKEN_FORM_TITLE)
-            VStack {
-                HStack {
-                    // - TODO: LOCALIZE THIS
-                    Picker("Service host", selection: $viewModel.selectedHostName) {
-                        ForEach(viewModel.hostsNames, id: \.self) { name in
-                            Text(name)
-                                .tag(name)
-                        }
-                    }
-                    Button(action: viewModel.onAddHostButtonPress) {
-                        Image(systemName: "plus")
-                    }
-                }
-                if let serviceHostPickerSubText = viewModel.serviceHostPickerSubText {
-                    Text(serviceHostPickerSubText)
-                        .foregroundColor(.secondary)
-                        .font(.footnote)
-                        .padding(.top, -8)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-            }
-            .padding(.vertical, 12)
+            ServiceHostPicker(
+                selectedHostName: $viewModel.selectedHostName,
+                hostsNames: viewModel.hostsNames,
+                serviceHostPickerSubText: viewModel.serviceHostPickerSubText,
+                onAddPress: viewModel.onAddHostButtonPress)
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
-        .sheet(isPresented: $viewModel.showHostSheet, onDismiss: { print("dismiss") }, content: {
-            // - TODO: LOCALIZE THIS
-            KSheetStack(title: "Add service host", leadingNavigationButton: {
-                Button(action: {
-                    print("save")
-                }) {
-                    // - TODO: LOCALIZE THIS
-                    Text("Save")
-                }
-            }, trailingNavigationButton: {
-                Button(action: viewModel.closeHostSheet) {
-                    // - TODO: LOCALIZE THIS
-                    Text("Close")
-                }
-            }) {
-                Text("Hi")
-            }
-            .frame(minWidth: 400)
+        .sheet(isPresented: $viewModel.showHostSheet, onDismiss: { print("dismiss add host sheet") }, content: {
+            AddHostSheet(
+                name: $viewModel.editingHostName,
+                urlString: $viewModel.editingHostURLString,
+                onSave: viewModel.onHostSave,
+                onClose: viewModel.closeHostSheet)
+                .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
         })
         .onAppear(perform: {
             viewModel.fetchAllHosts()

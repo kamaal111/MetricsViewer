@@ -22,7 +22,7 @@ extension CoreApp {
         let now = Date()
         app.creationDate = now
         app.updateDate = now
-        if let host = CoreHost.findHost(with: args.hostID, context: context) {
+        if let hostID = args.hostID, let host = CoreHost.findHost(byID: hostID, context: context) {
             host.addApp(app, save: false)
             app.host = host
         }
@@ -34,6 +34,7 @@ extension CoreApp {
         return .success(app)
     }
 
+    // - TODO: MAKE THIS AN RESULT
     static func getAllAppIdentifiers(context: NSManagedObjectContext) throws -> [String] {
         let entityName = String(describing: self)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -51,6 +52,6 @@ extension CoreApp {
         let name: String
         let appIdentifier: String
         let accessToken: String
-        let hostID: UUID
+        let hostID: UUID?
     }
 }

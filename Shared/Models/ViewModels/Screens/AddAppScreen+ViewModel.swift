@@ -22,11 +22,14 @@ extension AddAppScreen {
         @Published var accessToken = ""
         @Published private(set) var hostID: UUID?
         @Published var selectedHostName = ""
+        @Published var editingHostName = ""
+        @Published var editingHostURLString = ""
         @Published var showHostSheet = false
         @Published var showAlert = false
         @Published private(set) var hosts: [CoreHost] = []
         @Published private(set) var alertMessage: AlertMessage? {
             didSet {
+                // - TODO: PUT THIS IN A FUNCTION
                 if !showAlert && alertMessage != nil {
                     showAlert = true
                 } else if showAlert && alertMessage == nil {
@@ -63,6 +66,31 @@ extension AddAppScreen {
 
         func closeHostSheet() {
             showHostSheet = false
+            editingHostName = ""
+            editingHostURLString = ""
+        }
+
+        func onHostSave() {
+            guard let context = persistenceController.context else {
+                console.error(Date(), "no context found")
+                return
+            }
+            let validatorResult = HostValidator.validateForm([
+                .name: editingHostName,
+                .url: editingHostURLString
+            ], context: context)
+            switch validatorResult {
+            case .failure(let failure):
+                alertMessage = failure.alertMessage
+                return
+            case .success: break
+            }
+            // - TODO: SAVE HOST
+            closeHostSheet()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                guard let self = self else { return }
+                self.fetchAllHosts()
+            }
         }
 
         func fetchAllHosts() {
@@ -78,28 +106,21 @@ extension AddAppScreen {
         }
 
         func onDoneEditing() -> CoreApp? {
-            guard let hostID = hostID else {
-                // - TODO: LOCALIZE THIS
-                alertMessage = AlertMessage(title: "Host is required")
-                return nil
-            }
             guard let context = persistenceController.context else {
                 console.error(Date(), "no context found")
                 return nil
             }
-            do {
-                try Validator.validateForm([
-                    .appIdentifier: appIdentifier,
-                    .appName: appName,
-                    .accessToken: accessToken
-                ], context: context)
-            } catch {
-                if let error = error as? Validator.Errors {
-                    alertMessage = error.alertMessage
-                    return nil
-                }
-                console.error(Date(), error.localizedDescription, error)
+            let appValidatorResult = AppValidator.validateForm([
+                .appIdentifier: appIdentifier,
+                .appName: appName,
+                .accessToken: accessToken,
+                .host: hostID?.uuidString
+            ], context: context)
+            switch appValidatorResult {
+            case .failure(let failure):
+                alertMessage = failure.alertMessage
                 return nil
+            case .success: break
             }
             let args = CoreApp.Args(
                 name: appName,
@@ -120,53 +141,148 @@ extension AddAppScreen {
     }
 }
 
-// - MARK: - Validator
+// - MARK: - Host Validator
 
 extension AddAppScreen {
-    fileprivate struct Validator {
+    fileprivate struct HostValidator {
         private init() { }
 
-        static func validateForm(_ form: [Fields: String], context: NSManagedObjectContext) throws {
+        static func validateForm(_ form: [Fields: String], context: NSManagedObjectContext) -> Result<Void, Errors> {
             for (key, value) in form {
-                try key.validate(value: value, context: context)
+                let result = key.validate(value: value, context: context)
+                switch result {
+                case .failure(let failure): return .failure(failure)
+                case .success: continue
+                }
+            }
+            return .success(Void())
+        }
+    }
+}
+
+extension AddAppScreen.HostValidator {
+    fileprivate enum Fields {
+        case name
+        case url
+
+        func validate(value: String, context: NSManagedObjectContext) -> Result<Void, Errors> {
+            switch self {
+            case .name:
+                if value.trimmingByWhitespacesAndNewLines.isEmpty {
+                    return .failure(.nameMissing)
+                }
+            case .url:
+                if CoreHost.findHost(byName: value, context: context) != nil {
+                    return .failure(.nameNotUnique)
+                }
+            }
+            return .success(Void())
+        }
+    }
+
+    fileprivate enum Errors: AlertMessageError {
+        case nameMissing
+        case nameNotUnique
+        case invalidURL
+
+        var alertMessage: AlertMessage {
+            switch self {
+                // - TODO: LOCALIZE THIS
+            case .nameMissing: return AlertMessage(title: "Name is missing")
+                // - TODO: LOCALIZE THIS
+            case .invalidURL: return AlertMessage(title: "Invalid url provided")
+                // - TODO: LOCALIZE THIS
+            case .nameNotUnique: return AlertMessage(title: "Name should be unique")
             }
         }
     }
 }
 
-extension AddAppScreen.Validator {
+// - MARK: - App Validator
+
+extension AddAppScreen {
+    fileprivate struct AppValidator {
+        private init() { }
+
+        static func validateForm(_ form: [Fields: String?], context: NSManagedObjectContext) -> Result<Void, Errors> {
+            for (key, value) in form {
+                let result = key.validate(value: value, context: context)
+                switch result {
+                case .failure(let failure): return .failure(failure)
+                case .success: continue
+                }
+            }
+            return .success(Void())
+        }
+    }
+}
+
+extension AddAppScreen.AppValidator {
     fileprivate enum Fields {
         case appName
         case appIdentifier
         case accessToken
+        case host
 
-        func validate(value: String, context: NSManagedObjectContext) throws {
+        func validate(value: String?, context: NSManagedObjectContext) -> Result<Void, Errors> {
             switch self {
-            case .appName:
-                guard !value.trimmingByWhitespacesAndNewLines.isEmpty else {
-                    throw Errors.appNameMissing
-                }
-            case .appIdentifier:
-                guard value.trimmingByWhitespacesAndNewLines.split(separator: ".").count > 1 else {
-                    throw Errors.invalidAppIdentifier
-                }
-                let identifiers = try CoreApp.getAllAppIdentifiers(context: context)
-                if identifiers.contains(value) {
-                    throw Errors.appIdentifierNotUnique
-                }
-            case .accessToken:
-                guard value.trimmingByWhitespacesAndNewLines.count >= 32 else {
-                    throw Errors.invalidAccessToken
-                }
+            case .appName: return validateAppName(value)
+            case .appIdentifier: return validateAppIdentifier(value, context: context)
+            case .accessToken: return validateAccessToken(value)
+            case .host: return validateHost(value)
             }
+        }
+
+        private func validateAppName(_ appName: String?) -> Result<Void, Errors> {
+            guard let appName = appName else { return .failure(.appNameMissing) }
+            if appName.trimmingByWhitespacesAndNewLines.isEmpty {
+                return .failure(.appNameMissing)
+            }
+            return .success(Void())
+        }
+
+        private func validateAppIdentifier(
+            _ appIdentifier: String?,
+            context: NSManagedObjectContext) -> Result<Void, Errors> {
+            guard let appIdentifier = appIdentifier else { return .failure(.invalidAppIdentifier) }
+            if appIdentifier.trimmingByWhitespacesAndNewLines.split(separator: ".").count < 2 {
+                return .failure(.invalidAppIdentifier)
+            }
+            let identifiers: [String]
+            do {
+                identifiers = try CoreApp.getAllAppIdentifiers(context: context)
+            } catch {
+                console.error(Date(), error.localizedDescription, error)
+                return .failure(.invalidAppIdentifier)
+            }
+            if identifiers.contains(appIdentifier) {
+                return .failure(.appIdentifierNotUnique)
+            }
+            return .success(Void())
+        }
+
+        private func validateAccessToken(_ accessToken: String?) -> Result<Void, Errors> {
+            guard let accessToken = accessToken else { return .failure(.invalidAccessToken) }
+            if accessToken.trimmingByWhitespacesAndNewLines.count < 32 {
+                return .failure(.invalidAccessToken)
+            }
+            return .success(Void())
+        }
+
+        private func validateHost(_ host: String?) -> Result<Void, Errors> {
+            if host == nil {
+                return .failure(.hostIsRequired)
+            }
+            return .success(Void())
         }
     }
 
-    fileprivate enum Errors: Error {
+    fileprivate enum Errors: AlertMessageError {
         case appNameMissing
         case invalidAppIdentifier
         case invalidAccessToken
         case appIdentifierNotUnique
+        case hostIsRequired
 
         var alertMessage: AlertMessage {
             switch self {
@@ -178,6 +294,9 @@ extension AddAppScreen.Validator {
                 return AlertMessage(title: .INVALID_ACCESS_TOKEN_ALERT_TITLE)
             case .appIdentifierNotUnique:
                 return AlertMessage(title: .APP_IDENTIFIER_NOT_UNIQUE_ALERT_TITLE)
+            case .hostIsRequired:
+                // - TODO: LOCALIZE THIS
+                return AlertMessage(title: "Host is required")
             }
         }
     }
