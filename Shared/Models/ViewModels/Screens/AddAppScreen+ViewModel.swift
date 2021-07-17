@@ -20,6 +20,7 @@ extension AddAppScreen {
         @Published var appName = ""
         @Published var appIdentifier = ""
         @Published var accessToken = ""
+        @Published var hostID: UUID?
         @Published var showAlert = false
         @Published private(set) var alertMessage: AlertMessage? {
             didSet {
@@ -42,6 +43,11 @@ extension AddAppScreen {
         }
 
         func onDoneEditing() -> CoreApp? {
+            guard let hostID = hostID else {
+                // - TODO: LOCALIZE THIS
+                alertMessage = AlertMessage(title: "Host is required")
+                return nil
+            }
             guard let context = persistenceController.context else {
                 console.error(Date(), "no context found")
                 return nil
@@ -60,7 +66,11 @@ extension AddAppScreen {
                 console.error(Date(), error.localizedDescription, error)
                 return nil
             }
-            let args = CoreApp.Args(name: appName, appIdentifier: appIdentifier, accessToken: accessToken)
+            let args = CoreApp.Args(
+                name: appName,
+                appIdentifier: appIdentifier,
+                accessToken: accessToken,
+                hostID: hostID)
             let appResult = CoreApp.setApp(with: args, context: context)
             let app: CoreApp
             switch appResult {

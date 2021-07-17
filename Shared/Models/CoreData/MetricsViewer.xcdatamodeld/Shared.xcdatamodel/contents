@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19141.11" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19141.11" systemVersion="21A5268h" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CoreApp" representedClassName="CoreApp" syncable="YES">
         <attribute name="accessToken" attributeType="String"/>
         <attribute name="appIdentifier" attributeType="String"/>
@@ -7,8 +7,18 @@
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="updateDate" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="host" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreHost" inverseName="apps" inverseEntity="CoreHost"/>
+    </entity>
+    <entity name="CoreHost" representedClassName="CoreHost" syncable="YES">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="updatedDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="apps" toMany="YES" deletionRule="Nullify" destinationEntity="CoreApp" inverseName="host" inverseEntity="CoreApp"/>
     </entity>
     <elements>
-        <element name="CoreApp" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="CoreApp" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="CoreHost" positionX="-282.9434814453125" positionY="73.76614379882812" width="128" height="133"/>
     </elements>
 </model>

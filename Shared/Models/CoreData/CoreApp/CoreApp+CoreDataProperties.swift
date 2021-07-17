@@ -22,6 +22,7 @@ extension CoreApp {
     @NSManaged public var id: UUID
     @NSManaged public var name: String
     @NSManaged public var updateDate: Date
+    @NSManaged public var host: CoreHost?
 
 }
 

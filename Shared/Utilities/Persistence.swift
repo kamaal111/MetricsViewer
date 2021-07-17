@@ -59,7 +59,11 @@ extension PersistenceController {
             if shuffled {
                 accessToken = accessToken.scramble()
             }
-            let args = CoreApp.Args(name: appName, appIdentifier: appIdentifier, accessToken: accessToken)
+            let args = CoreApp.Args(
+                name: appName,
+                appIdentifier: appIdentifier,
+                accessToken: accessToken,
+                hostID: UUID())
             let app = CoreApp.setApp(with: args, context: context)
         }
         return result

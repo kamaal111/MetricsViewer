@@ -22,6 +22,10 @@ extension CoreApp {
         let now = Date()
         app.creationDate = now
         app.updateDate = now
+        if let host = CoreHost.findHost(with: args.hostID, context: context) {
+            host.addApp(app, save: false)
+            app.host = host
+        }
         do {
             try context.save()
         } catch {
@@ -47,5 +51,6 @@ extension CoreApp {
         let name: String
         let appIdentifier: String
         let accessToken: String
+        let hostID: UUID
     }
 }
