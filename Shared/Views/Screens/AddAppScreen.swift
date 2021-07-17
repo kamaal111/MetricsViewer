@@ -39,9 +39,7 @@ struct AddAppScreen: View {
                                 .tag(name)
                         }
                     }
-                    Button(action: {
-                        print("add")
-                    }) {
+                    Button(action: viewModel.onAddHostButtonPress) {
                         Image(systemName: "plus")
                     }
                 }
@@ -58,6 +56,25 @@ struct AddAppScreen: View {
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
+        .sheet(isPresented: $viewModel.showHostSheet, onDismiss: { print("dismiss") }, content: {
+            // - TODO: LOCALIZE THIS
+            KSheetStack(title: "Add service host", leadingNavigationButton: {
+                Button(action: {
+                    print("save")
+                }) {
+                    // - TODO: LOCALIZE THIS
+                    Text("Save")
+                }
+            }, trailingNavigationButton: {
+                Button(action: viewModel.closeHostSheet) {
+                    // - TODO: LOCALIZE THIS
+                    Text("Close")
+                }
+            }) {
+                Text("Hi")
+            }
+            .frame(minWidth: 400)
+        })
         .onAppear(perform: {
             viewModel.fetchAllHosts()
         })

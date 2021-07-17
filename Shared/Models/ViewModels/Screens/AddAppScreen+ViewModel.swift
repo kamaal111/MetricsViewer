@@ -22,6 +22,7 @@ extension AddAppScreen {
         @Published var accessToken = ""
         @Published private(set) var hostID: UUID?
         @Published var selectedHostName = ""
+        @Published var showHostSheet = false
         @Published var showAlert = false
         @Published private(set) var hosts: [CoreHost] = []
         @Published private(set) var alertMessage: AlertMessage? {
@@ -54,6 +55,14 @@ extension AddAppScreen {
 
         var hostsNames: [String] {
             hosts.map(\.name)
+        }
+
+        func onAddHostButtonPress() {
+            showHostSheet = true
+        }
+
+        func closeHostSheet() {
+            showHostSheet = false
         }
 
         func fetchAllHosts() {
