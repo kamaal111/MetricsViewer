@@ -85,12 +85,20 @@ extension AddAppScreen {
                 return
             case .success: break
             }
-            // - TODO: SAVE HOST
-            closeHostSheet()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                guard let self = self else { return }
-                self.fetchAllHosts()
+            // Allready being validated in `HostValidator.validateForm`
+            let hostURL = URL(string: editingHostURLString)!
+            let args = CoreHost.Args(url: hostURL, name: editingHostName)
+            let hostResult = CoreHost.setHost(with: args, context: context)
+            let host: CoreHost
+            switch hostResult {
+            case .failure(let failure):
+                console.error(Date(), failure.localizedDescription, failure)
+                return
+            case .success(let success): host = success
             }
+            closeHostSheet()
+            hosts = hosts.appended(host)
+            selectedHostName = host.name
         }
 
         func fetchAllHosts() {
@@ -171,9 +179,12 @@ extension AddAppScreen.HostValidator {
                 if value.trimmingByWhitespacesAndNewLines.isEmpty {
                     return .failure(.nameMissing)
                 }
-            case .url:
                 if CoreHost.findHost(byName: value, context: context) != nil {
                     return .failure(.nameNotUnique)
+                }
+            case .url:
+                if value.trimmingByWhitespacesAndNewLines.isEmpty, URL(string: value) == nil {
+                    return .failure(.invalidURL)
                 }
             }
             return .success(Void())

@@ -38,7 +38,12 @@ extension CoreHost {
         let now = Date()
         host.creationDate = now
         host.updatedDate = now
-        return .failure(NSError(domain: "", code: 1, userInfo: nil))
+        do {
+            try context.save()
+        } catch {
+            return .failure(error)
+        }
+        return .success(host)
     }
 
     static func getAllHosts(context: NSManagedObjectContext, with predicate: NSPredicate? = nil) -> Result<[CoreHost], Error> {
