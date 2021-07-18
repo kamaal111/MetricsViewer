@@ -179,7 +179,7 @@ extension AddAppScreen.HostValidator {
                 if value.trimmingByWhitespacesAndNewLines.isEmpty {
                     return .failure(.nameMissing)
                 }
-                if CoreHost.findHost(byName: value, context: context) != nil {
+                if CoreHost.findHost(by: .name, of: value, context: context) != nil {
                     return .failure(.nameNotUnique)
                 }
             case .url:
@@ -259,14 +259,7 @@ extension AddAppScreen.AppValidator {
             if appIdentifier.trimmingByWhitespacesAndNewLines.split(separator: ".").count < 2 {
                 return .failure(.invalidAppIdentifier)
             }
-            let identifiers: [String]
-            do {
-                identifiers = try CoreApp.getAllAppIdentifiers(context: context)
-            } catch {
-                console.error(Date(), error.localizedDescription, error)
-                return .failure(.invalidAppIdentifier)
-            }
-            if identifiers.contains(appIdentifier) {
+            if CoreApp.appIdentifierExists(appIdentifier, context: context) {
                 return .failure(.appIdentifierNotUnique)
             }
             return .success(Void())

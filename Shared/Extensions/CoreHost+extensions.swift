@@ -46,7 +46,9 @@ extension CoreHost {
         return .success(host)
     }
 
-    static func getAllHosts(context: NSManagedObjectContext, with predicate: NSPredicate? = nil) -> Result<[CoreHost], Error> {
+    private static func getAllHosts(
+        with predicate: NSPredicate? = nil,
+        context: NSManagedObjectContext) -> Result<[CoreHost], Error> {
         let entityName = String(describing: CoreHost.self)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         if let predicate = predicate {
@@ -61,14 +63,17 @@ extension CoreHost {
         return .success(fetchedHosts)
     }
 
-    static func findHost(byName name: String, context: NSManagedObjectContext) -> CoreHost? {
-        let predicate = NSPredicate(format: "name == %@", name)
-        return try? CoreHost.getAllHosts(context: context, with: predicate).get().first
+    static func findHost(
+        by searchProperty: SearchProperties,
+        of value: CVarArg,
+        context: NSManagedObjectContext) -> CoreHost? {
+        let predicate = NSPredicate(format: "%@ == %@", searchProperty.rawValue, value)
+        return try? CoreHost.getAllHosts(with: predicate, context: context).get().first
     }
 
-    static func findHost(byID id: UUID, context: NSManagedObjectContext) -> CoreHost? {
-        let predicate = NSPredicate(format: "id == %@", id.nsString)
-        return try? CoreHost.getAllHosts(context: context, with: predicate).get().first
+    enum SearchProperties: String {
+        case name
+        case id
     }
 
     struct Args {

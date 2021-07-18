@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import ConsoleSwift
 
 extension CoreApp {
     var renderable: Renderable {
@@ -22,7 +23,7 @@ extension CoreApp {
         let now = Date()
         app.creationDate = now
         app.updateDate = now
-        if let hostID = args.hostID, let host = CoreHost.findHost(byID: hostID, context: context) {
+        if let hostID = args.hostID, let host = CoreHost.findHost(by: .id, of: hostID.nsString, context: context) {
             host.addApp(app, save: false)
             app.host = host
         }
@@ -34,13 +35,29 @@ extension CoreApp {
         return .success(app)
     }
 
-    // - TODO: MAKE THIS AN RESULT
-    static func getAllAppIdentifiers(context: NSManagedObjectContext) throws -> [String] {
+    static func appIdentifierExists(_ appIdentifier: String, context: NSManagedObjectContext) -> Bool {
+        let getAllIdentifiersResult = CoreApp.getAllAppIdentifiers(context: context)
+        let allIdentifiers: [String]
+        switch getAllIdentifiersResult {
+        case .failure(let failure):
+            console.error(Date(), failure.localizedDescription, failure)
+            return false
+        case .success(let success): allIdentifiers = success
+        }
+        return allIdentifiers.contains(appIdentifier)
+    }
+
+    private static func getAllAppIdentifiers(context: NSManagedObjectContext) -> Result<[String], Error> {
         let entityName = String(describing: self)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        guard let fecthedObjects = try context.fetch(fetchRequest) as? [CoreApp] else { return  [] }
+        let fecthedObjects: [CoreApp]
+        do {
+            fecthedObjects = try context.fetch(fetchRequest) as? [CoreApp] ?? []
+        } catch {
+            return .failure(error)
+        }
         let identifiers = fecthedObjects.map(\.appIdentifier)
-        return identifiers
+        return .success(identifiers)
     }
 
     struct Renderable: MetricsGridCellRenderable {
