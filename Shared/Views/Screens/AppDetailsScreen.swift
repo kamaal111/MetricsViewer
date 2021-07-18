@@ -15,15 +15,13 @@ struct AppDetailsScreen: View {
     @ObservedObject
     private var viewModel: ViewModel
 
-    @State private var showEditScreen = false
-
     init() {
         self.viewModel = ViewModel()
     }
 
     var body: some View {
         VStack(alignment: .leading) {
-            if showEditScreen {
+            if viewModel.editScreenIsActive {
                 Text("Edit")
             } else {
                 AppDetailsMetrics(
@@ -42,8 +40,8 @@ struct AppDetailsScreen: View {
         .navigationTitle(Text(viewModel.app?.name ?? ""))
         .toolbar(content: {
             ToolbarItem(content: {
-                Button(action: { withAnimation { showEditScreen.toggle() } }) {
-                    Text(localized: showEditScreen ? .DONE : .EDIT)
+                Button(action: viewModel.onEditPress) {
+                    Text(localized: viewModel.editScreenIsActive ? .DONE : .EDIT)
                         .animation(nil)
                 }
             })

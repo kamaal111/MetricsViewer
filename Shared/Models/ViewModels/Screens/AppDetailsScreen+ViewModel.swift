@@ -11,6 +11,7 @@ import ConsoleSwift
 import MetricsNetworker
 import XiphiasNet
 import MetricsLocale
+import SwiftUI
 
 extension AppDetailsScreen {
     final class ViewModel: ObservableObject {
@@ -18,19 +19,14 @@ extension AppDetailsScreen {
         @Published private(set) var app: CoreApp? {
             didSet { appDidSet() }
         }
-        @Published private(set) var metrics: [MetricsData]
+        @Published private(set) var metrics: [MetricsData] = []
         @Published private(set) var metricsLastUpdated: Date?
-        @Published var loadingMetrics: Bool
-        @Published var showAlert: Bool
+        @Published var loadingMetrics = false
+        @Published var showAlert = false
         @Published private(set) var alertMessage: AlertMessage? {
             didSet { alertMessageDidSet() }
         }
-
-        init() {
-            self.metrics = []
-            self.loadingMetrics = false
-            self.showAlert = false
-        }
+        @Published private(set) var editScreenIsActive = false
 
         private let networker = NetworkController.shared
 
@@ -40,6 +36,10 @@ extension AppDetailsScreen {
 
         var last7LaunchFromBackgroundMetrics: [Double] {
             last7RecordedMetrics.compactMap(\.launchTimes?.averageLaunchFromBackground)
+        }
+
+        func onEditPress() {
+            withAnimation { editScreenIsActive.toggle() }
         }
 
         func setApp(_ app: CoreApp) {
