@@ -11,6 +11,7 @@ import ShrimpExtensions
 import PersistanceManager
 import ConsoleSwift
 import CoreData
+import MetricsLocale
 
 // - MARK: - View Model
 
@@ -28,14 +29,7 @@ extension AddAppScreen {
         @Published var showAlert = false
         @Published private(set) var hosts: [CoreHost] = []
         @Published private(set) var alertMessage: AlertMessage? {
-            didSet {
-                // - TODO: PUT THIS IN A FUNCTION
-                if !showAlert && alertMessage != nil {
-                    showAlert = true
-                } else if showAlert && alertMessage == nil {
-                    showAlert = false
-                }
-            }
+            didSet { alertMessageDidSet() }
         }
 
         private let persistenceController: PersistanceManager
@@ -50,8 +44,7 @@ extension AddAppScreen {
 
         var serviceHostPickerSubText: String? {
             if hostsNames.isEmpty {
-                // - TODO: LOCALIZE THIS
-                return "No service hosts saved previously, press the plus to add an service host"
+                return MetricsLocale.Keys.SERVICE_HOST_PICKER_SUBTEXT.localized
             }
             return nil
         }
@@ -146,6 +139,14 @@ extension AddAppScreen {
             return app
         }
 
+        private func alertMessageDidSet() {
+            if !showAlert && alertMessage != nil {
+                showAlert = true
+            } else if showAlert && alertMessage == nil {
+                showAlert = false
+            }
+        }
+
     }
 }
 
@@ -198,12 +199,9 @@ extension AddAppScreen.HostValidator {
 
         var alertMessage: AlertMessage {
             switch self {
-                // - TODO: LOCALIZE THIS
-            case .nameMissing: return AlertMessage(title: "Name is missing")
-                // - TODO: LOCALIZE THIS
-            case .invalidURL: return AlertMessage(title: "Invalid url provided")
-                // - TODO: LOCALIZE THIS
-            case .nameNotUnique: return AlertMessage(title: "Name should be unique")
+            case .nameMissing: return AlertMessage(title: .NAME_MISSING_ALERT_TITLE)
+            case .invalidURL: return AlertMessage(title: .INVALID_URL_ALERT_TITLE)
+            case .nameNotUnique: return AlertMessage(title: .NAME_NOT_UNIQUE_ALERT_TITLE)
             }
         }
     }
@@ -299,8 +297,7 @@ extension AddAppScreen.AppValidator {
             case .appIdentifierNotUnique:
                 return AlertMessage(title: .APP_IDENTIFIER_NOT_UNIQUE_ALERT_TITLE)
             case .hostIsRequired:
-                // - TODO: LOCALIZE THIS
-                return AlertMessage(title: "Host is required")
+                return AlertMessage(title: .HOST_IS_REQUIRED_ALERT_TITLE)
             }
         }
     }

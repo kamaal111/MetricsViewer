@@ -23,6 +23,21 @@ const en = {
   LAUNCH_TIMES_LAUNCH_FROM_BACKGROUND_HEADER: "Launch from background",
   REFRESH_METRICS: "Refresh metrics",
   TOGGLE_SIDEBAR: "Toggle sidebar",
+  ADD_SERVICE_HOST: "Add service host",
+  SAVE: "Save",
+  CLOSE: "Close",
+  SERVICE_NAME_FORM_TITLE: "Service name",
+  SERVICE_NAME_FORM_SUBTEXT:
+    "This name helps you choose the host, you could also just give it the url of the metrics service",
+  SERVICE_URL_FORM_TITLE: "Service URL",
+  NOT_ENOUGH_DATA_WARNING: "Not enough data points to preview",
+  SERVICE_HOST_PICKER_TITLE: "Service host",
+  SERVICE_HOST_PICKER_SUBTEXT:
+    "No service hosts saved previously, press the plus to add an service host",
+  NAME_MISSING_ALERT_TITLE: "Name is missing",
+  INVALID_URL_ALERT_TITLE: "Invalid url provided",
+  NAME_NOT_UNIQUE_ALERT_TITLE: "Name should be unique",
+  HOST_IS_REQUIRED_ALERT_TITLE: "Host is required",
 };
 
 module.exports = en;

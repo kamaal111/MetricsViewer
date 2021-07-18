@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MetricsLocale
 
 struct ServiceHostPicker: View {
     @Binding var selectedHostName: String
@@ -17,8 +18,7 @@ struct ServiceHostPicker: View {
     var body: some View {
         VStack {
             HStack {
-                // - TODO: LOCALIZE THIS
-                Picker("Service host", selection: $selectedHostName) {
+                Picker(MetricsLocale.Keys.SERVICE_HOST_PICKER_TITLE.localized, selection: $selectedHostName) {
                     ForEach(hostsNames, id: \.self) { name in
                         Text(name)
                             .tag(name)

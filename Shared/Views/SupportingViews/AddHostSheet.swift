@@ -8,6 +8,7 @@
 import SwiftUI
 import SalmonUI
 import MetricsUI
+import MetricsLocale
 
 struct AddHostSheet: View {
     @Binding var name: String
@@ -17,27 +18,21 @@ struct AddHostSheet: View {
     let onClose: () -> Void
 
     var body: some View {
-        // - TODO: LOCALIZE THIS
-        KSheetStack(title: "Add service host", leadingNavigationButton: {
-            Button(action: onSave) {
-                // - TODO: LOCALIZE THIS
-                Text("Save")
+        KSheetStack(title: MetricsLocale.Keys.ADD_SERVICE_HOST.localized, leadingNavigationButton: {
+            Button(action: onClose) {
+                Text(localized: .CLOSE)
             }
         }, trailingNavigationButton: {
-            Button(action: onClose) {
-                // - TODO: LOCALIZE THIS
-                Text("Close")
+            Button(action: onSave) {
+                Text(localized: .SAVE)
             }
         }) {
             VStack {
                 FloatingTextFieldWithSubtext(
                     text: $name,
-                    // - TODO: LOCALIZE THIS
-                    title: "Service name",
-                    // - TODO: LOCALIZE THIS
-                    subtext: "This name helps you choose the host, you could also just give it the url of the metrics service")
-                // - TODO: LOCALIZE THIS
-                KFloatingTextField(text: $urlString, title: "Service URL")
+                    title: .SERVICE_NAME_FORM_TITLE,
+                    subtext: .SERVICE_NAME_FORM_SUBTEXT)
+                KFloatingTextField(text: $urlString, title: .SERVICE_URL_FORM_TITLE)
             }
             .padding(.vertical, 16)
         }

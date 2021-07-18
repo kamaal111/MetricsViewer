@@ -44,15 +44,14 @@ struct GraphWidget: View {
     }
 }
 
-struct GraphWidgetGraphView: View {
+private struct GraphWidgetGraphView: View {
     let data: [Double]
     let viewSize: CGSize
 
     var body: some View {
         HStack {
             if idealDataset.isEmpty {
-                // - TODO: LOCALIZE THIS
-                Text("Not enough data points to preview")
+                Text(localized: .NOT_ENOUGH_DATA_WARNING)
                     .foregroundColor(.Background)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
@@ -85,7 +84,7 @@ struct GraphWidgetGraphView: View {
     }
 }
 
-struct IdealData: Identifiable, Hashable {
+private struct IdealData: Identifiable, Hashable {
     let id: Int
     let value: Double
 }

@@ -29,5 +29,18 @@ extension MetricsLocale {
         case LAUNCH_TIMES_LAUNCH_FROM_BACKGROUND_HEADER
         case REFRESH_METRICS
         case TOGGLE_SIDEBAR
+        case ADD_SERVICE_HOST
+        case SAVE
+        case CLOSE
+        case SERVICE_NAME_FORM_TITLE
+        case SERVICE_NAME_FORM_SUBTEXT
+        case SERVICE_URL_FORM_TITLE
+        case NOT_ENOUGH_DATA_WARNING
+        case SERVICE_HOST_PICKER_TITLE
+        case SERVICE_HOST_PICKER_SUBTEXT
+        case NAME_MISSING_ALERT_TITLE
+        case INVALID_URL_ALERT_TITLE
+        case NAME_NOT_UNIQUE_ALERT_TITLE
+        case HOST_IS_REQUIRED_ALERT_TITLE
     }
 }
