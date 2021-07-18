@@ -42,5 +42,6 @@ extension MetricsLocale {
         case INVALID_URL_ALERT_TITLE
         case NAME_NOT_UNIQUE_ALERT_TITLE
         case HOST_IS_REQUIRED_ALERT_TITLE
+        case EDIT
     }
 }

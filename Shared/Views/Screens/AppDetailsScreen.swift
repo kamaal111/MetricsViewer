@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SalmonUI
 import MetricsLocale
 
 struct AppDetailsScreen: View {
@@ -16,46 +15,22 @@ struct AppDetailsScreen: View {
     @ObservedObject
     private var viewModel: ViewModel
 
+    @State private var showEditScreen = false
+
     init() {
         self.viewModel = ViewModel()
     }
 
     var body: some View {
         VStack(alignment: .leading) {
-            VStack(alignment: .trailing) {
-                Text(localized: .LAST_UPDATED)
-                    .foregroundColor(.secondary)
-                    .font(.caption)
-                if let metricsLastUpdated = viewModel.metricsLastUpdated {
-                    Text(Self.dateFormatter.string(from: metricsLastUpdated))
-                        .foregroundColor(.secondary)
-                        .font(.caption)
-                }
-            }
-            .padding(.top, -16)
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            if viewModel.loadingMetrics {
-                KActivityIndicator(isAnimating: $viewModel.loadingMetrics, style: .spinning)
+            if showEditScreen {
+                Text("Edit")
             } else {
-                Text(localized: .LAUNCH_TIMES_SECTION_TITLE)
-                    .font(.title2)
-                    .bold()
-                HStack {
-                    GraphWidget(
-                        title: .LAUNCH_TIMES_FIRST_LAUNCH_HEADER,
-                        data: viewModel.last7FirstLaunchMetrics,
-                        action: {
-                        print("first", viewModel.last7FirstLaunchMetrics)
-                    })
-                        .padding(.trailing, 8)
-                    GraphWidget(
-                        title: .LAUNCH_TIMES_LAUNCH_FROM_BACKGROUND_HEADER,
-                        data: viewModel.last7LaunchFromBackgroundMetrics,
-                        action: {
-                        print("second", viewModel.last7LaunchFromBackgroundMetrics)
-                    })
-                        .padding(.leading, 8)
-                }
+                AppDetailsMetrics(
+                    loadingMetrics: $viewModel.loadingMetrics,
+                    metricsLastUpdated: viewModel.metricsLastUpdated,
+                    last7FirstLaunchMetrics: viewModel.last7FirstLaunchMetrics,
+                    last7LaunchFromBackgroundMetrics: viewModel.last7LaunchFromBackgroundMetrics)
             }
         }
         .padding(24)
@@ -66,10 +41,18 @@ struct AppDetailsScreen: View {
         #if os(macOS)
         .navigationTitle(Text(viewModel.app?.name ?? ""))
         .toolbar(content: {
-            Button(action: viewModel.getMetrics) {
-                Label(MetricsLocale.Keys.REFRESH_METRICS.localized, systemImage: "arrow.triangle.2.circlepath")
-            }
-            .disabled(viewModel.loadingMetrics)
+            ToolbarItem(content: {
+                Button(action: { withAnimation { showEditScreen.toggle() } }) {
+                    Text(localized: showEditScreen ? .DONE : .EDIT)
+                        .animation(nil)
+                }
+            })
+            ToolbarItem(content: {
+                Button(action: viewModel.getMetrics) {
+                    Label(MetricsLocale.Keys.REFRESH_METRICS.localized, systemImage: "arrow.triangle.2.circlepath")
+                }
+                .disabled(viewModel.loadingMetrics)
+            })
         })
         #endif
     }
@@ -79,13 +62,6 @@ struct AppDetailsScreen: View {
             viewModel.setApp(selectedApp)
         }
     }
-
-    private static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .medium
-        return formatter
-    }()
 }
 
 struct AppDetailsScreen_Previews: PreviewProvider {

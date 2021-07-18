@@ -38,6 +38,7 @@ const en = {
   INVALID_URL_ALERT_TITLE: "Invalid url provided",
   NAME_NOT_UNIQUE_ALERT_TITLE: "Name should be unique",
   HOST_IS_REQUIRED_ALERT_TITLE: "Host is required",
+  EDIT: "Edit",
 };
 
 module.exports = en;
