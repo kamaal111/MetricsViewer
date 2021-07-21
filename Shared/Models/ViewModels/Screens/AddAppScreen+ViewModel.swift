@@ -5,9 +5,6 @@
 //  Created by Kamaal M Farah on 03/07/2021.
 //
 
-import Foundation
-import Combine
-import ShrimpExtensions
 import PersistanceManager
 import ConsoleSwift
 import CoreData
@@ -21,13 +18,12 @@ extension AddAppScreen {
         @Published var appName = ""
         @Published var appIdentifier = ""
         @Published var accessToken = ""
-        @Published private(set) var hostID: UUID?
-        @Published var selectedHostName = ""
-        @Published var editingHostName = ""
-        @Published var editingHostURLString = ""
-        @Published var showHostSheet = false
+        @Published var selectedHost: CoreHost? {
+            didSet {
+                print(selectedHost)
+            }
+        }
         @Published var showAlert = false
-        @Published private(set) var hosts: [CoreHost] = []
         @Published private(set) var alertMessage: AlertMessage? {
             didSet { alertMessageDidSet() }
         }
@@ -42,70 +38,6 @@ extension AddAppScreen {
             }
         }
 
-        var serviceHostPickerSubText: String? {
-            if hostsNames.isEmpty {
-                return MetricsLocale.Keys.SERVICE_HOST_PICKER_SUBTEXT.localized
-            }
-            return nil
-        }
-
-        var hostsNames: [String] {
-            hosts.map(\.name)
-        }
-
-        func onAddHostButtonPress() {
-            showHostSheet = true
-        }
-
-        func closeHostSheet() {
-            showHostSheet = false
-            editingHostName = ""
-            editingHostURLString = ""
-        }
-
-        func onHostSave() {
-            guard let context = persistenceController.context else {
-                console.error(Date(), "no context found")
-                return
-            }
-            let validatorResult = HostValidator.validateForm([
-                .name: editingHostName,
-                .url: editingHostURLString
-            ], context: context)
-            switch validatorResult {
-            case .failure(let failure):
-                alertMessage = failure.alertMessage
-                return
-            case .success: break
-            }
-            // Allready being validated in `HostValidator.validateForm`
-            let hostURL = URL(string: editingHostURLString)!
-            let args = CoreHost.Args(url: hostURL, name: editingHostName)
-            let hostResult = CoreHost.setHost(with: args, context: context)
-            let host: CoreHost
-            switch hostResult {
-            case .failure(let failure):
-                console.error(Date(), failure.localizedDescription, failure)
-                return
-            case .success(let success): host = success
-            }
-            closeHostSheet()
-            hosts = hosts.appended(host)
-            selectedHostName = host.name
-        }
-
-        func fetchAllHosts() {
-            let hostsResult = persistenceController.fetch(CoreHost.self)
-            let hosts: [CoreHost]
-            switch hostsResult {
-            case .failure(let failure):
-                console.error(Date(), failure.localizedDescription, failure)
-                return
-            case .success(let success): hosts = success ?? []
-            }
-            self.hosts = hosts
-        }
-
         func onDoneEditing() -> CoreApp? {
             guard let context = persistenceController.context else {
                 console.error(Date(), "no context found")
@@ -115,7 +47,7 @@ extension AddAppScreen {
                 .appIdentifier: appIdentifier,
                 .appName: appName,
                 .accessToken: accessToken,
-                .host: hostID?.uuidString
+                .host: selectedHost?.id.uuidString
             ], context: context)
             switch appValidatorResult {
             case .failure(let failure):
@@ -127,7 +59,7 @@ extension AddAppScreen {
                 name: appName,
                 appIdentifier: appIdentifier,
                 accessToken: accessToken,
-                hostID: hostID)
+                hostID: selectedHost?.id)
             let appResult = CoreApp.setApp(with: args, context: context)
             let app: CoreApp
             switch appResult {
@@ -147,63 +79,6 @@ extension AddAppScreen {
             }
         }
 
-    }
-}
-
-// - MARK: - Host Validator
-
-extension AddAppScreen {
-    fileprivate struct HostValidator {
-        private init() { }
-
-        static func validateForm(_ form: [Fields: String], context: NSManagedObjectContext) -> Result<Void, Errors> {
-            for (key, value) in form {
-                let result = key.validate(value: value, context: context)
-                switch result {
-                case .failure(let failure): return .failure(failure)
-                case .success: continue
-                }
-            }
-            return .success(Void())
-        }
-    }
-}
-
-extension AddAppScreen.HostValidator {
-    fileprivate enum Fields {
-        case name
-        case url
-
-        func validate(value: String, context: NSManagedObjectContext) -> Result<Void, Errors> {
-            switch self {
-            case .name:
-                if value.trimmingByWhitespacesAndNewLines.isEmpty {
-                    return .failure(.nameMissing)
-                }
-                if CoreHost.findHost(by: .name, of: value, context: context) != nil {
-                    return .failure(.nameNotUnique)
-                }
-            case .url:
-                if value.trimmingByWhitespacesAndNewLines.isEmpty, URL(string: value) == nil {
-                    return .failure(.invalidURL)
-                }
-            }
-            return .success(Void())
-        }
-    }
-
-    fileprivate enum Errors: AlertMessageError {
-        case nameMissing
-        case nameNotUnique
-        case invalidURL
-
-        var alertMessage: AlertMessage {
-            switch self {
-            case .nameMissing: return AlertMessage(title: .NAME_MISSING_ALERT_TITLE)
-            case .invalidURL: return AlertMessage(title: .INVALID_URL_ALERT_TITLE)
-            case .nameNotUnique: return AlertMessage(title: .NAME_NOT_UNIQUE_ALERT_TITLE)
-            }
-        }
     }
 }
 

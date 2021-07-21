@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C12415A26A8BD4E0044C163 /* ModifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12415926A8BD4E0044C163 /* ModifyApp.swift */; };
+		2C12415B26A8BD4E0044C163 /* ModifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12415926A8BD4E0044C163 /* ModifyApp.swift */; };
 		2C1BCA83269A12C3001EDE66 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA82269A12C2001EDE66 /* Date+extensions.swift */; };
 		2C1BCA84269A12C3001EDE66 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA82269A12C2001EDE66 /* Date+extensions.swift */; };
 		2C1BCA86269A176A001EDE66 /* handledAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BCA85269A176A001EDE66 /* handledAlert.swift */; };
@@ -134,6 +136,7 @@
 
 /* Begin PBXFileReference section */
 		2C03D7F72690DDDE00F2445E /* MetricsLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MetricsLocale; sourceTree = "<group>"; };
+		2C12415926A8BD4E0044C163 /* ModifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyApp.swift; sourceTree = "<group>"; };
 		2C1BCA82269A12C2001EDE66 /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		2C1BCA85269A176A001EDE66 /* handledAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = handledAlert.swift; sourceTree = "<group>"; };
 		2C1BCA88269A2E06001EDE66 /* DataItemResponse+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataItemResponse+extensions.swift"; sourceTree = "<group>"; };
@@ -468,6 +471,7 @@
 				2C5B938C26A4B05900DBC19B /* LaunchMetricsSection.swift */,
 				60A8D5F02697613E00AE74D4 /* MetricsGridView.swift */,
 				2C6B676826A36D0500A9B4D6 /* ServiceHostPicker.swift */,
+				2C12415926A8BD4E0044C163 /* ModifyApp.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -810,6 +814,7 @@
 				2C1BCA89269A2E06001EDE66 /* DataItemResponse+extensions.swift in Sources */,
 				60A26423268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
 				2C614FA02688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
+				2C12415A26A8BD4E0044C163 /* ModifyApp.swift in Sources */,
 				2C614F752688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
 				2C6B676C26A37E6300A9B4D6 /* AlertMessageError.swift in Sources */,
 				60A26427268AF82D001FAF8B /* NamiNavigator.swift in Sources */,
@@ -860,6 +865,7 @@
 				2C1BCA8A269A2E06001EDE66 /* DataItemResponse+extensions.swift in Sources */,
 				60A26424268AF7EA001FAF8B /* AddAppScreen.swift in Sources */,
 				2C614FA12688AA3F0070EEC6 /* AppSidebar.swift in Sources */,
+				2C12415B26A8BD4E0044C163 /* ModifyApp.swift in Sources */,
 				2C614F762688A2A30070EEC6 /* MetricsViewerApp.swift in Sources */,
 				2C6B676D26A37E6300A9B4D6 /* AlertMessageError.swift in Sources */,
 				60A26428268AF82D001FAF8B /* NamiNavigator.swift in Sources */,

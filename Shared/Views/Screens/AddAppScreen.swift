@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import SalmonUI
-import MetricsUI
 
 struct AddAppScreen: View {
     @EnvironmentObject
@@ -23,33 +21,14 @@ struct AddAppScreen: View {
     }
 
     var body: some View {
-        VStack {
-            KFloatingTextField(text: $viewModel.appName, title: .APP_NAME_FORM_TITLE)
-            FloatingTextFieldWithSubtext(
-                text: $viewModel.appIdentifier,
-                title: .APP_IDENTIFIER_FORM_TITLE,
-                subtext: .APP_IDENTIFIER_FORM_SUBTEXT)
-            KFloatingTextField(text: $viewModel.accessToken, title: .ACCESS_TOKEN_FORM_TITLE)
-            ServiceHostPicker(
-                selectedHostName: $viewModel.selectedHostName,
-                hostsNames: viewModel.hostsNames,
-                serviceHostPickerSubText: viewModel.serviceHostPickerSubText,
-                onAddPress: viewModel.onAddHostButtonPress)
-        }
+        ModifyApp(
+            appName: $viewModel.appName,
+            appIdentifier: $viewModel.appIdentifier,
+            accessToken: $viewModel.accessToken,
+            selectedHost: $viewModel.selectedHost)
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
-        .sheet(isPresented: $viewModel.showHostSheet, onDismiss: { print("dismiss add host sheet") }, content: {
-            AddHostSheet(
-                name: $viewModel.editingHostName,
-                urlString: $viewModel.editingHostURLString,
-                onSave: viewModel.onHostSave,
-                onClose: viewModel.closeHostSheet)
-                .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
-        })
-        .onAppear(perform: {
-            viewModel.fetchAllHosts()
-        })
         #if os(macOS)
         .navigationTitle(Text(localized: .ADD_APP))
         .toolbar(content: {
