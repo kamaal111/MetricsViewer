@@ -12,6 +12,8 @@ struct ContentView: View {
     private var namiNavigator = NamiNavigator()
     @StateObject
     private var coreAppManager = CoreAppManager()
+    @StateObject
+    private var coreHostManager = CoreHostManager()
 
     var body: some View {
         NavigationView {
@@ -24,6 +26,7 @@ struct ContentView: View {
         }
         .environmentObject(namiNavigator)
         .environmentObject(coreAppManager)
+        .environmentObject(coreHostManager)
         #if os(macOS)
         .frame(minWidth: 305, minHeight: 305)
         #endif

@@ -12,8 +12,13 @@ struct ServiceHostPicker: View {
     @Binding var selectedHostName: String
 
     let hostsNames: [String]
-    let serviceHostPickerSubText: String?
     let onAddPress: () -> Void
+
+    init(selectedHostName: Binding<String>, hostsNames: [String], onAddPress: @escaping () -> Void) {
+        self._selectedHostName = selectedHostName
+        self.hostsNames = hostsNames
+        self.onAddPress = onAddPress
+    }
 
     var body: some View {
         VStack {
@@ -38,6 +43,13 @@ struct ServiceHostPicker: View {
         }
         .padding(.vertical, 12)
     }
+
+    private var serviceHostPickerSubText: String? {
+        if hostsNames.isEmpty {
+            return MetricsLocale.Keys.SERVICE_HOST_PICKER_SUBTEXT.localized
+        }
+        return nil
+    }
 }
 
 struct ServiceHostPicker_Previews: PreviewProvider {
@@ -45,7 +57,6 @@ struct ServiceHostPicker_Previews: PreviewProvider {
         ServiceHostPicker(
             selectedHostName: .constant(""),
             hostsNames: ["https://super.io"],
-            serviceHostPickerSubText: "very important text",
             onAddPress: { })
     }
 }

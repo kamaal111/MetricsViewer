@@ -95,6 +95,8 @@
 		607B12202696CF7100CDE5CA /* CoreAppButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B121E2696CF7100CDE5CA /* CoreAppButtonView.swift */; };
 		607B12222696D51400CDE5CA /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B12212696D51400CDE5CA /* String+extensions.swift */; };
 		607B12232696D51400CDE5CA /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B12212696D51400CDE5CA /* String+extensions.swift */; };
+		609971E426A9486D00D3E306 /* CoreHostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609971E326A9486D00D3E306 /* CoreHostManager.swift */; };
+		609971E526A9486D00D3E306 /* CoreHostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609971E326A9486D00D3E306 /* CoreHostManager.swift */; };
 		609D67CA2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */; };
 		609D67CB2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */; };
 		609D67CE2694DD9700BB3B53 /* PersistanceManager in Frameworks */ = {isa = PBXBuildFile; productRef = 609D67CD2694DD9700BB3B53 /* PersistanceManager */; };
@@ -193,6 +195,7 @@
 		2CF82C1C26A21FFD00EF4FEB /* Dictionary+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+extensions.swift"; sourceTree = "<group>"; };
 		607B121E2696CF7100CDE5CA /* CoreAppButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppButtonView.swift; sourceTree = "<group>"; };
 		607B12212696D51400CDE5CA /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
+		609971E326A9486D00D3E306 /* CoreHostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreHostManager.swift; sourceTree = "<group>"; };
 		609D67C92694DB7400BB3B53 /* CoreApp+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreApp+extensions.swift"; sourceTree = "<group>"; };
 		60A26422268AF7EA001FAF8B /* AddAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppScreen.swift; sourceTree = "<group>"; };
 		60A26426268AF82D001FAF8B /* NamiNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamiNavigator.swift; sourceTree = "<group>"; };
@@ -534,6 +537,7 @@
 			children = (
 				60A26426268AF82D001FAF8B /* NamiNavigator.swift */,
 				60F8F1C02695884B0073E33E /* CoreAppManager.swift */,
+				609971E326A9486D00D3E306 /* CoreHostManager.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -807,6 +811,7 @@
 				2C7E3ECC26A30A3B00F5F571 /* CoreHost+CoreDataProperties.swift in Sources */,
 				2C6B676626A36CBE00A9B4D6 /* AddHostSheet.swift in Sources */,
 				2C614F9C2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				609971E426A9486D00D3E306 /* CoreHostManager.swift in Sources */,
 				609D67CA2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
 				2C298CF5269082CF00993C91 /* Constants.swift in Sources */,
 				2C7E3ECA26A30A3B00F5F571 /* CoreHost+CoreDataClass.swift in Sources */,
@@ -858,6 +863,7 @@
 				2C7E3ECD26A30A3B00F5F571 /* CoreHost+CoreDataProperties.swift in Sources */,
 				2C6B676726A36CBE00A9B4D6 /* AddHostSheet.swift in Sources */,
 				2C614F9D2688A9980070EEC6 /* HomeScreen.swift in Sources */,
+				609971E526A9486D00D3E306 /* CoreHostManager.swift in Sources */,
 				609D67CB2694DB7400BB3B53 /* CoreApp+extensions.swift in Sources */,
 				2C298CF6269082CF00993C91 /* Constants.swift in Sources */,
 				2C7E3ECB26A30A3B00F5F571 /* CoreHost+CoreDataClass.swift in Sources */,

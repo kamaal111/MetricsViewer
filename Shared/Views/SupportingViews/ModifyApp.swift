@@ -13,6 +13,9 @@ import PersistanceManager
 import ConsoleSwift
 
 struct ModifyApp: View {
+    @EnvironmentObject
+    private var coreHostManager: CoreHostManager
+
     @ObservedObject
     private var viewModel = ViewModel()
 
@@ -20,6 +23,19 @@ struct ModifyApp: View {
     @Binding var appIdentifier: String
     @Binding var accessToken: String
     @Binding var selectedHost: CoreHost?
+
+    init(
+        appName: Binding<String>,
+        appIdentifier: Binding<String>,
+        accessToken: Binding<String>,
+        selectedHost: Binding<CoreHost?>,
+        preview: Bool = false) {
+        self._appName = appName
+        self._appIdentifier = appIdentifier
+        self._accessToken = accessToken
+        self._selectedHost = selectedHost
+        self.viewModel = ViewModel(preview: preview)
+    }
 
     var body: some View {
         VStack {
@@ -31,12 +47,11 @@ struct ModifyApp: View {
             KFloatingTextField(text: $accessToken, title: .ACCESS_TOKEN_FORM_TITLE)
             ServiceHostPicker(
                 selectedHostName: $viewModel.selectedHostName,
-                hostsNames: viewModel.hostsNames,
-                serviceHostPickerSubText: serviceHostPickerSubText,
+                hostsNames: coreHostManager.hosts.map(\.name),
                 onAddPress: viewModel.onAddHostButtonPress)
         }
         .onAppear(perform: {
-            viewModel.fetchAllHosts()
+            coreHostManager.fetchAllHosts()
         })
         .sheet(isPresented: $viewModel.showHostSheet, onDismiss: { print("dismiss add host sheet") }, content: {
             AddHostSheet(
@@ -44,6 +59,7 @@ struct ModifyApp: View {
                 urlString: $viewModel.editingHostURLString,
                 onSave: {
                 if let savedHost = viewModel.onHostSave() {
+                    coreHostManager.addHost(savedHost)
                     selectedHost = savedHost
                 }
             },
@@ -51,17 +67,11 @@ struct ModifyApp: View {
                 .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
         })
         .onChange(of: viewModel.selectedHostName, perform: { newValue in
+            #error("Selection text still not working")
             guard !newValue.trimmingByWhitespacesAndNewLines.isEmpty,
-                    let selectedHost = viewModel.hosts.first(where: { $0.name == newValue }) else { return }
+                    let selectedHost = coreHostManager.hosts.first(where: { $0.name == newValue }) else { return }
             self.selectedHost = selectedHost
         })
-    }
-
-    private var serviceHostPickerSubText: String? {
-        if viewModel.hostsNames.isEmpty {
-            return MetricsLocale.Keys.SERVICE_HOST_PICKER_SUBTEXT.localized
-        }
-        return nil
     }
 }
 
@@ -72,7 +82,6 @@ extension ModifyApp {
         @Published var editingHostURLString = ""
         @Published var selectedHostName = ""
         @Published var showAlert = false
-        @Published private(set) var hosts: [CoreHost] = []
         @Published private(set) var alertMessage: AlertMessage? {
             didSet { alertMessageDidSet() }
         }
@@ -85,10 +94,6 @@ extension ModifyApp {
             } else {
                 self.persistenceController = PersistenceController.preview
             }
-        }
-
-        var hostsNames: [String] {
-            hosts.map(\.name)
         }
 
         func onHostSave() -> CoreHost? {
@@ -109,6 +114,7 @@ extension ModifyApp {
             // Allready being validated in `HostValidator.validateForm`
             let hostURL = URL(string: editingHostURLString)!
             let args = CoreHost.Args(url: hostURL, name: editingHostName)
+            // - TODO: Move this to core host manager
             let hostResult = CoreHost.setHost(with: args, context: context)
             let host: CoreHost
             switch hostResult {
@@ -118,20 +124,8 @@ extension ModifyApp {
             case .success(let success): host = success
             }
             closeHostSheet()
-            hosts = hosts.appended(host)
+            selectedHostName = host.name
             return host
-        }
-
-        func fetchAllHosts() {
-            let hostsResult = persistenceController.fetch(CoreHost.self)
-            let hosts: [CoreHost]
-            switch hostsResult {
-            case .failure(let failure):
-                console.error(Date(), failure.localizedDescription, failure)
-                return
-            case .success(let success): hosts = success ?? []
-            }
-            self.hosts = hosts
         }
 
         func onAddHostButtonPress() {

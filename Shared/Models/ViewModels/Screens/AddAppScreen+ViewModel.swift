@@ -18,11 +18,7 @@ extension AddAppScreen {
         @Published var appName = ""
         @Published var appIdentifier = ""
         @Published var accessToken = ""
-        @Published var selectedHost: CoreHost? {
-            didSet {
-                print(selectedHost)
-            }
-        }
+        @Published var selectedHost: CoreHost?
         @Published var showAlert = false
         @Published private(set) var alertMessage: AlertMessage? {
             didSet { alertMessageDidSet() }
