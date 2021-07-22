@@ -15,14 +15,23 @@ struct AppDetailsScreen: View {
     @ObservedObject
     private var viewModel: ViewModel
 
-    init() {
+    private let preview: Bool
+
+    init(preview: Bool = false) {
+        self.preview = preview
         self.viewModel = ViewModel()
     }
 
     var body: some View {
         VStack(alignment: .leading) {
             if viewModel.editScreenIsActive {
-                Text("Edit")
+                // - TODO: ADD FIELDS IN VIEW MODEL AND START EDITING 😁
+                ModifyApp(
+                    appName: .constant("yes"),
+                    appIdentifier: .constant("yes"),
+                    accessToken: .constant("yes"),
+                    selectedHost: .constant(nil),
+                    preview: preview)
             } else {
                 AppDetailsMetrics(
                     loadingMetrics: $viewModel.loadingMetrics,
