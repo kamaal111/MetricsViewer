@@ -17,7 +17,7 @@ struct ModifyApp: View {
     private var coreHostManager: CoreHostManager
 
     @ObservedObject
-    private var viewModel = ViewModel()
+    private var viewModel: ViewModel
 
     @Binding var appName: String
     @Binding var appIdentifier: String
@@ -34,7 +34,8 @@ struct ModifyApp: View {
         self._appIdentifier = appIdentifier
         self._accessToken = accessToken
         self._selectedHost = selectedHost
-        self.viewModel = ViewModel(preview: preview)
+        let selectedHostName = selectedHost.wrappedValue?.name ?? ""
+        self.viewModel = ViewModel(selectedHostName: selectedHostName, preview: preview)
     }
 
     var body: some View {
@@ -67,7 +68,6 @@ struct ModifyApp: View {
                 .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
         })
         .onChange(of: viewModel.selectedHostName, perform: { newValue in
-            #error("Selection text still not working")
             guard !newValue.trimmingByWhitespacesAndNewLines.isEmpty,
                     let selectedHost = coreHostManager.hosts.first(where: { $0.name == newValue }) else { return }
             self.selectedHost = selectedHost
@@ -80,7 +80,7 @@ extension ModifyApp {
         @Published var showHostSheet = false
         @Published var editingHostName = ""
         @Published var editingHostURLString = ""
-        @Published var selectedHostName = ""
+        @Published var selectedHostName: String
         @Published var showAlert = false
         @Published private(set) var alertMessage: AlertMessage? {
             didSet { alertMessageDidSet() }
@@ -88,7 +88,8 @@ extension ModifyApp {
 
         private let persistenceController: PersistanceManager
 
-        init(preview: Bool = false) {
+        init(selectedHostName: String, preview: Bool = false) {
+            self.selectedHostName = selectedHostName
             if !preview {
                 self.persistenceController = PersistenceController.shared
             } else {
