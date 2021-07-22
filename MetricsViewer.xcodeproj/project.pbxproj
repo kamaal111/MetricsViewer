@@ -87,6 +87,8 @@
 		2CF5A7E72697941C00A812C7 /* AppDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5A7E52697941C00A812C7 /* AppDetailsScreen.swift */; };
 		2CF82C1D26A21FFD00EF4FEB /* Dictionary+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF82C1C26A21FFD00EF4FEB /* Dictionary+extensions.swift */; };
 		2CF82C1E26A21FFD00EF4FEB /* Dictionary+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF82C1C26A21FFD00EF4FEB /* Dictionary+extensions.swift */; };
+		6005D3CF26A94F270008E681 /* ModifyApp+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6005D3CE26A94F270008E681 /* ModifyApp+ViewModel.swift */; };
+		6005D3D026A94F270008E681 /* ModifyApp+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6005D3CE26A94F270008E681 /* ModifyApp+ViewModel.swift */; };
 		603CA8072689A2F7003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8062689A2F7003A5C42 /* XiphiasNet */; };
 		603CA8092689A2FC003A5C42 /* XiphiasNet in Frameworks */ = {isa = PBXBuildFile; productRef = 603CA8082689A2FC003A5C42 /* XiphiasNet */; };
 		607794FC268DA415004A0D8A /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 607794FB268DA415004A0D8A /* SalmonUI */; };
@@ -193,6 +195,7 @@
 		2CD03E0C26909B7300A66E75 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		2CF5A7E52697941C00A812C7 /* AppDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsScreen.swift; sourceTree = "<group>"; };
 		2CF82C1C26A21FFD00EF4FEB /* Dictionary+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+extensions.swift"; sourceTree = "<group>"; };
+		6005D3CE26A94F270008E681 /* ModifyApp+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModifyApp+ViewModel.swift"; sourceTree = "<group>"; };
 		607B121E2696CF7100CDE5CA /* CoreAppButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppButtonView.swift; sourceTree = "<group>"; };
 		607B12212696D51400CDE5CA /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		609971E326A9486D00D3E306 /* CoreHostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreHostManager.swift; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 		2C32E66D2689032100DC34AF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6005D3CD26A94F0D0008E681 /* SupportingViews */,
 				60A26425268AF811001FAF8B /* Environment */,
 				2C32E66E2689032B00DC34AF /* Screens */,
 			);
@@ -530,6 +534,14 @@
 				60D77CDE269CA1D60079188A /* SidebarScreenModel.swift */,
 			);
 			path = Structures;
+			sourceTree = "<group>";
+		};
+		6005D3CD26A94F0D0008E681 /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				6005D3CE26A94F270008E681 /* ModifyApp+ViewModel.swift */,
+			);
+			path = SupportingViews;
 			sourceTree = "<group>";
 		};
 		60A26425268AF811001FAF8B /* Environment */ = {
@@ -829,6 +841,7 @@
 				2C1BCA8C269A2E30001EDE66 /* MetricsData.swift in Sources */,
 				2CF82C1D26A21FFD00EF4FEB /* Dictionary+extensions.swift in Sources */,
 				2C614F962688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
+				6005D3CF26A94F270008E681 /* ModifyApp+ViewModel.swift in Sources */,
 				2C1BCA86269A176A001EDE66 /* handledAlert.swift in Sources */,
 				2C7E3ED226A314F500F5F571 /* Array+extensions.swift in Sources */,
 				2C6B676926A36D0500A9B4D6 /* ServiceHostPicker.swift in Sources */,
@@ -881,6 +894,7 @@
 				2C1BCA8D269A2E30001EDE66 /* MetricsData.swift in Sources */,
 				2CF82C1E26A21FFD00EF4FEB /* Dictionary+extensions.swift in Sources */,
 				2C614F972688A81D0070EEC6 /* MetricsViewer.xcdatamodeld in Sources */,
+				6005D3D026A94F270008E681 /* ModifyApp+ViewModel.swift in Sources */,
 				2C1BCA87269A176A001EDE66 /* handledAlert.swift in Sources */,
 				2C7E3ED326A314F500F5F571 /* Array+extensions.swift in Sources */,
 				2C6B676A26A36D0500A9B4D6 /* ServiceHostPicker.swift in Sources */,
