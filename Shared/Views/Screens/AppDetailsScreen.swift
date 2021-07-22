@@ -12,24 +12,25 @@ struct AppDetailsScreen: View {
     @EnvironmentObject
     private var coreAppManager: CoreAppManager
 
-    @ObservedObject
-    private var viewModel: ViewModel
+    @StateObject
+    private var editViewModel = EditViewModel()
+    @StateObject
+    private var viewModel = ViewModel()
 
     private let preview: Bool
 
     init(preview: Bool = false) {
         self.preview = preview
-        self.viewModel = ViewModel(preview: true)
     }
 
     var body: some View {
         VStack(alignment: .leading) {
-            if viewModel.editScreenIsActive {
+            if editViewModel.editScreenIsActive {
                 ModifyApp(
-                    appName: $viewModel.editingAppName,
-                    appIdentifier: $viewModel.editingAppIdentifier,
-                    accessToken: $viewModel.editingAccessToken,
-                    selectedHost: $viewModel.editingSelectedHost,
+                    appName: $editViewModel.editingAppName,
+                    appIdentifier: $editViewModel.editingAppIdentifier,
+                    accessToken: $editViewModel.editingAccessToken,
+                    selectedHost: $editViewModel.editingSelectedHost,
                     preview: preview)
             } else {
                 AppDetailsMetrics(
@@ -42,14 +43,16 @@ struct AppDetailsScreen: View {
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.Background)
-        .onAppear(perform: onViewAppear)
         .alert(isPresented: $viewModel.showAlert, content: { handledAlert(with: viewModel.alertMessage) })
+        .onAppear(perform: onViewAppear)
         #if os(macOS)
-        .navigationTitle(Text(viewModel.app?.name ?? ""))
+        .navigationTitle(Text(coreAppManager.selectedApp?.name ?? ""))
         .toolbar(content: {
             ToolbarItem(content: {
-                Button(action: viewModel.onEditPress) {
-                    Text(localized: viewModel.editScreenIsActive ? .DONE : .EDIT)
+                Button(action: {
+                    editViewModel.onEditPress()
+                }) {
+                    Text(localized: editViewModel.editScreenIsActive ? .DONE : .EDIT)
                         .animation(nil)
                 }
             })
@@ -66,6 +69,7 @@ struct AppDetailsScreen: View {
     private func onViewAppear() {
         if let selectedApp = coreAppManager.selectedApp {
             viewModel.setApp(selectedApp)
+            editViewModel.setApp(selectedApp)
         }
     }
 }

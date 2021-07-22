@@ -27,36 +27,8 @@ extension AppDetailsScreen {
         @Published private(set) var alertMessage: AlertMessage? {
             didSet { alertMessageDidSet() }
         }
-        @Published var editingAppName = ""
-        @Published var editingAppIdentifier = ""
-        @Published var editingAccessToken = ""
-        @Published var editingSelectedHost: CoreHost?
-        @Published private(set) var editScreenIsActive = false {
-            didSet {
-                print(editScreenIsActive)
-                // - TODO: PUT THIS IN A FUNCTION
-                guard editScreenIsActive, let app = app else { return }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                    guard let self = self else { return }
-                    self.editingAppName = app.name
-                    self.editingAppIdentifier = app.appIdentifier
-                    self.editingAccessToken = app.accessToken
-                    self.editingSelectedHost = app.host
-                }
-            }
-        }
 
         private let networker = NetworkController.shared
-        private let persistenceController: PersistanceManager
-
-        init(preview: Bool = false) {
-            print("init")
-            if !preview {
-                self.persistenceController = PersistenceController.shared
-            } else {
-                self.persistenceController = PersistenceController.preview
-            }
-        }
 
         var last7FirstLaunchMetrics: [Double] {
             last7RecordedMetrics.compactMap(\.launchTimes?.averageFirstLaunch)
@@ -64,17 +36,6 @@ extension AppDetailsScreen {
 
         var last7LaunchFromBackgroundMetrics: [Double] {
             last7RecordedMetrics.compactMap(\.launchTimes?.averageLaunchFromBackground)
-        }
-
-        func onEditPress() {
-            withAnimation { [weak self] in
-                guard let self = self else { return }
-                if self.editScreenIsActive {
-                    self.editScreenIsActive = false
-                } else {
-                    self.editScreenIsActive = true
-                }
-            }
         }
 
         func setApp(_ app: CoreApp) {

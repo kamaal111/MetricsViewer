@@ -9,6 +9,7 @@ import Foundation
 import PersistanceManager
 import ConsoleSwift
 import CoreData
+import SwiftUI
 
 extension ModifyApp {
     final class ViewModel: ObservableObject {
@@ -20,6 +21,7 @@ extension ModifyApp {
         @Published private(set) var alertMessage: AlertMessage? {
             didSet { alertMessageDidSet() }
         }
+        @Published private(set) var showAccessToken = false
 
         private let persistenceController: PersistanceManager
 
@@ -29,6 +31,14 @@ extension ModifyApp {
                 self.persistenceController = PersistenceController.shared
             } else {
                 self.persistenceController = PersistenceController.preview
+            }
+        }
+
+        func toggleShowAccessToken() {
+            if showAccessToken {
+                withAnimation { [weak self] in self?.showAccessToken = false }
+            } else {
+                withAnimation { [weak self] in self?.showAccessToken = true }
             }
         }
 
