@@ -60,7 +60,7 @@ struct AppDetailsScreen: View {
                 Button(action: viewModel.getMetrics) {
                     Label(MetricsLocale.Keys.REFRESH_METRICS.localized, systemImage: "arrow.triangle.2.circlepath")
                 }
-                .disabled(viewModel.loadingMetrics)
+                .disabled(viewModel.loadingMetrics || editViewModel.editScreenIsActive)
             })
         })
         #endif

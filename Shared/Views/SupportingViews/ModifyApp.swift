@@ -42,7 +42,7 @@ struct ModifyApp: View {
                 text: $appIdentifier,
                 title: .APP_IDENTIFIER_FORM_TITLE,
                 subtext: .APP_IDENTIFIER_FORM_SUBTEXT)
-            KFloatingTextField(text: $accessToken, title: .ACCESS_TOKEN_FORM_TITLE)
+            SecureFloatingField(text: $accessToken, title: .ACCESS_TOKEN_FORM_TITLE)
             ServiceHostPicker(
                 selectedHostName: $viewModel.selectedHostName,
                 hostsNames: coreHostManager.hosts.map(\.name),

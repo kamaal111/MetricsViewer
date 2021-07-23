@@ -7,9 +7,10 @@
 
 import SwiftUI
 import SalmonUI
+import MetricsLocale
 
-struct SecureFloatingField: View {
-    #error("USE THIS SHOW TEXT TO TOGGLE AND USE THIS VIEW IN MODIFY APP TO HIDE ACCESS TOKEN")
+@available(macOS 11.0, *)
+public struct SecureFloatingField: View {
     @State private var showText = false
 
     @Binding public var text: String
@@ -21,7 +22,11 @@ struct SecureFloatingField: View {
         self.title = title
     }
 
-    var body: some View {
+    public init(text: Binding<String>, title: MetricsLocale.Keys) {
+        self.init(text: text, title: title.localized)
+    }
+
+    public var body: some View {
         HStack {
             ZStack(alignment: .leading) {
                 Text(title)
@@ -29,15 +34,27 @@ struct SecureFloatingField: View {
                     .offset(y: $text.wrappedValue.isEmpty ? 0 : -25)
                     .scaleEffect($text.wrappedValue.isEmpty ? 1 : 0.75, anchor: .leading)
                     .padding(.horizontal, titleHorizontalPadding)
-                #if canImport(UIKit)
-                SecureField("", text: $text)
-                #else
-                SecureField(title, text: $text)
-                #endif
+                if showText {
+                    TextField(titleText, text: $text)
+                } else {
+                    SecureField(titleText, text: $text)
+                }
             }
             .padding(.top, 12)
             .animation(.spring(response: 0.5))
+            Button(action: { showText.toggle() }) {
+                Image(systemName: "eye")
+            }
+            .padding(.top, 12)
         }
+    }
+
+    private var titleText: String {
+        #if canImport(UIKit)
+        ""
+        #else
+        title
+        #endif
     }
 
     private var textColor: Color {
@@ -55,6 +72,7 @@ struct SecureFloatingField: View {
     }
 }
 
+@available(macOS 11.0, *)
 struct SecureFloatingField_Previews: PreviewProvider {
     static var previews: some View {
         SecureFloatingField(text: .constant("yes"), title: "secure")
