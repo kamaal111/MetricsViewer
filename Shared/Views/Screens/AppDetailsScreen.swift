@@ -50,7 +50,9 @@ struct AppDetailsScreen: View {
         .toolbar(content: {
             ToolbarItem(content: {
                 Button(action: {
-                    editViewModel.onEditPress()
+                    let argsResult = editViewModel.onEditPress()
+                    // - TODO: HANDLE ERROR IF THERE IS ONE
+                    // - TODO: SAVE APP IF THERE IS ONE
                 }) {
                     Text(localized: editViewModel.editScreenIsActive ? .DONE : .EDIT)
                         .animation(nil)
