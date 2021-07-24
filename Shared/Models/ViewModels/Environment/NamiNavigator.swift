@@ -16,6 +16,7 @@ final class NamiNavigator: ObservableObject {
         case home
         case addApp
         case appDetails
+        case editHost
     }
 
     func navigate(to screen: SelectableScreens?) {

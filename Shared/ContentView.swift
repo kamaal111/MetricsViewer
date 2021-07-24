@@ -21,6 +21,7 @@ struct ContentView: View {
             switch namiNavigator.selectedScreen {
             case .addApp: AddAppScreen()
             case .appDetails: AppDetailsScreen()
+            case .editHost: EditHostScreen()
             case .home, nil: HomeScreen()
             }
         }

@@ -21,7 +21,13 @@ struct AppSidebar: View {
             id: UUID(uuidString: "6cbce375-f34d-4333-ab70-9208d5fc5c75")!,
             title: .ADD_APP,
             systemImage: "plus",
-            navigationPoint: .addApp)
+            navigationPoint: .addApp),
+        SidebarScreenModel(
+            id: UUID(uuidString: "12badbc1-1c11-4285-a095-716f7caa946f")!,
+            // - TODO: Localize this
+            title: "Edit host",
+            systemImage: "network",
+            navigationPoint: .editHost)
     ]
 
     var body: some View {
