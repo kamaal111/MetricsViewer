@@ -11,7 +11,15 @@ import CoreData
 struct AppValidator {
     private init() { }
 
-    static func validateForm(_ form: [Fields: String?], context: NSManagedObjectContext) -> Result<Void, Errors> {
+    /// Validates core app form with the given fields
+    /// - Parameters:
+    ///   - form: is dict with the fields that need to be validated
+    ///   - context: is required to validate access token
+    /// - Returns: an result with an ``AppValidator.Errors`` if validation fails and returns `Void`
+    /// if everything goes well
+    static func validateForm(
+        _ form: [Fields: String?],
+        context: NSManagedObjectContext? = nil) -> Result<Void, Errors> {
         for (key, value) in form {
             let result = key.validate(value: value, context: context)
             switch result {
@@ -30,7 +38,7 @@ extension AppValidator {
         case accessToken
         case host
 
-        func validate(value: String?, context: NSManagedObjectContext) -> Result<Void, Errors> {
+        fileprivate func validate(value: String?, context: NSManagedObjectContext?) -> Result<Void, Errors> {
             switch self {
             case .appName: return validateAppName(value)
             case .appIdentifier: return validateAppIdentifier(value, context: context)
@@ -49,8 +57,9 @@ extension AppValidator {
 
         private func validateAppIdentifier(
             _ appIdentifier: String?,
-            context: NSManagedObjectContext) -> Result<Void, Errors> {
-            guard let appIdentifier = appIdentifier else { return .failure(.invalidAppIdentifier) }
+            context: NSManagedObjectContext?) -> Result<Void, Errors> {
+            guard let appIdentifier = appIdentifier,
+                    let context = context else { return .failure(.invalidAppIdentifier) }
             if appIdentifier.trimmingByWhitespacesAndNewLines.split(separator: ".").count < 2 {
                 return .failure(.invalidAppIdentifier)
             }

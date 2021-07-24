@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MetricsLocale
+import ConsoleSwift
 
 struct AppDetailsScreen: View {
     @EnvironmentObject
@@ -49,11 +50,7 @@ struct AppDetailsScreen: View {
         .navigationTitle(Text(coreAppManager.selectedApp?.name ?? ""))
         .toolbar(content: {
             ToolbarItem(content: {
-                Button(action: {
-                    let argsResult = editViewModel.onEditPress()
-                    // - TODO: HANDLE ERROR IF THERE IS ONE
-                    // - TODO: SAVE APP IF THERE IS ONE
-                }) {
+                Button(action: onEditPress) {
                     Text(localized: editViewModel.editScreenIsActive ? .DONE : .EDIT)
                         .animation(nil)
                 }
@@ -66,6 +63,34 @@ struct AppDetailsScreen: View {
             })
         })
         #endif
+    }
+
+    private func onEditPress() {
+        let argsResult = editViewModel.onEditPress()
+        let args: CoreApp.Args
+        switch argsResult {
+        case .failure(let failure):
+            viewModel.setAlertMessage(with: failure.alertMessage)
+            return
+        case .success(let success):
+            guard let success = success else { return }
+            args = success
+        }
+        guard let selectedApp = coreAppManager.selectedApp else {
+            console.error(Date(), "app not found")
+            return
+        }
+        let editedApp: CoreApp
+        do {
+            editedApp = try selectedApp.editApp(with: args)
+        } catch {
+            console.error(Date(), error.localizedDescription, error)
+            return
+        }
+        viewModel.setApp(editedApp)
+        editViewModel.setApp(editedApp)
+        coreAppManager.selectApp(editedApp)
+        coreAppManager.replaceApp(with: editedApp)
     }
 
     private func onViewAppear() {

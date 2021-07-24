@@ -28,6 +28,11 @@ final class CoreAppManager: ObservableObject {
         selectedApp = app
     }
 
+    func replaceApp(with app: CoreApp) {
+        guard let index = apps.firstIndex(where: { $0.id == app.id }) else { return }
+        apps[index] = app
+    }
+
     func addApp(_ app: CoreApp) {
         apps.append(app)
     }

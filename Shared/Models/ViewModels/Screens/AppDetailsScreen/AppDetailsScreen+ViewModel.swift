@@ -38,6 +38,10 @@ extension AppDetailsScreen {
             last7RecordedMetrics.compactMap(\.launchTimes?.averageLaunchFromBackground)
         }
 
+        func setAlertMessage(with alertMessage: AlertMessage) {
+            self.alertMessage = alertMessage
+        }
+
         func setApp(_ app: CoreApp) {
             self.app = app
         }

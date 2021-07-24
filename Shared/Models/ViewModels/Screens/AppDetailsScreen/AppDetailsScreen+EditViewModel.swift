@@ -35,12 +35,20 @@ extension AppDetailsScreen {
                     console.error(Date(), "context not found")
                     return .success(nil)
                 }
+                guard let app = app else {
+                    console.error(Date(), "for some reason app is not defined")
+                    return .success(nil)
+                }
+
+                guard CoreApp.appIdentifierExists(
+                    editingAppIdentifier,
+                    excluding: app.appIdentifier,
+                    context: context) else { return .failure(.appIdentifierNotUnique) }
                 let applValidatorResult = AppValidator.validateForm([
                     .appName: editingAppName,
                     .host: editingSelectedHost?.id.uuidString,
-                    .accessToken: editingAccessToken,
-                    .appIdentifier: editingAppIdentifier
-                ], context: context)
+                    .accessToken: editingAccessToken
+                ])
                 switch applValidatorResult {
                 case .failure(let failure): return .failure(failure)
                 case .success: break

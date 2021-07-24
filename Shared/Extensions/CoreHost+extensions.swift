@@ -15,14 +15,20 @@ extension CoreHost {
     }
 
     func addApp(_ app: CoreApp, save: Bool) {
-        guard let context = self.managedObjectContext else {
-            console.error(Date(), "no context found")
-            return
-        }
-        self.apps = NSSet(array: appsArray.appended(app))
+        self.apps = appsArray.appended(app).asNSSet
         guard save else { return }
         do {
-            try context.save()
+            try self.managedObjectContext?.save()
+        } catch {
+            console.error(Date(), error.localizedDescription, error)
+        }
+    }
+
+    func removeAppFromHost(_ app: CoreApp, save: Bool = false) {
+        self.apps = appsArray.filter({ $0.id == app.id }).asNSSet
+        guard save else { return }
+        do {
+            try self.managedObjectContext?.save()
         } catch {
             console.error(Date(), error.localizedDescription, error)
         }
@@ -46,6 +52,14 @@ extension CoreHost {
         return .success(host)
     }
 
+    static func findHost(
+        by searchProperty: SearchProperties,
+        of value: CVarArg,
+        context: NSManagedObjectContext) -> CoreHost? {
+        let predicate = NSPredicate(format: "%@ == %@", searchProperty.rawValue, value)
+        return try? CoreHost.getAllHosts(with: predicate, context: context).get().first
+    }
+
     private static func getAllHosts(
         with predicate: NSPredicate? = nil,
         context: NSManagedObjectContext) -> Result<[CoreHost], Error> {
@@ -61,14 +75,6 @@ extension CoreHost {
             return .failure(error)
         }
         return .success(fetchedHosts)
-    }
-
-    static func findHost(
-        by searchProperty: SearchProperties,
-        of value: CVarArg,
-        context: NSManagedObjectContext) -> CoreHost? {
-        let predicate = NSPredicate(format: "%@ == %@", searchProperty.rawValue, value)
-        return try? CoreHost.getAllHosts(with: predicate, context: context).get().first
     }
 
     enum SearchProperties: String {
