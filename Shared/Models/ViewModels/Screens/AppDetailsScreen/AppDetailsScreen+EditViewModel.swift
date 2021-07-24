@@ -29,6 +29,10 @@ extension AppDetailsScreen {
             }
         }
 
+        func onCancelPress() {
+            withAnimation { [weak self] in self?.editScreenIsActive = false }
+        }
+
         func onEditPress() -> Result<CoreApp.Args?, AppValidator.Errors> {
             if editScreenIsActive {
                 guard let context = persistanceManager.context else {

@@ -49,18 +49,20 @@ struct AppDetailsScreen: View {
         #if os(macOS)
         .navigationTitle(Text(coreAppManager.selectedApp?.name ?? ""))
         .toolbar(content: {
-            ToolbarItem(content: {
-                Button(action: onEditPress) {
-                    Text(localized: editViewModel.editScreenIsActive ? .DONE : .EDIT)
-                        .animation(nil)
+            if editViewModel.editScreenIsActive {
+                Button(action: editViewModel.onCancelPress) {
+                    // - TODO: LOCALIZE THIS
+                    Text("Cancel")
                 }
-            })
-            ToolbarItem(content: {
-                Button(action: viewModel.getMetrics) {
-                    Label(MetricsLocale.Keys.REFRESH_METRICS.localized, systemImage: "arrow.triangle.2.circlepath")
-                }
-                .disabled(viewModel.loadingMetrics || editViewModel.editScreenIsActive)
-            })
+            }
+            Button(action: onEditPress) {
+                Text(localized: editViewModel.editScreenIsActive ? .DONE : .EDIT)
+                    .animation(nil)
+            }
+            Button(action: viewModel.getMetrics) {
+                Label(MetricsLocale.Keys.REFRESH_METRICS.localized, systemImage: "arrow.triangle.2.circlepath")
+            }
+            .disabled(viewModel.loadingMetrics || editViewModel.editScreenIsActive)
         })
         #endif
     }
