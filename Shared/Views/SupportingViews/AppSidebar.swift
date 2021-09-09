@@ -12,7 +12,7 @@ struct AppSidebar: View {
     @EnvironmentObject
     var namiNavigator: NamiNavigator
 
-    private let screens: [SidebarScreenModel] = [
+    private let items: [SidebarScreenModel] = [
         SidebarScreenModel(
             id: UUID(uuidString: "d4a92f62-2b40-4d8b-8041-6146d8524bc9")!,
             title: .HOME,
@@ -33,8 +33,8 @@ struct AppSidebar: View {
     var body: some View {
         List {
             Section(header: Text(""), content: {
-                ForEach(screens, id: \.id, content: { screen in
-                    screen.view(navigator: namiNavigator)
+                ForEach(items, id: \.id, content: { item in
+                    item.view(navigator: namiNavigator)
                 })
             })
         }
